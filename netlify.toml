@@ -15,3 +15,21 @@
   for = "/alasila-cx/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# Client proposal (Travel Gate): password-locked page, reachable by link only, kept out of
+# search. The file in this repository is encrypted (tools in amer-os: lock_page.py).
+[[headers]]
+  for = "/travelgate/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+[[redirects]]
+  from = "/Travelgate"
+  to = "/travelgate/"
+  status = 301
+
+[[redirects]]
+  from = "/Travelgate/"
+  to = "/travelgate/"
+  status = 301
