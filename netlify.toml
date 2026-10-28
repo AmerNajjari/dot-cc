@@ -34,8 +34,8 @@
   to = "/travelgate/"
   status = 301
 
-# Client questionnaire (AIIC): reachable by link only, kept out of search. Answers go to Netlify Forms
-# (form aiic-questionnaire), never into this repository.
+# Client questionnaire (AIIC): reachable by link only, kept out of search. Answers are emailed through
+# FormSubmit (formsubmit.co) to an@dot-cs.com, never into this repository.
 [[headers]]
   for = "/aiic/*"
   [headers.values]
