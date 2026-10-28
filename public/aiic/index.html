@@ -382,8 +382,8 @@ function doSend(){
   if(busy)return;
   if(!val("you.name")){stat.textContent="Please add your name in section 01 first. يرجى كتابة اسمك في القسم الأول.";location.hash="#s-you";return;}
   var c=count();busy=true;send.disabled=true;stat.textContent="Sending.";
-  var body={_subject:"AIIC questionnaire: "+val("you.name")+" ("+c[0]+" of "+c[1]+" answered)",_template:"box",_captcha:"false",
-    name:val("you.name"),role:val("you.role"),email:val("you.email"),answered:c[0]+" of "+c[1],answers:text()};
+  var body={_subject:"AIIC questionnaire from "+val("you.name"),_template:"basic",_captcha:"false",
+    Name:val("you.name"),Email:val("you.email"),Answers:text()};
   if(/@/.test(val("you.email")))body._replyto=val("you.email");
   fetch(SEND,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(body)})
    .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(j){if(String(j.success)!=="true")throw 0;stat.textContent="Sent. Thank you. You can keep adding and send again at any time. تم الإرسال، شكراً لكم. يمكنكم الإضافة والإرسال مرة أخرى في أي وقت.";})
