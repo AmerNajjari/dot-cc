@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<base href="/helixion-platform/">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helixion App</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="growth.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: var(--t-md); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  input, textarea { font: inherit; color: inherit; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 10px; border: 3px solid transparent; background-clip: padding-box; }
+  * { scrollbar-color: var(--line-strong) transparent; scrollbar-width: thin; }
+  [dir="rtl"] .eyebrow { letter-spacing: 0; text-transform: none; font-family: var(--font-ar); font-weight: 600; }
+
+  .app { display: grid; grid-template-columns: 232px 1fr; grid-template-rows: 60px 1fr; grid-template-areas: "rail top" "rail main"; height: 100vh; }
+
+  /* rail */
+  .rail { grid-area: rail; background: var(--bg-sunk); display: flex; flex-direction: column; padding: var(--s5) var(--s3); gap: var(--s1); }
+  .brand { display: flex; align-items: center; padding: 0 var(--s3) var(--s6); color: var(--ink); }
+  .brand svg.full { width: 128px; height: auto; display: block; }
+  .nav { display: flex; align-items: center; gap: var(--s3); padding: 9px var(--s3); border-radius: var(--r-md); color: var(--ink-muted); font-weight: 500; font-size: var(--t-sm); position: relative; transition: color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease); text-align: start; }
+  .nav svg { width: 18px; height: 18px; flex: none; }
+  .nav:hover { color: var(--ink); background: var(--line); }
+  .nav[aria-current="page"] { color: var(--point); background: var(--tint-act); }
+  .nav[aria-current="page"]::before { content: ""; position: absolute; inset-inline-start: -12px; top: 8px; bottom: 8px; width: 3px; border-radius: 3px; background: var(--point); }
+  .nav .count { margin-inline-start: auto; font-size: var(--t-xs); color: var(--hold-ink); }
+  .rail-foot { margin-top: auto; padding: var(--s3); font-size: var(--t-xs); color: var(--ink-muted); }
+
+  /* top bar */
+  .top { grid-area: top; display: flex; align-items: center; gap: var(--s4); padding: 0 var(--s5); border-bottom: 1px solid var(--line); }
+  .top h1 { font-family: var(--font-display); font-size: var(--t-lg); font-weight: 600; }
+  [dir="rtl"] .top h1 { font-family: var(--font-ar); }
+  .tenant { font-size: var(--t-xs); color: var(--ink-muted); }
+  .top .spacer { flex: 1; }
+  .seg { display: inline-flex; border: 1px solid var(--line-strong); border-radius: var(--r-pill); padding: 2px; }
+  .seg button { padding: 4px 12px; border-radius: var(--r-pill); font-size: var(--t-xs); font-weight: 600; color: var(--ink-muted); }
+  .seg button[aria-pressed="true"] { background: var(--surface-raised); color: var(--ink); }
+  .avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--tint-act); color: var(--point); display: grid; place-items: center; font-size: var(--t-xs); font-weight: 600; }
+
+  main { grid-area: main; overflow: hidden; }
+  .screen { height: 100%; display: none; }
+  .screen.on { display: grid; }
+
+  /* shared bits */
+  .chip { display: inline-flex; align-items: center; gap: 6px; height: 22px; padding: 0 10px; border-radius: var(--r-pill); font-size: var(--t-xs); font-weight: 600; white-space: nowrap; }
+  .chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .chip.send { background: var(--tint-send); color: var(--send-ink); }
+  .chip.hold { background: var(--tint-hold); color: var(--hold-ink); }
+  .chip.stop { background: var(--tint-stop); color: var(--stop-ink); }
+  .chip.read { background: var(--tint-read); color: var(--read); }
+  .chip.neutral { background: var(--line); color: var(--ink-muted); }
+  .chip.neutral::before { display: none; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s2); height: 40px; padding: 0 var(--s5); border-radius: var(--r-pill); font-weight: 600; font-size: var(--t-sm); transition: background var(--dur-fast) var(--ease), box-shadow var(--dur) var(--ease); white-space: nowrap; }
+  .btn.primary { background: var(--act); color: var(--on-act); box-shadow: var(--glow); }
+  .btn.primary:hover { background: var(--act-hover); }
+  .btn.secondary { border: 1px solid var(--line-strong); }
+  .btn.secondary:hover { background: var(--line); }
+  .btn.quiet { color: var(--point); padding: 0 var(--s2); height: 32px; }
+  .btn.danger { color: var(--stop-ink); padding: 0 var(--s2); height: 32px; font-size: var(--t-xs); }
+  .btn:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+  .btn.done { background: var(--tint-act); color: var(--point); box-shadow: none; }
+  .sample-tag { font-size: var(--t-xs); color: var(--ink-muted); }
+  .muted { color: var(--ink-muted); }
+  .scroll { overflow-y: auto; }
+
+  /* inbox */
+  #inbox { grid-template-columns: 320px 1fr 380px; }
+  .list { border-inline-end: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; }
+  .list-head { padding: var(--s4); display: flex; flex-direction: column; gap: var(--s3); }
+  .search { height: 38px; width: 100%; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--line); padding: 0 var(--s3); }
+  .search::placeholder { color: var(--ink-muted); }
+  .filters { display: flex; gap: var(--s2); }
+  .filters button { font-size: var(--t-xs); font-weight: 600; padding: 4px 12px; border-radius: var(--r-pill); color: var(--ink-muted); }
+  .filters button[aria-pressed="true"] { background: var(--surface-raised); color: var(--ink); }
+  .rows { flex: 1; overflow-y: auto; padding: 0 var(--s2) var(--s4); }
+  .row { display: grid; grid-template-columns: 1fr auto; gap: 2px var(--s3); width: 100%; text-align: start; padding: var(--s3); border-radius: var(--r-md); transition: background var(--dur-fast) var(--ease); }
+  .row:hover { background: var(--line); }
+  .row[aria-selected="true"] { background: var(--tint-act); }
+  .row .who { font-weight: 600; font-size: var(--t-sm); display: flex; align-items: center; gap: var(--s2); }
+  .row .time { font-size: var(--t-xs); color: var(--ink-muted); }
+  .row .preview { grid-column: 1; font-family: var(--font-ar); font-size: var(--t-sm); color: var(--ink-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ch { font-size: 10px; font-weight: 600; color: var(--ink-muted); border: 1px solid var(--line-strong); border-radius: var(--r-pill); padding: 0 6px; }
+
+  .thread { display: flex; flex-direction: column; min-height: 0; }
+  .thread-head { padding: var(--s4) var(--s5); display: flex; align-items: center; gap: var(--s3); border-bottom: 1px solid var(--line); }
+  .thread-head h2 { font-family: var(--font-display); font-size: var(--t-md); font-weight: 600; }
+  .msgs { flex: 1; overflow-y: auto; padding: var(--s5); display: flex; flex-direction: column; gap: var(--s4); }
+  .day { align-self: center; font-size: var(--t-xs); color: var(--ink-muted); }
+  .bubble { max-width: 72%; padding: var(--s3) var(--s4); border-radius: var(--r-lg); background: var(--surface-raised); align-self: flex-start; }
+  .bubble.agent { background: var(--tint-act); align-self: flex-end; }
+  .bubble .txt { font-family: var(--font-ar); font-size: 17px; line-height: 1.6; }
+  .bubble .gloss { font-size: var(--t-xs); color: var(--ink-muted); margin-top: var(--s1); }
+  .bubble .meta { font-size: var(--t-xs); color: var(--ink-muted); margin-top: var(--s1); }
+  .sys { align-self: center; font-size: var(--t-xs); color: var(--hold-ink); background: var(--tint-hold); padding: 4px 12px; border-radius: var(--r-pill); }
+  .composer { display: flex; gap: var(--s3); padding: var(--s4) var(--s5); border-top: 1px solid var(--line); }
+  .composer input { flex: 1; height: 40px; border-radius: var(--r-pill); background: var(--surface); border: 1px solid var(--line); padding: 0 var(--s4); }
+  .composer input::placeholder { color: var(--ink-muted); }
+
+  .panel { border-inline-start: 1px solid var(--line); background: var(--bg-sunk); overflow-y: auto; padding: var(--s5); display: flex; flex-direction: column; gap: var(--s5); }
+  .strand-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s2); margin-bottom: var(--s3); }
+  .strand-head .eyebrow.r { color: var(--read); }
+  .strand-head .eyebrow.a { color: var(--account); }
+  .bars { display: flex; flex-direction: column; gap: var(--s3); }
+  .bar { display: grid; grid-template-columns: 1fr auto; gap: 4px var(--s2); font-size: var(--t-sm); }
+  .bar .track { grid-column: 1 / -1; height: 4px; border-radius: 4px; background: var(--tint-read); overflow: hidden; }
+  .bar .fill { height: 100%; background: var(--read); border-radius: 4px; transition: width var(--dur-slow) var(--ease); }
+  .bar .v { color: var(--read); font-size: var(--t-xs); }
+  .intent { font-size: var(--t-sm); margin-top: var(--s1); }
+  .helix { display: block; width: 100%; height: 36px; }
+  .events { list-style: none; display: flex; flex-direction: column; gap: var(--s3); }
+  .events li { display: grid; grid-template-columns: 12px 1fr auto; gap: var(--s3); align-items: start; font-size: var(--t-sm); }
+  .events .dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 6px; border: 2px solid var(--account); }
+  .events .dot.closed { background: var(--account); }
+  .events li.money .dot { border-color: var(--stop-ink); }
+  .events li.money .lbl { color: var(--stop-ink); }
+  .events .t { font-size: var(--t-xs); color: var(--ink-muted); }
+  .events .state { grid-column: 2; font-size: var(--t-xs); color: var(--ink-muted); margin-top: -8px; }
+  .decision { background: var(--surface); border-radius: var(--r-lg); padding: var(--s4); display: flex; flex-direction: column; gap: var(--s3); }
+  .decision .rule { font-size: var(--t-xs); color: var(--ink-muted); }
+  .decision p { font-size: var(--t-sm); }
+  .decision .who { font-size: var(--t-xs); color: var(--ink-muted); }
+  .decision .actions { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); margin-top: var(--s2); }
+
+  /* generic page screens */
+  .page { overflow-y: auto; padding: var(--s6) var(--s6) var(--s8); }
+  .page-inner { max-width: 1040px; display: flex; flex-direction: column; gap: var(--s6); }
+  .lede { color: var(--ink-muted); max-width: 64ch; font-size: var(--t-sm); }
+  .table { width: 100%; border-collapse: collapse; font-size: var(--t-sm); }
+  .table th { text-align: start; font-family: var(--font-display); font-size: var(--t-xs); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); padding: 0 var(--s3) var(--s3); }
+  [dir="rtl"] .table th { font-family: var(--font-ar); letter-spacing: 0; text-transform: none; }
+  .table td { padding: var(--s3); border-top: 1px solid var(--line); vertical-align: top; }
+  .table tr:hover td { background: var(--line); }
+  .task { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: var(--s5); padding: var(--s4) var(--s5); background: var(--surface); border-radius: var(--r-lg); }
+  .task .reason { font-size: var(--t-sm); }
+  .task .reason b { display: block; font-weight: 600; margin-bottom: 2px; }
+  .task .age { font-size: var(--t-xs); color: var(--ink-muted); }
+  .tasks { display: flex; flex-direction: column; gap: var(--s3); }
+  .camp { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--s6); background: var(--surface); border-radius: var(--r-lg); padding: var(--s5); }
+  .camp .msg { font-family: var(--font-ar); font-size: var(--t-lg); line-height: 1.6; }
+  .split { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); }
+  .split .n { font-family: var(--font-data); font-size: var(--t-2xl); font-weight: 500; line-height: 1; }
+  .split .g { display: flex; flex-direction: column; gap: var(--s2); }
+  .split .g.send .n { color: var(--send-ink); } .split .g.hold .n { color: var(--hold-ink); } .split .g.none .n { color: var(--ink-muted); }
+  .split ul { list-style: none; font-size: var(--t-xs); color: var(--ink-muted); display: flex; flex-direction: column; gap: 2px; }
+  .head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; }
+  .head-row h2 { font-family: var(--font-display); font-size: var(--t-xl); font-weight: 600; line-height: 1.2; }
+  [dir="rtl"] .head-row h2, [dir="rtl"] .thread-head h2 { font-family: var(--font-ar); }
+
+  .empty { display: none; flex-direction: column; align-items: center; text-align: center; gap: var(--s3); padding: var(--s7) var(--s4); color: var(--ink-muted); font-size: var(--t-sm); }
+  .empty svg { width: 160px; height: 36px; }
+
+  /* modal */
+  .scrim { position: fixed; inset: 0; background: rgba(5,2,22,.7); display: none; place-items: center; z-index: 50; padding: var(--s4); }
+  .scrim.on { display: grid; }
+  .modal { background: var(--surface-raised); border-radius: var(--r-lg); padding: var(--s5); width: min(440px, 100%); display: flex; flex-direction: column; gap: var(--s4); box-shadow: var(--shadow); }
+  .modal h3 { font-family: var(--font-display); font-size: var(--t-lg); font-weight: 600; }
+  .modal textarea { min-height: 88px; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--line-strong); padding: var(--s3); resize: vertical; }
+  .modal .actions { display: flex; justify-content: space-between; align-items: center; }
+  .toast { position: fixed; bottom: var(--s5); inset-inline-start: 50%; transform: translateX(-50%) translateY(20px); opacity: 0; background: var(--surface-raised); padding: var(--s3) var(--s5); border-radius: var(--r-pill); font-size: var(--t-sm); box-shadow: var(--shadow); transition: all var(--dur) var(--ease); pointer-events: none; z-index: 60; }
+  [dir="rtl"] .toast { transform: translateX(50%) translateY(20px); }
+  .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+  [dir="rtl"] .toast.on { transform: translateX(50%) translateY(0); }
+
+  .back { display: none; }
+  .panel-toggle { display: none; }
+  .brand .mark { display: none; }
+  body:not([data-screen="inbox"]) .panel-toggle { display: none; }
+
+  /* responsive */
+  @media (max-width: 1200px) { #inbox { grid-template-columns: 280px 1fr 340px; } }
+  @media (max-width: 1024px) {
+    .app { grid-template-columns: 72px 1fr; }
+    .nav span, .rail-foot, .nav .count { display: none; }
+    .nav { justify-content: center; padding: 10px; }
+    .brand { justify-content: center; padding: 0 0 var(--s5); }
+    #inbox { grid-template-columns: 280px 1fr; }
+    #inbox .panel { display: none; }
+    #inbox.panel-open .panel { display: flex; position: fixed; inset-block: 60px 0; inset-inline-end: 0; width: min(380px, 100%); z-index: 20; box-shadow: var(--shadow); }
+    .panel-toggle { display: inline-flex; }
+    .brand .full { display: none; }
+    .brand .mark { display: block; width: 32px; }
+    .camp { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px) {
+    .app { grid-template-columns: 1fr; grid-template-rows: 56px 1fr 60px; grid-template-areas: "top" "main" "rail"; }
+    .rail { flex-direction: row; padding: var(--s2); justify-content: space-around; border-top: 1px solid var(--line); }
+    .brand { display: none; }
+    .nav[aria-current="page"]::before { display: none; }
+    .top { padding: 0 var(--s4); }
+    .tenant, .avatar, .seg[aria-label="Theme"] { display: none; }
+    .top { gap: var(--s2); }
+    .top h1 { font-size: var(--t-md); }
+    .panel-toggle { height: 34px; padding: 0 var(--s4); }
+    #inbox.panel-open .panel { inset-block: 56px 60px; width: 100%; }
+    body { overflow-x: hidden; }
+    #inbox { grid-template-columns: 1fr; }
+    #inbox .thread { display: none; }
+    #inbox.open .list { display: none; }
+    #inbox.open .thread { display: flex; }
+    .back { display: inline-flex; }
+    .page { padding: var(--s5) var(--s4) var(--s7); }
+    .task { grid-template-columns: 1fr auto; }
+    .task .chip, .task .age { grid-column: 1; }
+    .split { grid-template-columns: 1fr; }
+    .table-wrap { overflow-x: auto; }
+    .bubble { max-width: 88%; }
+  }
+  [dir="rtl"] .flip { transform: scaleX(-1); }
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="rail" aria-label="Main">
+    <a class="brand" href="app.html" aria-label="Helixion">
+      <svg class="full" viewBox="40 70 1190 210" aria-hidden="true">
+        <g fill="currentColor">
+    <path d="M57.46 171.38 l0 -84.20 16.84 0 16.84 0 0 31.37 0 31.37 31.04 0 c22.52 0 31.04 0.20 31.04 0.73 0 0.53 0.33 0.53 0.99 -0.07 0.86 -0.73 0.99 1.45 0.99 18.76 0 16.91 -0.13 19.55 -0.99 19.55 -0.53 0 -0.99 0.33 -0.99 0.66 0 0.46 -10.76 0.66 -31.04 0.66 l-31.04 0 0 32.69 0 32.69 -16.84 0 -16.84 0 0 -84.20z"/>
+    <path d="M179.63 171.38 l0 -84.20 16.84 0 16.84 0 0 84.20 0 84.20 -16.84 0 -16.84 0 0 -84.20z"/>
+    <path d="M239.47 254.13 c-0.59 -2.18 -0.46 -166.82 0.13 -167.09 0.26 -0.13 30.11 -0.13 66.37 0 l65.84 0.13 0 12.48 0 12.48 -48.34 0.26 c-26.61 0.07 -48.80 0.46 -49.20 0.73 -0.66 0.40 -0.86 12.61 -0.86 57.32 l0 56.73 49.20 0 49.20 0 0 14.20 0 14.20 -65.98 0 -65.98 0 -0.40 -1.45z"/>
+    <path d="M392.75 255.12 c-0.26 -0.20 -0.46 -38.11 -0.46 -84.14 0 -79.12 0.07 -83.67 1.19 -83.87 0.59 -0.13 8.19 -0.20 16.77 -0.07 l15.72 0.20 0.13 69.81 0.20 69.81 49.07 0.20 49 0.13 0 14.20 0 14.20 -65.58 0 c-36.12 0 -65.84 -0.20 -66.04 -0.46z"/>
+    <path d="M542.86 171.44 c0 -46.30 0.20 -84.27 0.53 -84.40 0.26 -0.13 7.79 -0.13 16.84 0 l16.31 0.26 -0.13 83.94 -0.20 84 -16.64 0.20 -16.71 0.13 0 -84.14z"/>
+    <path d="M780.61 171.38 l0 -84.20 16.84 0 16.84 0 0.13 82.55 c0.07 45.44 0.13 83.21 0.13 84.07 l0.07 1.45 -16.97 0.20 -17.04 0.13 0 -84.20z"/>
+    <path d="M920.62 254.92 c-12.55 -1.52 -26.48 -5.61 -36.59 -10.70 -15.85 -7.99 -29.98 -21.79 -37.51 -36.72 -3.30 -6.60 -6.80 -17.57 -7.79 -24.44 -1.32 -9.11 -0.53 -25.36 1.65 -33.81 4.42 -17.04 13.47 -31.17 26.42 -41.28 3.04 -2.38 5.68 -4.29 5.94 -4.29 0.20 0 1.39 -0.73 2.51 -1.59 3.63 -2.71 12.88 -7 20.87 -9.64 22.52 -7.53 48.74 -7.59 71.32 -0.20 7.73 2.51 20.34 8.92 26.15 13.21 6.27 4.69 14.93 13.67 18.76 19.48 5.55 8.39 9.58 18.49 11.76 29.45 1.52 7.86 1.52 24.83 -0.07 32.16 -3.63 16.71 -10.70 29.85 -22.26 41.34 -12.94 12.88 -28.53 20.94 -49.33 25.43 -8.65 1.92 -23.11 2.58 -31.83 1.59z m21.33 -34.67 c19.15 -2.91 33.22 -11.10 42.07 -24.50 4.69 -7.13 6.74 -14.07 7.13 -23.84 0.46 -13.21 -2.91 -23.58 -10.43 -32.10 -16.64 -18.56 -51.12 -24.24 -79.25 -13.08 -19.22 7.66 -30.64 25.49 -29.52 45.97 1.19 21.93 15.92 38.83 39.76 45.57 10.50 2.97 19.61 3.57 30.25 1.98z"/>
+    <path d="M1049.20 255.18 c-0.66 -0.66 -0.59 -167.88 0.07 -168.27 0.26 -0.13 6.08 -0.13 12.88 0.07 l12.42 0.40 7.07 8.65 c3.96 4.76 19.02 23.05 33.48 40.68 45.57 55.34 48.67 59.11 49.27 59.31 0.33 0.13 0.66 -22.19 0.73 -54.48 l0.20 -54.68 14.99 -0.07 c8.26 -0.07 15.78 0.07 16.71 0.26 l1.65 0.26 0 84.14 0 84.14 -12.42 0 -12.42 0 -13.93 -17.30 c-7.73 -9.58 -19.42 -24.04 -26.09 -32.23 -6.67 -8.19 -20.21 -24.96 -30.18 -37.18 -12.09 -14.93 -18.43 -22.26 -19.15 -22.12 -0.59 0.13 -1.19 1.12 -1.39 2.58 -0.26 1.25 -0.46 25.62 -0.46 54.09 l-0.13 51.84 -16.38 0.20 c-9.05 0.07 -16.64 -0.07 -16.91 -0.26z"/>
+    <path d="M299.63 189.74 c-0.26 -0.20 -0.46 -9.31 -0.46 -20.14 l0 -19.68 28.73 0 28.73 0 -0.13 20.01 -0.20 19.94 -28.13 0.20 c-15.45 0.07 -28.33 -0.07 -28.53 -0.33z"/>
+    <path d="M177.65 169.66 c0 -11.29 0.20 -17.04 0.66 -16.77 0.40 0.26 0.66 6.74 0.66 17.24 0 10.76 -0.26 16.77 -0.66 16.77 -0.40 0 -0.66 -6.21 -0.66 -17.24z"/>
+  </g>
+
+  
+  <g fill="#6b19f8">
+    <path d="M602.76 255.12 c-0.26 -0.20 -0.46 -7.93 -0.46 -17.17 l0 -16.71 76.28 0 76.28 0 -0.13 17.04 -0.20 16.97 -75.68 0.20 c-41.61 0.07 -75.88 -0.07 -76.08 -0.33z"/>
+    <path d="M690.80 197.13 c-7.59 -7.59 -11.36 -10.90 -12.35 -10.90 -1.06 0 -4.56 3.10 -11.82 10.57 -5.68 5.81 -10.83 10.57 -11.43 10.57 -0.59 0 -3.90 -2.77 -7.26 -6.21 l-6.21 -6.27 11.29 -11.69 c6.27 -6.47 11.36 -12.09 11.36 -12.48 0 -0.33 -5.09 -5.68 -11.23 -11.89 l-11.23 -11.23 6.41 -6.41 c3.57 -3.57 6.74 -6.47 7.13 -6.47 0.40 0 5.75 5.09 11.89 11.23 l11.23 11.23 11.23 -11.23 c6.21 -6.14 11.56 -11.23 11.95 -11.23 0.86 0 13.47 11.89 13.47 12.68 0 0.33 -0.66 1.25 -1.52 2.05 -0.86 0.79 -6.01 6.01 -11.36 11.56 l-9.84 10.10 11.49 11.49 11.56 11.56 -6.93 6.93 -6.93 6.93 -10.90 -10.90z"/>
+    <path d="M602.63 120.66 c-0.20 -0.46 -0.26 -8.12 -0.20 -16.97 l0.20 -16.18 76.08 -0.20 76.15 -0.13 0 17.17 0 17.17 -75.95 0 c-60.76 0 -76.08 -0.20 -76.28 -0.86z"/>
+  </g>
+      </svg>
+      <svg class="mark" viewBox="596 82 166 178" aria-hidden="true"><g fill="#6b19f8">
+    <path d="M602.76 255.12 c-0.26 -0.20 -0.46 -7.93 -0.46 -17.17 l0 -16.71 76.28 0 76.28 0 -0.13 17.04 -0.20 16.97 -75.68 0.20 c-41.61 0.07 -75.88 -0.07 -76.08 -0.33z"/>
+    <path d="M690.80 197.13 c-7.59 -7.59 -11.36 -10.90 -12.35 -10.90 -1.06 0 -4.56 3.10 -11.82 10.57 -5.68 5.81 -10.83 10.57 -11.43 10.57 -0.59 0 -3.90 -2.77 -7.26 -6.21 l-6.21 -6.27 11.29 -11.69 c6.27 -6.47 11.36 -12.09 11.36 -12.48 0 -0.33 -5.09 -5.68 -11.23 -11.89 l-11.23 -11.23 6.41 -6.41 c3.57 -3.57 6.74 -6.47 7.13 -6.47 0.40 0 5.75 5.09 11.89 11.23 l11.23 11.23 11.23 -11.23 c6.21 -6.14 11.56 -11.23 11.95 -11.23 0.86 0 13.47 11.89 13.47 12.68 0 0.33 -0.66 1.25 -1.52 2.05 -0.86 0.79 -6.01 6.01 -11.36 11.56 l-9.84 10.10 11.49 11.49 11.56 11.56 -6.93 6.93 -6.93 6.93 -10.90 -10.90z"/>
+    <path d="M602.63 120.66 c-0.20 -0.46 -0.26 -8.12 -0.20 -16.97 l0.20 -16.18 76.08 -0.20 76.15 -0.13 0 17.17 0 17.17 -75.95 0 c-60.76 0 -76.08 -0.20 -76.28 -0.86z"/>
+  </g></svg>
+    </a>
+    <button class="nav" data-go="inbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13h4l2 3h4l2-3h4"/><path d="M5.5 5h13L20 13v6H4v-6z"/></svg><span data-t="nav.inbox"></span></button>
+    <button class="nav" data-go="queue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-3.5 3.8-5 7-5s6 1.5 7 5"/></svg><span data-t="nav.queue"></span><b class="count num" id="queue-count"></b></button>
+    <button class="nav" data-go="campaigns"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="flip"><path d="M4 10v4h3l7 4V6L7 10z"/><path d="M17 9.5a3.5 3.5 0 0 1 0 5"/></svg><span data-t="nav.campaigns"></span></button>
+    <button class="nav" data-go="log"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h3"/></svg><span data-t="nav.log"></span></button>
+    <button class="nav" data-go="consent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg><span data-t="nav.consent"></span></button>
+    <div class="rail-foot" data-t="foot"></div>
+  </nav>
+
+  <header class="top">
+    <button class="btn quiet back" id="back" aria-label="Back"><svg class="flip" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <div>
+      <h1 id="title"></h1>
+      <div class="tenant" data-t="tenant"></div>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn secondary panel-toggle" id="panel-toggle" data-t="why"></button>
+    <div class="seg" role="group" aria-label="Language">
+      <button data-lang="en" aria-pressed="true">EN</button>
+      <button data-lang="ar" aria-pressed="false" lang="ar">ع</button>
+    </div>
+    <div class="seg" role="group" aria-label="Theme">
+      <button data-theme-set="dark" aria-pressed="true" data-t="dark"></button>
+      <button data-theme-set="light" aria-pressed="false" data-t="light"></button>
+    </div>
+    <div class="avatar" aria-hidden="true">AN</div>
+  </header>
+
+  <main>
+    <!-- BRAND DNA, WIZARD, MARKETING, SERVICE (filled by growth.js) -->
+    <section class="screen page" id="brand"></section>
+    <section class="screen" id="wizard"></section>
+    <section class="screen page" id="marketing"></section>
+    <section class="screen page" id="service"></section>
+
+    <!-- INBOX -->
+    <section class="screen" id="inbox">
+      <div class="list">
+        <div class="list-head">
+          <input class="search" id="search" type="search" dir="auto" autocomplete="off">
+          <div class="filters" role="group">
+            <button data-filter="all" aria-pressed="true" data-t="f.all"></button>
+            <button data-filter="held" aria-pressed="false" data-t="f.held"></button>
+            <button data-filter="cleared" aria-pressed="false" data-t="f.cleared"></button>
+          </div>
+        </div>
+        <div class="rows" id="rows" role="listbox"></div>
+        <div class="empty" id="rows-empty"><svg class="helix-art"></svg><span data-t="empty.rows"></span></div>
+      </div>
+      <div class="thread">
+        <div class="thread-head">
+          <div><h2 id="th-name"></h2><div class="tenant" id="th-sub"></div></div>
+          <div class="spacer" style="flex:1"></div>
+          <span id="th-chip"></span>
+        </div>
+        <div class="msgs" id="msgs"></div>
+        <form class="composer" id="composer">
+          <input id="reply" dir="auto" autocomplete="off">
+          <button class="btn primary" type="submit" data-t="send"></button>
+        </form>
+      </div>
+      <aside class="panel" id="panel" aria-label="Decision"></aside>
+    </section>
+
+    <!-- QUEUE -->
+    <section class="screen page" id="queue"><div class="page-inner">
+      <div class="head-row"><div><h2 data-t="queue.h"></h2><p class="lede" data-t="queue.lede"></p></div></div>
+      <div class="tasks" id="tasks"></div>
+      <div class="empty" id="tasks-empty"><svg class="helix-art"></svg><span data-t="empty.queue"></span></div>
+    </div></section>
+
+    <!-- CAMPAIGNS -->
+    <section class="screen page" id="campaigns"><div class="page-inner">
+      <div class="head-row"><div><h2 data-t="camp.h"></h2><p class="lede" data-t="camp.lede"></p></div><span class="sample-tag" data-t="sampleData"></span></div>
+      <div class="camp">
+        <div style="display:flex;flex-direction:column;gap:var(--s3)">
+          <span class="eyebrow" data-t="camp.name"></span>
+          <p class="msg" lang="ar" dir="rtl">خصم 20% على طلبك الجاي، لهالويكند بس</p>
+          <p class="muted" style="font-size:var(--t-sm)" data-t="camp.gloss"></p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:var(--s3);justify-content:center">
+          <span class="eyebrow" data-t="camp.when"></span>
+          <p style="font-family:var(--font-display);font-size:var(--t-xl);font-weight:600"><span class="num">16:00</span> · <span class="num">2026-10-06</span></p>
+          <p class="muted" style="font-size:var(--t-sm)" id="camp-sum"></p>
+        </div>
+      </div>
+      <div class="split" id="split"></div>
+      <div><button class="btn primary" data-go="queue" data-t="camp.review"></button></div>
+    </div></section>
+
+    <!-- LOG -->
+    <section class="screen page" id="log"><div class="page-inner">
+      <div class="head-row"><div><h2 data-t="log.h"></h2><p class="lede" data-t="log.lede"></p></div><button class="btn secondary" id="export" data-t="log.export"></button></div>
+      <div class="table-wrap"><table class="table" id="log-table"></table></div>
+    </div></section>
+
+    <!-- CONSENT -->
+    <section class="screen page" id="consent"><div class="page-inner">
+      <div class="head-row"><div><h2 data-t="cons.h"></h2><p class="lede" data-t="cons.lede"></p></div><span class="sample-tag" data-t="sampleData"></span></div>
+      <div class="table-wrap"><table class="table" id="cons-table"></table></div>
+    </div></section>
+  </main>
+</div>
+
+<div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-labelledby="ov-h">
+  <div class="modal">
+    <h3 id="ov-h" data-t="ov.h"></h3>
+    <p class="muted" style="font-size:var(--t-sm)" data-t="ov.body"></p>
+    <textarea id="ov-reason" dir="auto"></textarea>
+    <div class="actions">
+      <button class="btn danger" id="ov-yes" data-t="ov.yes" disabled></button>
+      <button class="btn secondary" id="ov-no" data-t="ov.no"></button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* Sample data: the five synthetic customers from ../../demo/data.json, plus F (no consent).
+   Probabilities are illustrative, not measured. */
+const C = [
+  { id:'A', ch:'WhatsApp', at:'13:45', msg:'ما شاء الله عليكم، ما قصرتوا 👏', en:'Mashallah, you really didn\'t fall short',
+    read:{pos:.91,neg:.04,sar:.06,intent:'thanks'},
+    ev:[['11:20','Order 1041 paid','تم دفع الطلب 1041',0,1],['13:05','Order 1041 delivered, 25 min early','تم توصيل الطلب 1041 قبل الموعد بـ 25 دقيقة',0,1],['13:40','Rated the order 5 stars','قيّم الطلب 5 نجوم',0,1]],
+    dec:'send', rule:6, why:['Positive reading and a clean account. Marketing may go out.','قراءة إيجابية وحساب سليم. يُسمح بالتسويق.'] },
+  { id:'B', ch:'WhatsApp', at:'14:41', msg:'ما شاء الله عليكم، ما قصرتوا 👏', en:'Mashallah, you really didn\'t fall short',
+    read:{pos:.58,neg:.31,sar:.74,intent:'complaint'},
+    ev:[['14:02','Payment failed','فشل الدفع',1,0],['14:05','Payment failed again','فشل الدفع مرة أخرى',1,0],['14:06','Card charged 186.50 SAR, no order created','خُصم 186.50 SAR من البطاقة بلا طلب',1,0],['14:30','Refund pending','الاسترداد قيد الانتظار',1,0]],
+    dec:'hold', rule:1, dis:true, why:['Card charged 186.50 SAR with no order, still unresolved. The words read positive, the account says otherwise. Marketing held; a person contacts the customer first.','خُصم 186.50 SAR بلا طلب ولم يُحل بعد. الكلام يبدو إيجابياً والحساب يقول غير ذلك. أُوقف التسويق، ويتواصل موظف مع العميل أولاً.'], prio:'high' },
+  { id:'C', ch:'SMS', at:'15:05', msg:'متى يوصل طلبي؟ رقم الطلب 1043', en:'When does my order arrive? Order 1043',
+    read:{pos:.12,neg:.06,sar:.02,intent:'question'},
+    ev:[['12:10','Order 1043 paid','تم دفع الطلب 1043',0,1],['12:40','Out for delivery, arriving 17:30','خرج للتوصيل، يصل 17:30',0,0]],
+    dec:'send', rule:6, why:['A question on a clean account. Marketing may go out; reply with the arrival time.','سؤال على حساب سليم. يُسمح بالتسويق، والرد بموعد الوصول.'] },
+  { id:'D', ch:'WhatsApp', at:'09:40', msg:'وصلني المبلغ، شكراً على سرعة التعامل', en:'The money reached me, thanks for the quick handling',
+    read:{pos:.88,neg:.05,sar:.05,intent:'thanks'},
+    ev:[['19:00','Payment failed (yesterday)','فشل الدفع (أمس)',1,1],['19:01','Card charged 92.00 SAR, no order (yesterday)','خُصم 92.00 SAR بلا طلب (أمس)',1,1],['09:15','Refund of 92.00 SAR completed','اكتمل استرداد 92.00 SAR',0,1]],
+    dec:'send', rule:6, why:['The money event is closed by a completed refund. Thanks matches the account.','حُلّ حدث الدفع باسترداد مكتمل. الشكر يطابق الحساب.'] },
+  { id:'E', ch:'SMS', at:'12:30', msg:'الله يعطيكم العافية، ثالث مرة أطلب ونفس القصة', en:'God give you strength. Third time I order, and the same story',
+    read:{pos:.21,neg:.68,sar:.22,intent:'complaint'},
+    ev:[['20:10','Order 1031 delivered (yesterday)','تم توصيل الطلب 1031 (أمس)',0,1],['12:05','Order 1039 delivered','تم توصيل الطلب 1039',0,1]],
+    dec:'hold', rule:5, why:['A courteous complaint on a clean account. Only the reading caught it. Marketing held; a person contacts the customer.','شكوى مهذبة على حساب سليم، التقطتها القراءة وحدها. أُوقف التسويق، ويتواصل موظف مع العميل.'], prio:'normal' },
+];
+const T = {
+  en: { 'nav.inbox':'Inbox','nav.queue':'Human queue','nav.campaigns':'Campaigns','nav.log':'Decision log','nav.consent':'Consent',
+    foot:'Prototype v0.1 · sample data', tenant:'Sample store · sample data', dark:'Dark', light:'Light', why:'Why',
+    'f.all':'All','f.held':'Held','f.cleared':'Cleared', search:'Search conversations', send:'Send', reply:'Reply to the customer',
+    held:'Held', cleared:'Cleared', 'empty.rows':'No conversations match. Clear the search to see all of them.',
+    reading:'Reading', account:'Account', decision:'Decision', said:'What they said', happened:'What happened',
+    pos:'Positive', neg:'Negative', sar:'Sarcasm', intent:'Top intent', thanks:'thanks', complaint:'complaint', question:'question',
+    unresolved:'unresolved', disagree:'The words and the account disagree', agree:'The words and the account agree',
+    rule:'Rule', decidedBy:'Decided by the rules · ', take:'Take this', taken:'Assigned to you', override:'Override hold',
+    translation:'translation', today:'Today, 6 October 2026', heldNote:'Marketing held for this customer',
+    model:'sample reading · triage-ar v0', 'queue.h':'Human queue', 'queue.lede':'Every hold lands here with its reason. Contact the customer first; marketing waits until the hold clears.',
+    'empty.queue':'Nobody is waiting. New holds appear here with their reason.', open:'Open', high:'High', normal:'Normal', ago:'min ago',
+    'camp.h':'Weekend 20% off','camp.lede':'Before it sends, the governor checks every contact against the account, the reading and the consent ledger.',
+    sampleData:'Sample data','camp.name':'Message','camp.gloss':'20% off your next order, this weekend only','camp.when':'Queued for',
+    'camp.review':'Review held contacts', willSend:'Will send', heldRule:'Held by a rule', noConsent:'No consent',
+    sum:(s,n)=>`Sends to ${s} of ${n} contacts. The rest wait for a person or for consent.`,
+    'log.h':'Decision log','log.lede':'Every decision is one row: the reading, the events, the rule and version that fired, and who decided.','log.export':'Export for audit',
+    time:'Time',contact:'Contact',readingCol:'Reading',ruleCol:'Rule',action:'Action',by:'Decided by', rules:'rules v1.0',
+    'cons.h':'Consent ledger','cons.lede':'Checked before every marketing send. An opt-out wins over everything.', status:'Status', source:'Source', since:'Since',
+    optin:'Opted in', optout:'Opted out', src1:'Checkout checkbox', src2:'WhatsApp keyword', src3:'Replied STOP',
+    'ov.h':'Override this hold?','ov.body':'Marketing will go out to this customer. Your name and your reason are saved as a row in the decision log.',
+    'ov.yes':'Release marketing','ov.no':'Keep the hold', reasonPh:'Why is it safe to release? (required)',
+    toastTaken:'Assigned to you. Contact the customer before anything else.', toastOv:'Hold released. Your reason is in the decision log.',
+    toastExport:'Export uses the light theme. Not wired in this prototype.', customer:'Customer', you:'You' },
+  ar: { 'nav.inbox':'صندوق الوارد','nav.queue':'قائمة المراجعة','nav.campaigns':'الحملات','nav.log':'سجل القرارات','nav.consent':'الموافقات',
+    foot:'نموذج أولي 0.1 · بيانات تجريبية', tenant:'متجر تجريبي · بيانات تجريبية', dark:'داكن', light:'فاتح', why:'لماذا',
+    'f.all':'الكل','f.held':'موقوف','f.cleared':'مسموح', search:'ابحث في المحادثات', send:'إرسال', reply:'اكتب ردك للعميل',
+    held:'موقوف', cleared:'مسموح', 'empty.rows':'لا توجد محادثات مطابقة. امسح البحث لعرضها كلها.',
+    reading:'القراءة', account:'الحساب', decision:'القرار', said:'ماذا قال العميل', happened:'ماذا حدث في الحساب',
+    pos:'إيجابي', neg:'سلبي', sar:'سخرية', intent:'النية الأرجح', thanks:'شكر', complaint:'شكوى', question:'سؤال',
+    unresolved:'لم يُحل', disagree:'الكلام والحساب لا يتفقان', agree:'الكلام والحساب يتفقان',
+    rule:'القاعدة', decidedBy:'قررته القواعد · ', take:'استلمها', taken:'أُسندت إليك', override:'تجاوز الإيقاف',
+    translation:'ترجمة', today:'اليوم، 6 أكتوبر 2026', heldNote:'أُوقف التسويق لهذا العميل',
+    model:'قراءة تجريبية · triage-ar v0', 'queue.h':'قائمة المراجعة', 'queue.lede':'كل إيقاف يصل هنا مع سببه. تواصل مع العميل أولاً، والتسويق ينتظر حتى يُرفع الإيقاف.',
+    'empty.queue':'لا أحد بانتظار المراجعة. أي إيقاف جديد يظهر هنا مع سببه.', open:'فتح', high:'عالية', normal:'عادية', ago:'دقيقة',
+    'camp.h':'خصم 20% لنهاية الأسبوع','camp.lede':'قبل الإرسال يتحقق المنظّم من كل جهة اتصال: الحساب، والقراءة، وسجل الموافقات.',
+    sampleData:'بيانات تجريبية','camp.name':'الرسالة','camp.gloss':'خصم 20% على طلبك القادم، لنهاية هذا الأسبوع فقط','camp.when':'مجدولة في',
+    'camp.review':'راجع الموقوفين', willSend:'سترسل', heldRule:'أوقفتها قاعدة', noConsent:'بلا موافقة',
+    sum:(s,n)=>`ترسل إلى ${s} من ${n} جهات اتصال. البقية تنتظر موظفاً أو موافقة.`,
+    'log.h':'سجل القرارات','log.lede':'كل قرار صف واحد: القراءة، والأحداث، والقاعدة ونسختها، ومن قرر.','log.export':'تصدير للتدقيق',
+    time:'الوقت',contact:'جهة الاتصال',readingCol:'القراءة',ruleCol:'القاعدة',action:'الإجراء',by:'من قرر', rules:'rules v1.0',
+    'cons.h':'سجل الموافقات','cons.lede':'يُفحص قبل كل رسالة تسويقية. إلغاء الاشتراك يتقدم على كل شيء.', status:'الحالة', source:'المصدر', since:'منذ',
+    optin:'موافق', optout:'ألغى الاشتراك', src1:'خانة عند الدفع', src2:'كلمة عبر واتساب', src3:'ردّ بـ STOP',
+    'ov.h':'تجاوز هذا الإيقاف؟','ov.body':'سيصل التسويق إلى هذا العميل. يُحفظ اسمك وسببك صفاً في سجل القرارات.',
+    'ov.yes':'ارفع الإيقاف','ov.no':'أبقِ الإيقاف', reasonPh:'لماذا رفع الإيقاف آمن؟ (مطلوب)',
+    toastTaken:'أُسندت إليك. تواصل مع العميل قبل أي شيء.', toastOv:'رُفع الإيقاف. سببك محفوظ في سجل القرارات.',
+    toastExport:'التصدير بالمظهر الفاتح. غير مفعّل في هذا النموذج.', customer:'العميل', you:'أنت' }
+};
+const S = { lang:'en', screen:'inbox', sel:'B', filter:'all', q:'', taken:{}, released:{}, replies:{} };
+const t = k => T[S.lang][k] ?? T.en[k] ?? k;
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const name = c => `${t('customer')} ${c.id}`;
+const decOf = c => S.released[c.id] ? 'send' : c.dec;
+const chip = d => `<span class="chip ${d}">${t(d === 'send' ? 'cleared' : 'held')}</span>`;
+
+/* The Helix motif: cyan = reading, violet = account, rungs every quarter period, amber rung = dissonance.
+   It turns: the phase drifts one period every 4 s; rungs stay put and stretch; the amber rung never moves. */
+let HX_PH = 0;
+function helix(svg, w, h, dis) {
+  svg._hx = [w, h, dis];
+  const P = 48, A = 8, mid = h / 2, cs = getComputedStyle(document.documentElement);
+  const read = cs.getPropertyValue('--read').trim(), acc = cs.getPropertyValue('--account').trim(), hold = cs.getPropertyValue('--hold-ink').trim();
+  const pt = (x, ph) => mid + A * Math.sin((x / P) * 2 * Math.PI + ph + HX_PH);
+  let a = '', b = '', rungs = '';
+  for (let x = 0; x <= w; x += 2) { a += `${x ? 'L' : 'M'}${x},${pt(x, 0).toFixed(2)}`; b += `${x ? 'L' : 'M'}${x},${pt(x, Math.PI).toFixed(2)}`; }
+  const n = Math.floor(w / (P / 4)), hot = dis ? Math.round(n / 2) : -1;
+  for (let i = 1; i < n; i++) {
+    const x = i * P / 4, y1 = pt(x, 0), y2 = pt(x, Math.PI), span = Math.abs(y1 - y2) / (2 * A);
+    if (i === hot || i === hot + 1) rungs += `<line x1="${x}" y1="${y1}" x2="${x}" y2="${y2}" stroke="${hold}" stroke-width="2" stroke-linecap="round"/><circle cx="${x}" cy="${y1}" r="2.5" fill="${hold}"/><circle cx="${x}" cy="${y2}" r="2.5" fill="${hold}"/>`;
+    else if (span > .05) rungs += `<line x1="${x}" y1="${y1}" x2="${x}" y2="${y2}" stroke="${acc}" stroke-opacity="${(.35 * span).toFixed(2)}" stroke-width="1" stroke-linecap="round"/>`;
+  }
+  svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+  svg.innerHTML = rungs + `<path d="${a}" fill="none" stroke="${read}" stroke-width="1.5" stroke-linecap="round"/><path d="${b}" fill="none" stroke="${acc}" stroke-width="1.5" stroke-linecap="round"/>`;
+}
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  (function turn(t) {
+    HX_PH = -(t / 4000) * 2 * Math.PI;
+    document.querySelectorAll('svg.helix, svg.helix-art').forEach(s => { if (s._hx && s.getClientRects().length) helix(s, ...s._hx); });
+    requestAnimationFrame(turn);
+  })(0);
+}
+
+function renderRows() {
+  const q = S.q.trim();
+  const list = C.filter(c => (S.filter === 'all' || (S.filter === 'held') === (decOf(c) === 'hold'))
+    && (!q || c.msg.includes(q) || name(c).toLowerCase().includes(q.toLowerCase())));
+  $('#rows').innerHTML = list.map(c => `
+    <button class="row" role="option" data-id="${c.id}" aria-selected="${c.id === S.sel}">
+      <span class="who">${esc(name(c))} <span class="ch">${c.ch}</span></span><span class="time num">${c.at}</span>
+      <span class="preview" dir="rtl" lang="ar">${esc(c.msg)}</span><span>${chip(decOf(c))}</span>
+    </button>`).join('');
+  $('#rows-empty').style.display = list.length ? 'none' : 'flex';
+}
+
+function renderThread() {
+  const c = C.find(x => x.id === S.sel);
+  $('#th-name').textContent = name(c);
+  $('#th-sub').innerHTML = `${c.ch} · <span class="num">+966 5X XXX XX${c.id.charCodeAt(0)}</span>`;
+  $('#th-chip').innerHTML = chip(decOf(c));
+  const mine = (S.replies[c.id] || []).map(r => `<div class="bubble agent"><div class="txt" dir="auto">${esc(r.text)}</div><div class="meta">${t('you')} · <span class="num">${r.at}</span></div></div>`).join('');
+  $('#msgs').innerHTML = `<div class="day">${t('today')}</div>
+    <div class="bubble"><div class="txt" lang="ar" dir="rtl">${esc(c.msg)}</div>
+    <div class="gloss">${t('translation')}: ${esc(c.en)}</div><div class="meta num">${c.at}</div></div>
+    ${decOf(c) === 'hold' ? `<div class="sys">${t('heldNote')} · ${t('rule')} <span class="num">${c.rule}</span></div>` : ''}${mine}`;
+  $('#reply').placeholder = t('reply');
+  $('#msgs').scrollTop = 1e6;
+}
+
+function renderPanel() {
+  const c = C.find(x => x.id === S.sel), r = c.read, d = decOf(c);
+  const bar = (k, v) => `<div class="bar"><span>${t(k)}</span><span class="v num">${v.toFixed(2)}</span><div class="track"><div class="fill" style="width:${v * 100}%"></div></div></div>`;
+  const ev = c.ev.map(([tm, en, ar, money, closed]) => `<li class="${money ? 'money' : ''}"><span class="dot ${closed ? 'closed' : ''}"></span><span class="lbl">${esc(S.lang === 'ar' ? ar : en)}</span><span class="t num">${tm}</span>${!closed && money ? `<span class="state">${t('unresolved')}</span>` : ''}</li>`).join('');
+  const action = d === 'hold'
+    ? `<div class="actions"><button class="btn ${S.taken[c.id] ? 'done' : 'primary'}" id="take" ${S.taken[c.id] ? 'disabled' : ''}>${t(S.taken[c.id] ? 'taken' : 'take')}</button><button class="btn danger" id="override">${t('override')}</button></div>`
+    : '';
+  const why = S.released[c.id] ? [`Released by you: ${S.released[c.id]}`, `رفعه أنت: ${S.released[c.id]}`] : c.why;
+  $('#panel').innerHTML = `
+    <section><div class="strand-head"><span class="eyebrow r">${t('reading')}</span><span class="sample-tag">${t('model')}</span></div>
+      <p class="muted" style="font-size:var(--t-xs);margin-bottom:var(--s3)">${t('said')}</p>
+      <div class="bars">${bar('pos', r.pos)}${bar('neg', r.neg)}${bar('sar', r.sar)}</div>
+      <p class="intent">${t('intent')}: <span style="color:var(--read)">${t(r.intent)}</span></p></section>
+    <div><svg class="helix" id="helix" aria-hidden="true"></svg><p class="muted" style="font-size:var(--t-xs);text-align:center;margin-top:var(--s1);${c.dis ? 'color:var(--hold-ink)' : ''}">${t(c.dis ? 'disagree' : 'agree')}</p></div>
+    <section><div class="strand-head"><span class="eyebrow a">${t('account')}</span><span class="sample-tag">${t('happened')}</span></div><ul class="events">${ev}</ul></section>
+    <section class="decision" aria-live="polite"><div style="display:flex;align-items:center;justify-content:space-between;gap:var(--s2)">${chip(d)}<span class="rule">${t('rule')} <span class="num">${S.released[c.id] ? '—' : c.rule}</span> · <span class="num">${t('rules')}</span></span></div>
+      <p>${esc(S.lang === 'ar' ? why[1] : why[0])}</p>
+      <span class="who">${S.released[c.id] ? t('you') : t('decidedBy')}<span class="num">${S.released[c.id] ? '' : c.at}</span></span>${action}</section>`;
+  const h = $('#helix'); helix(h, Math.max(200, h.clientWidth || 330), 36, c.dis && !S.released[c.id]);
+  const take = $('#take'); if (take) take.onclick = () => { S.taken[c.id] = 1; renderPanel(); renderQueue(); toast(t('toastTaken')); $('#reply').focus(); };
+  const ov = $('#override'); if (ov) ov.onclick = openOverride;
+}
+
+function renderQueue() {
+  const held = C.filter(c => decOf(c) === 'hold').sort((a, b) => (a.prio === 'high' ? -1 : 1));
+  $('#tasks').innerHTML = held.map((c, i) => `
+    <div class="task"><span class="chip ${c.prio === 'high' ? 'stop' : 'hold'}">${t(c.prio)}</span>
+      <div class="reason"><b>${esc(name(c))} · <span class="muted" style="font-weight:400">${t('rule')} <span class="num">${c.rule}</span></span></b>${esc(S.lang === 'ar' ? c.why[1] : c.why[0])}</div>
+      <span class="age"><span class="num">${[19, 4][i] ?? 1}</span> ${t('ago')}</span>
+      <button class="btn ${S.taken[c.id] ? 'done' : 'primary'}" data-open="${c.id}">${t(S.taken[c.id] ? 'taken' : 'open')}</button></div>`).join('');
+  $('#tasks-empty').style.display = held.length ? 'none' : 'flex';
+  const n = held.filter(c => !S.taken[c.id]).length;
+  $('#queue-count').textContent = n || '';
+}
+
+function renderCampaign() {
+  const send = C.filter(c => decOf(c) === 'send'), hold = C.filter(c => decOf(c) === 'hold');
+  const g = (cls, n, label, items) => `<div class="g ${cls}"><span class="eyebrow">${label}</span><span class="n">${n}</span><ul>${items}</ul></div>`;
+  $('#split').innerHTML =
+    g('send', send.length, t('willSend'), send.map(c => `<li>${esc(name(c))}</li>`).join('')) +
+    g('hold', hold.length, t('heldRule'), hold.map(c => `<li>${esc(name(c))} · ${t('rule')} <span class="num">${c.rule}</span></li>`).join('')) +
+    g('none', 1, t('noConsent'), `<li>${t('customer')} F · ${t('optout')}</li>`);
+  $('#camp-sum').textContent = t('sum')(send.length, C.length + 1);
+}
+
+function renderLog() {
+  const head = `<tr><th>${t('time')}</th><th>${t('contact')}</th><th>${t('readingCol')}</th><th>${t('ruleCol')}</th><th>${t('action')}</th><th>${t('by')}</th></tr>`;
+  const rows = [...C].sort((a, b) => b.at.localeCompare(a.at)).map(c => `<tr><td class="num">2026-10-06 ${c.at}</td><td>${esc(name(c))}</td>
+    <td><span class="chip read">${t(c.read.intent)} · <span class="num">${t('sar')} ${c.read.sar.toFixed(2)}</span></span></td>
+    <td class="num">R${c.rule} · v1.0</td><td>${chip(c.dec)}</td><td class="muted">${t('decidedBy').replace(' · ', '')}</td></tr>`
+    + (S.released[c.id] ? `<tr><td class="num">2026-10-06 —</td><td>${esc(name(c))}</td><td class="muted">—</td><td class="muted">override</td><td>${chip('send')}</td><td>${t('you')}: ${esc(S.released[c.id])}</td></tr>` : '')).join('');
+  $('#log-table').innerHTML = head + rows;
+}
+
+function renderConsent() {
+  const rows = [['A','optin','src1','2026-03-14'],['B','optin','src2','2026-05-02'],['C','optin','src1','2026-07-21'],['D','optin','src1','2026-01-09'],['E','optin','src2','2026-08-30'],['F','optout','src3','2026-09-18']];
+  $('#cons-table').innerHTML = `<tr><th>${t('contact')}</th><th>${t('status')}</th><th>${t('source')}</th><th>${t('since')}</th></tr>` +
+    rows.map(([id, s, src, d]) => `<tr><td>${t('customer')} ${id}</td><td><span class="chip ${s === 'optin' ? 'send' : 'stop'}">${t(s)}</span></td><td>${t(src)}</td><td class="num">${d}</td></tr>`).join('');
+}
+
+function renderAll() {
+  document.querySelectorAll('[data-t]').forEach(el => { el.textContent = t(el.dataset.t); });
+  $('#search').placeholder = t('search');
+  $('#ov-reason').placeholder = t('reasonPh');
+  $('#title').textContent = t('nav.' + S.screen);
+  document.body.dataset.screen = S.screen;
+  document.querySelectorAll('.nav').forEach(n => n.setAttribute('aria-current', n.dataset.go === S.screen ? 'page' : 'false'));
+  document.querySelectorAll('.screen').forEach(s => s.classList.toggle('on', s.id === S.screen));
+  renderRows(); renderThread(); renderPanel(); renderQueue(); renderCampaign(); renderLog(); renderConsent();
+  document.querySelectorAll('.helix-art').forEach(s => helix(s, 160, 36, false));
+  if (window.renderGrowth) renderGrowth();
+}
+
+function go(screen) { S.screen = screen; $('#inbox').classList.remove('open', 'panel-open'); renderAll(); }
+function toast(msg) { const el = $('#toast'); el.textContent = msg; el.classList.add('on'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('on'), 2800); }
+function openOverride() { $('#ov-reason').value = ''; $('#ov-yes').disabled = true; $('#scrim').classList.add('on'); $('#ov-reason').focus(); }
+function closeOverride() { $('#scrim').classList.remove('on'); }
+
+document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); go(b.dataset.go); }));
+$('#rows').addEventListener('click', e => { const r = e.target.closest('.row'); if (!r) return; S.sel = r.dataset.id; $('#inbox').classList.add('open'); renderRows(); renderThread(); renderPanel(); });
+$('#tasks').addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (!b) return; S.sel = b.dataset.open; go('inbox'); $('#inbox').classList.add('open'); });
+$('#search').addEventListener('input', e => { S.q = e.target.value; renderRows(); });
+document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => { S.filter = b.dataset.filter; document.querySelectorAll('[data-filter]').forEach(x => x.setAttribute('aria-pressed', x === b)); renderRows(); }));
+document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => {
+  S.lang = b.dataset.lang; document.documentElement.lang = S.lang; document.documentElement.dir = S.lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-lang]').forEach(x => x.setAttribute('aria-pressed', x === b)); renderAll();
+}));
+document.querySelectorAll('[data-theme-set]').forEach(b => b.addEventListener('click', () => {
+  document.documentElement.dataset.theme = b.dataset.themeSet;
+  document.querySelectorAll('[data-theme-set]').forEach(x => x.setAttribute('aria-pressed', x === b)); renderAll();
+}));
+$('#composer').addEventListener('submit', e => {
+  e.preventDefault(); const v = $('#reply').value.trim(); if (!v) return;
+  const d = new Date(); (S.replies[S.sel] ||= []).push({ text: v, at: `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}` });
+  $('#reply').value = ''; renderThread();
+});
+$('#back').addEventListener('click', () => $('#inbox').classList.remove('open'));
+$('#panel-toggle').addEventListener('click', () => $('#inbox').classList.toggle('panel-open'));
+$('#export').addEventListener('click', () => toast(t('toastExport')));
+$('#ov-reason').addEventListener('input', e => { $('#ov-yes').disabled = e.target.value.trim().length < 4; });
+$('#ov-no').addEventListener('click', closeOverride);
+$('#scrim').addEventListener('click', e => { if (e.target.id === 'scrim') closeOverride(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverride(); });
+$('#ov-yes').addEventListener('click', () => { S.released[S.sel] = $('#ov-reason').value.trim(); closeOverride(); renderAll(); toast(t('toastOv')); });
+window.addEventListener('resize', () => renderPanel());
+renderAll();
+</script>
+<script src="growth.js"></script>
+</body>
+</html>

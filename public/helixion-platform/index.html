@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<base href="/helixion-platform/">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helixion Sign In</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: var(--t-md); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  button, input { font: inherit; color: inherit; }
+  button { background: none; border: 0; cursor: pointer; }
+  a { color: var(--point); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  [dir="rtl"] .eyebrow { letter-spacing: 0; text-transform: none; font-family: var(--font-ar); }
+
+  .auth { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); min-height: 100vh; }
+
+  /* story side */
+  .story { position: relative; background: var(--night-0); color: var(--paper); display: flex; flex-direction: column; justify-content: space-between; padding: var(--s6) clamp(24px, 5vw, 72px); overflow: hidden; }
+  .story .wm { width: 150px; display: block; }
+  .story .mid { display: flex; flex-direction: column; gap: var(--s5); }
+  .story .tag { font-family: var(--font-ar); font-weight: 700; font-size: clamp(40px, 5vw, 72px); line-height: 1.25; }
+  html[dir="ltr"] .story .tag { text-align: left; }
+  .story .sub { color: #A39DBA; font-size: clamp(16px, 1.3vw, 19px); max-width: 40ch; }
+  .story .hx { width: calc(100% + 2 * clamp(24px, 5vw, 72px)); margin-inline: calc(-1 * clamp(24px, 5vw, 72px)); height: 90px; display: block; }
+  .proof { list-style: none; display: flex; flex-direction: column; gap: var(--s3); }
+  .proof li { display: grid; grid-template-columns: 22px 1fr; gap: var(--s3); font-size: var(--t-sm); color: #D9D4EC; }
+  .proof svg { width: 20px; height: 20px; color: var(--helix-glow); }
+  .story .fine { font-size: var(--t-xs); color: #8A84A3; }
+
+  /* form side */
+  .side { display: flex; flex-direction: column; padding: var(--s5) clamp(20px, 4vw, 56px) var(--s6); }
+  .bar { display: flex; justify-content: flex-end; gap: var(--s2); }
+  .seg { display: inline-flex; border: 1px solid var(--line-strong); border-radius: var(--r-pill); padding: 2px; }
+  .seg button { padding: 4px 12px; border-radius: var(--r-pill); font-size: var(--t-xs); font-weight: 600; color: var(--ink-muted); }
+  .seg button[aria-pressed="true"] { background: var(--surface-raised); color: var(--ink); }
+  .form-wrap { flex: 1; display: grid; place-items: center; padding: var(--s6) 0; }
+  .card { width: min(420px, 100%); display: flex; flex-direction: column; gap: var(--s4); }
+  .card h1 { font-family: var(--font-display); font-size: var(--t-xl); font-weight: 600; letter-spacing: -.01em; line-height: 1.2; }
+  [dir="rtl"] .card h1 { font-family: var(--font-ar); }
+  .card .lede { color: var(--ink-muted); font-size: var(--t-sm); margin-top: -8px; }
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; background: var(--surface); border-radius: var(--r-pill); padding: 4px; }
+  .tabs button { height: 36px; border-radius: var(--r-pill); font-size: var(--t-sm); font-weight: 600; color: var(--ink-muted); transition: background var(--dur-fast) var(--ease); }
+  .tabs button[aria-selected="true"] { background: var(--surface-raised); color: var(--ink); box-shadow: 0 0 0 1px var(--line-strong); }
+  .sso { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); }
+  .sso button { height: 44px; border-radius: var(--r-md); border: 1px solid var(--line-strong); display: flex; align-items: center; justify-content: center; gap: var(--s2); font-size: var(--t-sm); font-weight: 500; }
+  .sso button:hover { background: var(--line); }
+  .sso svg { width: 18px; height: 18px; }
+  .or { display: flex; align-items: center; gap: var(--s3); font-size: var(--t-xs); color: var(--ink-muted); }
+  .or::before, .or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .fld { display: flex; flex-direction: column; gap: 6px; }
+  .fld label, .fld .lbl { font-size: var(--t-sm); font-weight: 600; display: flex; justify-content: space-between; align-items: baseline; gap: var(--s2); }
+  .fld label a, .fld .lbl a { font-weight: 500; font-size: var(--t-xs); }
+  .in { position: relative; display: flex; align-items: center; }
+  .in input { width: 100%; height: 46px; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--line-strong); padding: 0 var(--s4); font-size: var(--t-md); transition: border-color var(--dur-fast) var(--ease); }
+  .in input::placeholder { color: var(--ink-muted); }
+  .in input:focus { outline: none; border-color: var(--point); box-shadow: 0 0 0 3px var(--tint-act); }
+  .fld.bad .in input { border-color: var(--stop-ink); }
+  .in .pre { position: absolute; inset-inline-start: 1px; top: 1px; bottom: 1px; display: flex; align-items: center; padding: 0 var(--s3); border-inline-end: 1px solid var(--line-strong); font-family: var(--font-data); font-size: var(--t-sm); color: var(--ink-muted); direction: ltr; }
+  .in.has-pre { direction: ltr; }
+  .in.has-pre input { padding-inline-start: 78px; text-align: left; }
+  .in .eye { position: absolute; inset-inline-end: 6px; height: 34px; padding: 0 10px; border-radius: var(--r-sm); font-size: var(--t-xs); font-weight: 600; color: var(--point); }
+  .in.pw input { padding-inline-end: 72px; }
+  .err { font-size: var(--t-xs); color: var(--stop-ink); display: none; }
+  .fld.bad .err { display: block; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+  .meter { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 2px; }
+  .meter i { height: 4px; border-radius: 4px; background: var(--line-strong); transition: background var(--dur) var(--ease); }
+  .meter i.on { background: var(--point); }
+  .hint { font-size: var(--t-xs); color: var(--ink-muted); }
+  .check { display: grid; grid-template-columns: 20px 1fr; gap: var(--s2); align-items: start; font-size: var(--t-sm); color: var(--ink-muted); cursor: pointer; }
+  .check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--helix-violet); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s2); height: 48px; padding: 0 var(--s5); border-radius: var(--r-pill); font-weight: 600; font-size: var(--t-md); transition: background var(--dur-fast) var(--ease), box-shadow var(--dur) var(--ease); }
+  .btn.primary { background: var(--act); color: var(--on-act); box-shadow: var(--glow); width: 100%; }
+  .btn.primary:hover { background: var(--act-hover); }
+  .btn.primary:disabled { opacity: .55; cursor: not-allowed; box-shadow: none; }
+  .btn.quiet { color: var(--point); height: 36px; padding: 0; font-size: var(--t-sm); }
+  .switch { text-align: center; font-size: var(--t-sm); color: var(--ink-muted); }
+  .switch button { color: var(--point); font-weight: 600; }
+  .proto { text-align: center; font-size: 11px; color: var(--ink-muted); border-top: 1px solid var(--line); padding-top: var(--s3); }
+  .otp { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--s2); direction: ltr; }
+  .otp input { width: 100%; min-width: 0; height: 56px; text-align: center; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--line-strong); font-family: var(--font-data); font-size: var(--t-xl); font-variant-numeric: tabular-nums; }
+  .otp input:focus { outline: none; border-color: var(--point); box-shadow: 0 0 0 3px var(--tint-act); }
+  .note { background: var(--surface); border-radius: var(--r-md); padding: var(--s3) var(--s4); font-size: var(--t-sm); }
+  .spin { width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(255,255,254,.35); border-top-color: #fff; animation: sp .8s linear infinite; }
+  @keyframes sp { to { transform: rotate(360deg); } }
+  [hidden] { display: none !important; }
+
+  @media (max-width: 900px) {
+    .auth { grid-template-columns: 1fr; }
+    .story { padding: var(--s5) var(--s4) var(--s4); gap: var(--s4); }
+    .story .tag { font-size: 34px; }
+    .story .hx { height: 56px; margin-inline: calc(-1 * var(--s4)); width: calc(100% + 2 * var(--s4)); }
+    .story .proof, .story .fine { display: none; }
+    .side { padding: var(--s4) var(--s4) var(--s6); }
+    .bar { position: absolute; top: var(--s4); inset-inline-end: var(--s4); }
+    .bar .seg { border-color: rgba(255,255,254,.18); }
+    .bar .seg button { color: #A39DBA; }
+    .bar .seg button[aria-pressed="true"] { background: #1E1740; color: #FFFFFE; }
+    .form-wrap { padding: var(--s3) 0; }
+  }
+  @media (max-width: 420px) { .sso, .two { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="auth">
+  <section class="story" aria-label="Helixion">
+    <img class="wm" src="assets/helixion-wordmark.svg" alt="Helixion">
+    <div class="mid">
+      <p class="tag" lang="ar" dir="rtl">ما نخليك تهلوس</p>
+      <p class="sub" data-t="sub"></p>
+      <svg class="hx" id="hx" aria-hidden="true"></svg>
+      <ul class="proof">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19l1.2-3.5A7.5 7.5 0 1 1 9 18.3z"/></svg><span data-t="p1"></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M10 9v6M14 9v6"/></svg><span data-t="p2"></span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg><span data-t="p3"></span></li>
+      </ul>
+    </div>
+    <p class="fine" data-t="fine"></p>
+  </section>
+
+  <section class="side">
+    <div class="bar">
+      <div class="seg" role="group" aria-label="Language"><button data-lang="en" aria-pressed="true">EN</button><button data-lang="ar" aria-pressed="false" lang="ar">ع</button></div>
+      <div class="seg" role="group" aria-label="Theme"><button data-theme-set="dark" aria-pressed="true" data-t="dark"></button><button data-theme-set="light" aria-pressed="false" data-t="light"></button></div>
+    </div>
+
+    <div class="form-wrap">
+      <!-- SIGN IN / SIGN UP -->
+      <form class="card" id="f-main" novalidate>
+        <div><h1 id="h"></h1></div>
+        <p class="lede" id="lede"></p>
+        <div class="tabs" role="tablist">
+          <button type="button" role="tab" data-mode="in" data-t="tab.in"></button>
+          <button type="button" role="tab" data-mode="up" data-t="tab.up"></button>
+        </div>
+        <div class="sso">
+          <button type="button" data-sso><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.3c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2-1.9 3.2-4.7 3.2-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.2a6.6 6.6 0 0 1 0-4.3V7.1H2.1a11 11 0 0 0 0 9.9z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.1l3.7 2.8C6.7 7.3 9.1 5.4 12 5.4z"/></svg><span data-t="google"></span></button>
+          <button type="button" data-sso><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1-2.8-4.2zM14 5.2c.7-.9 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.2.1 2.4-.6 3.1-1.5z"/></svg><span data-t="apple"></span></button>
+        </div>
+        <div class="or" data-t="or"></div>
+
+        <div class="two" data-up>
+          <div class="fld" id="g-name"><label for="name" data-t="name"></label><div class="in"><input id="name" autocomplete="name" dir="auto"></div><span class="err" data-t="e.name"></span></div>
+          <div class="fld" id="g-co"><label for="co" data-t="co"></label><div class="in"><input id="co" autocomplete="organization" dir="auto"></div><span class="err" data-t="e.co"></span></div>
+        </div>
+        <div class="fld" id="g-email"><label for="email" data-t="email"></label><div class="in"><input id="email" type="email" autocomplete="email" dir="ltr" inputmode="email"></div><span class="err" data-t="e.email"></span></div>
+        <div class="fld" id="g-phone" data-up><label for="phone" data-t="phone"></label><div class="in has-pre"><span class="pre">+966</span><input id="phone" type="tel" autocomplete="tel-national" dir="ltr" inputmode="numeric" maxlength="11" placeholder="5X XXX XXXX"></div><span class="err" data-t="e.phone"></span><span class="hint" data-t="phoneH"></span></div>
+        <div class="fld" id="g-pw">
+          <div class="lbl"><label for="pw" data-t="pw"></label><a href="#" id="forgot" data-in data-t="forgot"></a></div>
+          <div class="in pw"><input id="pw" type="password" autocomplete="current-password" dir="ltr"><button type="button" class="eye" id="eye" data-t="show"></button></div>
+          <div class="meter" data-up aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <span class="hint" data-up id="pw-hint"></span>
+          <span class="err" data-t="e.pw"></span>
+        </div>
+        <label class="check" data-in><input type="checkbox" id="keep" checked><span data-t="keep"></span></label>
+        <div class="fld" id="g-terms" data-up><label class="check"><input type="checkbox" id="terms"><span id="terms-t"></span></label><span class="err" data-t="e.terms"></span></div>
+
+        <button type="submit" class="btn primary" id="go"></button>
+        <p class="switch"><span id="sw-t"></span> <button type="button" id="sw"></button></p>
+        <p class="proto" data-t="proto"></p>
+      </form>
+
+      <!-- VERIFY PHONE -->
+      <form class="card" id="f-otp" hidden novalidate>
+        <h1 data-t="otp.h"></h1>
+        <p class="lede" id="otp-lede"></p>
+        <div class="otp" id="otp"><input inputmode="numeric" maxlength="1" aria-label="digit 1" autocomplete="one-time-code"><input inputmode="numeric" maxlength="1" aria-label="digit 2"><input inputmode="numeric" maxlength="1" aria-label="digit 3"><input inputmode="numeric" maxlength="1" aria-label="digit 4"><input inputmode="numeric" maxlength="1" aria-label="digit 5"><input inputmode="numeric" maxlength="1" aria-label="digit 6"></div>
+        <span class="err" id="otp-err" data-t="e.otp" style="display:none"></span>
+        <button type="submit" class="btn primary" id="otp-go" data-t="otp.go" disabled></button>
+        <p class="switch"><span data-t="otp.none"></span> <button type="button" id="resend" data-t="otp.resend"></button></p>
+        <button type="button" class="btn quiet" id="otp-back" data-t="otp.back"></button>
+        <p class="proto" data-t="otp.proto"></p>
+      </form>
+
+      <!-- RESET -->
+      <form class="card" id="f-reset" hidden novalidate>
+        <h1 data-t="r.h"></h1>
+        <p class="lede" data-t="r.p"></p>
+        <div class="fld" id="g-remail"><label for="remail" data-t="email"></label><div class="in"><input id="remail" type="email" dir="ltr"></div><span class="err" data-t="e.email"></span></div>
+        <div class="note" id="r-sent" hidden data-t="r.sent"></div>
+        <button type="submit" class="btn primary" data-t="r.go"></button>
+        <button type="button" class="btn quiet" id="r-back" data-t="r.back"></button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<script>
+const T = {
+  en: { sub: 'One brain for customer experience and marketing. It reads every message against the account, so nobody acts on a story that is not true.',
+    p1: 'WhatsApp and SMS in one Arabic inbox', p2: 'Marketing held when the account says otherwise', p3: 'Processed in the Kingdom, built for PDPL', fine: 'Prototype · sample data',
+    dark: 'Dark', light: 'Light', 'tab.in': 'Sign in', 'tab.up': 'Create account', google: 'Google', apple: 'Apple', or: 'or with your email',
+    'h.in': 'Welcome back.', 'l.in': 'Sign in to your workspace.', 'h.up': 'Let\'s get you set up.', 'l.up': 'Two minutes now, then we build your Brand DNA together.',
+    name: 'Full name', co: 'Company', email: 'Work email', phone: 'Mobile number', phoneH: 'We send a code here to confirm it\'s you.', pw: 'Password', forgot: 'Forgot it?', show: 'Show', hide: 'Hide', keep: 'Keep me signed in on this device',
+    terms: 'I agree to the <a href="#">Terms</a> and the <a href="#">Privacy Policy</a>, written for Saudi PDPL.',
+    'go.in': 'Sign in', 'go.up': 'Create account', 'sw.in': 'New to Helixion?', 'sw.inb': 'Create an account', 'sw.up': 'Already have an account?', 'sw.upb': 'Sign in',
+    'e.name': 'Tell us your name.', 'e.co': 'Add your company name.', 'e.email': 'That email doesn\'t look right. Check for a typo.', 'e.phone': 'Saudi mobile numbers start with 5 and have 9 digits.', 'e.pw': 'Use at least 8 characters.', 'e.pwin': 'Enter your password.', 'e.terms': 'Please accept the terms to continue.',
+    'pw.0': 'At least 8 characters, with a number and a symbol for a strong one.', 'pw.1': 'Weak. Add more characters.', 'pw.2': 'Okay. A number or symbol makes it stronger.', 'pw.3': 'Good.', 'pw.4': 'Strong.',
+    'sso': 'Single sign-on is not wired in this prototype. Use email.',
+    proto: 'Prototype: nothing you type is sent or stored on a server.',
+    'otp.h': 'Check your phone.', 'otp.lede': 'We sent a 6-digit code to', 'otp.go': 'Verify and continue', 'otp.none': 'No code?', 'otp.resend': 'Send again', 'otp.back': 'Change number', 'otp.proto': 'Prototype: any 6 digits work.', 'e.otp': 'That code is not complete.', 'otp.sent': 'A new code is on its way.',
+    'r.h': 'Reset your password.', 'r.p': 'Enter your work email and we\'ll send you a link.', 'r.go': 'Send reset link', 'r.back': 'Back to sign in', 'r.sent': 'If that email has an account, a reset link is on its way. Check your inbox.' },
+  ar: { sub: 'عقل واحد لتجربة العملاء والتسويق. يقرأ كل رسالة مقابل الحساب، فلا أحد يتصرف بناءً على قصة غير صحيحة.',
+    p1: 'واتساب والرسائل النصية في صندوق عربي واحد', p2: 'يوقف التسويق إذا قال الحساب غير ذلك', p3: 'معالجة داخل المملكة ومتوافقة مع نظام حماية البيانات', fine: 'نموذج أولي · بيانات تجريبية',
+    dark: 'داكن', light: 'فاتح', 'tab.in': 'تسجيل الدخول', 'tab.up': 'إنشاء حساب', google: 'جوجل', apple: 'آبل', or: 'أو ببريدك الإلكتروني',
+    'h.in': 'أهلاً بعودتك.', 'l.in': 'سجّل الدخول إلى مساحة عملك.', 'h.up': 'خلّنا نجهّز حسابك.', 'l.up': 'دقيقتان الآن، ثم نبني DNA علامتك معاً.',
+    name: 'الاسم الكامل', co: 'الشركة', email: 'بريد العمل', phone: 'رقم الجوال', phoneH: 'نرسل رمزاً إلى هذا الرقم للتأكد أنه أنت.', pw: 'كلمة المرور', forgot: 'نسيتها؟', show: 'إظهار', hide: 'إخفاء', keep: 'أبقني مسجلاً على هذا الجهاز',
+    terms: 'أوافق على <a href="#">الشروط</a> و<a href="#">سياسة الخصوصية</a> المكتوبة وفق نظام حماية البيانات الشخصية.',
+    'go.in': 'تسجيل الدخول', 'go.up': 'إنشاء الحساب', 'sw.in': 'جديد على Helixion؟', 'sw.inb': 'أنشئ حساباً', 'sw.up': 'عندك حساب؟', 'sw.upb': 'سجّل الدخول',
+    'e.name': 'اكتب اسمك.', 'e.co': 'أضف اسم شركتك.', 'e.email': 'البريد لا يبدو صحيحاً. تأكد من الكتابة.', 'e.phone': 'أرقام الجوال السعودية تبدأ بـ 5 ومن 9 أرقام.', 'e.pw': 'استخدم 8 أحرف على الأقل.', 'e.pwin': 'اكتب كلمة المرور.', 'e.terms': 'وافق على الشروط للمتابعة.',
+    'pw.0': '8 أحرف على الأقل، ومع رقم ورمز تصبح قوية.', 'pw.1': 'ضعيفة. أضف أحرفاً أكثر.', 'pw.2': 'مقبولة. رقم أو رمز يجعلها أقوى.', 'pw.3': 'جيدة.', 'pw.4': 'قوية.',
+    'sso': 'الدخول الموحد غير مفعّل في هذا النموذج. استخدم البريد.',
+    proto: 'نموذج أولي: لا يُرسل أي شيء تكتبه ولا يُحفظ على خادم.',
+    'otp.h': 'تفقّد جوالك.', 'otp.lede': 'أرسلنا رمزاً من 6 أرقام إلى', 'otp.go': 'تحقق وتابع', 'otp.none': 'ما وصلك الرمز؟', 'otp.resend': 'أرسله مرة أخرى', 'otp.back': 'غيّر الرقم', 'otp.proto': 'نموذج أولي: أي 6 أرقام تعمل.', 'e.otp': 'الرمز غير مكتمل.', 'otp.sent': 'رمز جديد في الطريق.',
+    'r.h': 'أعد تعيين كلمة المرور.', 'r.p': 'اكتب بريد العمل وسنرسل لك رابطاً.', 'r.go': 'أرسل الرابط', 'r.back': 'رجوع لتسجيل الدخول', 'r.sent': 'إذا كان لهذا البريد حساب، فالرابط في الطريق. تفقّد بريدك.' },
+};
+const S = { lang: 'en', mode: new URLSearchParams(location.search).get('mode') === 'up' ? 'up' : 'in' };
+const $ = s => document.querySelector(s), t = k => T[S.lang][k] ?? T.en[k] ?? k;
+const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+const phoneOk = v => /^5\d{8}$/.test(v.replace(/\D/g, ''));
+function strength(v) { let s = 0; if (v.length >= 8) s++; if (v.length >= 12) s++; if (/\d/.test(v)) s++; if (/[^A-Za-z0-9]/.test(v)) s++; return v ? Math.max(1, s) : 0; }
+
+function render() {
+  document.querySelectorAll('[data-t]').forEach(el => { el.textContent = t(el.dataset.t); });
+  const up = S.mode === 'up';
+  $('#h').textContent = t(up ? 'h.up' : 'h.in'); $('#lede').textContent = t(up ? 'l.up' : 'l.in');
+  $('#go').textContent = t(up ? 'go.up' : 'go.in'); $('#sw-t').textContent = t(up ? 'sw.up' : 'sw.in'); $('#sw').textContent = t(up ? 'sw.upb' : 'sw.inb');
+  $('#terms-t').innerHTML = t('terms');
+  $('#eye').textContent = t($('#pw').type === 'password' ? 'show' : 'hide');
+  $('#pw').autocomplete = up ? 'new-password' : 'current-password';
+  document.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-selected', b.dataset.mode === S.mode));
+  document.querySelectorAll('[data-up]').forEach(el => el.hidden = !up);
+  document.querySelectorAll('[data-in]').forEach(el => el.hidden = up);
+  meter(); document.title = up ? 'Helixion Create Account' : 'Helixion Sign In';
+}
+function meter() { const s = strength($('#pw').value); document.querySelectorAll('.meter i').forEach((i, n) => i.classList.toggle('on', n < s)); $('#pw-hint').textContent = t('pw.' + s); }
+function bad(id, on) { $(id).classList.toggle('bad', on); return on; }
+function busy(btn, on) { btn.disabled = on; if (on) { btn.dataset.l = btn.textContent; btn.innerHTML = '<span class="spin"></span>'; } else btn.textContent = btn.dataset.l || btn.textContent; }
+
+document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => { S.mode = b.dataset.mode; document.querySelectorAll('.fld').forEach(f => f.classList.remove('bad')); render(); }));
+$('#sw').addEventListener('click', () => { S.mode = S.mode === 'up' ? 'in' : 'up'; document.querySelectorAll('.fld').forEach(f => f.classList.remove('bad')); render(); });
+$('#eye').addEventListener('click', () => { const p = $('#pw'); p.type = p.type === 'password' ? 'text' : 'password'; render(); p.focus(); });
+$('#pw').addEventListener('input', meter);
+$('#phone').addEventListener('input', e => { const d = e.target.value.replace(/\D/g, '').slice(0, 9); e.target.value = d.replace(/^(\d{2})(\d{0,3})(\d{0,4}).*/, (m, a, b, c) => [a, b, c].filter(Boolean).join(' ')); });
+document.querySelectorAll('.fld input').forEach(i => i.addEventListener('input', () => i.closest('.fld').classList.remove('bad')));
+$('#terms').addEventListener('change', () => $('#g-terms').classList.remove('bad'));
+document.querySelectorAll('[data-sso]').forEach(b => b.addEventListener('click', () => { const n = document.createElement('div'); n.className = 'note'; n.textContent = t('sso'); const old = $('.sso + .note'); old && old.remove(); $('.sso').after(n); }));
+
+function remember(extra) { try { sessionStorage.setItem('hx-user', JSON.stringify(Object.assign({ lang: S.lang, theme: document.documentElement.dataset.theme || 'dark' }, extra))); } catch (e) {} }
+$('#f-main').addEventListener('submit', e => {
+  e.preventDefault();
+  const up = S.mode === 'up', pw = $('#pw').value;
+  let fail = false;
+  if (up) { fail = bad('#g-name', !$('#name').value.trim()) | fail; fail = bad('#g-co', !$('#co').value.trim()) | fail; }
+  fail = bad('#g-email', !emailOk($('#email').value)) | fail;
+  if (up) fail = bad('#g-phone', !phoneOk($('#phone').value)) | fail;
+  $('#g-pw .err').textContent = t(up ? 'e.pw' : 'e.pwin');
+  fail = bad('#g-pw', up ? pw.length < 8 : !pw) | fail;
+  if (up) fail = bad('#g-terms', !$('#terms').checked) | fail;
+  if (fail) { const first = document.querySelector('.fld.bad input'); first && first.focus(); return; }
+  busy($('#go'), true);
+  setTimeout(() => {
+    busy($('#go'), false);
+    if (up) {
+      remember({ name: $('#name').value.trim(), company: $('#co').value.trim(), fresh: true });
+      $('#otp-lede').textContent = `${t('otp.lede')} +966 ${$('#phone').value}`;
+      $('#f-main').hidden = true; $('#f-otp').hidden = false; $('#otp input').focus();
+    } else {
+      const local = $('#email').value.split('@')[0].replace(/[._-]+/g, ' ');
+      remember({ name: local.replace(/\b\w/g, c => c.toUpperCase()), company: '' });
+      location.href = 'app.html';
+    }
+  }, 700);
+});
+
+const boxes = [...document.querySelectorAll('#otp input')];
+const code = () => boxes.map(b => b.value).join('');
+boxes.forEach((b, i) => {
+  b.addEventListener('input', () => { b.value = b.value.replace(/\D/g, '').slice(-1); if (b.value && boxes[i + 1]) boxes[i + 1].focus(); $('#otp-go').disabled = code().length < 6; $('#otp-err').style.display = 'none'; });
+  b.addEventListener('keydown', e => { if (e.key === 'Backspace' && !b.value && boxes[i - 1]) boxes[i - 1].focus(); });
+  b.addEventListener('paste', e => { const d = (e.clipboardData.getData('text') || '').replace(/\D/g, '').slice(0, 6); if (!d) return; e.preventDefault(); boxes.forEach((x, n) => x.value = d[n] || ''); boxes[Math.min(d.length, 5)].focus(); $('#otp-go').disabled = code().length < 6; });
+});
+$('#f-otp').addEventListener('submit', e => { e.preventDefault(); if (code().length < 6) { $('#otp-err').style.display = 'block'; return; } busy($('#otp-go'), true); setTimeout(() => { location.href = 'app.html#onboard'; }, 600); });
+$('#resend').addEventListener('click', () => { const n = $('#f-otp .note') || document.createElement('div'); n.className = 'note'; n.textContent = t('otp.sent'); $('#otp').after(n); });
+$('#otp-back').addEventListener('click', () => { $('#f-otp').hidden = true; $('#f-main').hidden = false; $('#phone').focus(); });
+
+$('#forgot').addEventListener('click', e => { e.preventDefault(); $('#remail').value = $('#email').value; $('#f-main').hidden = true; $('#f-reset').hidden = false; $('#r-sent').hidden = true; $('#remail').focus(); });
+$('#f-reset').addEventListener('submit', e => { e.preventDefault(); if (bad('#g-remail', !emailOk($('#remail').value))) return; $('#r-sent').hidden = false; });
+$('#r-back').addEventListener('click', () => { $('#f-reset').hidden = true; $('#f-main').hidden = false; });
+
+document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => {
+  S.lang = b.dataset.lang; document.documentElement.lang = S.lang; document.documentElement.dir = S.lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-lang]').forEach(x => x.setAttribute('aria-pressed', x === b)); render();
+}));
+document.querySelectorAll('[data-theme-set]').forEach(b => b.addEventListener('click', () => {
+  document.documentElement.dataset.theme = b.dataset.themeSet;
+  document.querySelectorAll('[data-theme-set]').forEach(x => x.setAttribute('aria-pressed', x === b));
+}));
+
+/* the Helix, turning (story side always sits on night, so its colours are fixed) */
+(function () {
+  const svg = $('#hx'), P = 64, A = 12, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function draw(ph) {
+    const w = Math.max(320, svg.clientWidth || 600), h = svg.clientHeight || 90, mid = h / 2, pt = (x, o) => mid + A * Math.sin(x / P * 2 * Math.PI + o + ph);
+    let a = '', b = '', r = ''; for (let x = 0; x <= w; x += 3) { a += (x ? 'L' : 'M') + x + ',' + pt(x, 0).toFixed(1); b += (x ? 'L' : 'M') + x + ',' + pt(x, Math.PI).toFixed(1); }
+    for (let i = 1; i < w / (P / 4); i++) { const x = i * P / 4, y1 = pt(x, 0), y2 = pt(x, Math.PI), sp = Math.abs(y1 - y2) / (2 * A); if (sp > .05) r += `<line x1="${x}" y1="${y1.toFixed(1)}" x2="${x}" y2="${y2.toFixed(1)}" stroke="#B189FF" stroke-opacity="${(.35 * sp).toFixed(2)}" stroke-width="1.2" stroke-linecap="round"/>`; }
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    svg.innerHTML = r + `<path d="${a}" fill="none" stroke="#00E5FF" stroke-width="2" stroke-linecap="round"/><path d="${b}" fill="none" stroke="#B189FF" stroke-width="2" stroke-linecap="round"/>`;
+  }
+  if (reduce) { draw(0); return; }
+  (function loop(t) { draw(-(t / 4000) * 2 * Math.PI); requestAnimationFrame(loop); })(0);
+})();
+render();
+</script>
+</body>
+</html>
