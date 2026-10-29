@@ -1,0 +1,89 @@
+/* Helixion design system v0.1 tokens (proposal 2026-10-29).
+   Provenance per primitive: brand-inputs/sources.md. Contrast: README.md.
+   Fonts load from Google Fonts in prototypes; self-host at first ship. */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+
+:root {
+  /* primitives: measured */
+  --night-0: #050216;   /* site --bg-deep */
+  --night-1: #0A0620;   /* site --bg */
+  --night-2: #15102E;   /* site --bg-elev */
+  --night-3: #1E1740;   /* built: raised surface */
+  --helix-violet: #6B19F8;   /* logo X mark */
+  --helix-violet-deep: #5C1BEF; /* site --purple-deep */
+  --helix-glow: #B189FF;     /* site --purple-glow */
+  --strand-cyan: #00E5FF;    /* site DNA second strand */
+  --paper: #FFFFFE;          /* logo letters */
+  --send: #3DDC97; --stop: #FF6B6B; --hold: #FFB547; /* demo decision colours */
+
+  /* fonts */
+  --font-display: 'Space Grotesk', 'IBM Plex Sans Arabic', sans-serif;
+  --font-body: 'Inter', 'IBM Plex Sans Arabic', sans-serif;
+  --font-data: 'Space Grotesk', 'IBM Plex Sans Arabic', sans-serif; /* Amer, 2026-10-29: numbers, codes and times in Space Grotesk, tabular */
+  --font-ar: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+
+  /* type scale (px): three in view at most */
+  --t-xs: 11px; --t-sm: 13px; --t-md: 15px; --t-lg: 20px; --t-xl: 28px; --t-2xl: 44px;
+
+  /* space: 4px grid */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px;
+  --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-pill: 999px;
+
+  /* motion: one curve, no bounce */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 140ms; --dur: 240ms; --dur-slow: 480ms;
+
+  /* motif: the Helix */
+  --helix-period: 48px; --helix-amp: 8px; --helix-stroke: 1.5px;
+
+  /* roles: dark (signature) */
+  --bg: var(--night-1);
+  --bg-sunk: var(--night-0);
+  --surface: var(--night-2);
+  --surface-raised: var(--night-3);
+  --line: rgba(255,255,254,0.08);
+  --line-strong: rgba(255,255,254,0.16);
+  --ink: var(--paper);
+  --ink-muted: #8A84A3;                 /* 4.72:1 on night-3 */
+  --act: var(--helix-violet);           /* ACTS: fills only, never text */
+  --act-hover: #7B2DFF;
+  --on-act: var(--paper);               /* 6.73:1 on violet */
+  --point: var(--helix-glow);           /* POINTS: links, active nav, focus, selected text */
+  --read: var(--strand-cyan);           /* READS: the model's reading, nothing else */
+  --account: var(--helix-glow);         /* account-event strand shares the violet family */
+  --send-ink: var(--send); --stop-ink: var(--stop); --hold-ink: var(--hold);
+  --tint-send: rgba(61,220,151,0.12); --tint-stop: rgba(255,107,107,0.12);
+  --tint-hold: rgba(255,181,71,0.12); --tint-read: rgba(0,229,255,0.10);
+  --tint-act: rgba(107,25,248,0.18);
+  --glow: 0 0 24px rgba(107,25,248,0.45);
+  --shadow: 0 8px 32px rgba(2,1,10,0.5);
+  --focus: 0 0 0 2px var(--bg), 0 0 0 4px var(--point);
+  color-scheme: dark;
+}
+
+/* light: print, audit exports, signed documents. Theme follows audience. */
+[data-theme="light"] {
+  --bg: #F7F5FC; --bg-sunk: #EEEAF7; --surface: #FFFFFE; --surface-raised: #FFFFFE;
+  --line: rgba(10,6,32,0.10); --line-strong: rgba(10,6,32,0.20);
+  --ink: var(--night-1);                /* 16.75:1 on #EEEAF7 */
+  --ink-muted: #5A5375;                 /* 6.06:1 */
+  --act: var(--helix-violet); --act-hover: #5A14D6; --on-act: var(--paper);
+  --point: #5A14D6;                     /* 7.08:1 */
+  --read: #006B7A;                      /* 5.24:1 */
+  --account: #5A14D6;
+  --send-ink: #0B6E45; --stop-ink: #C2283A; --hold-ink: #8A5200; /* each 4.85:1 or better */
+  --tint-send: rgba(11,110,69,0.10); --tint-stop: rgba(194,40,58,0.09);
+  --tint-hold: rgba(138,82,0,0.10); --tint-read: rgba(0,107,122,0.08);
+  --tint-act: rgba(107,25,248,0.10);
+  --glow: none; --shadow: 0 4px 16px rgba(10,6,32,0.08);
+  color-scheme: light;
+  color: var(--ink);                    /* theme trap: restate colour where tokens are restated */
+}
+
+/* base utilities */
+.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; direction: ltr; unicode-bidi: isolate; }
+.eyebrow { font-family: var(--font-display); font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+.evidence { border-inline-start: 2px solid var(--line-strong); padding-inline-start: var(--s3); color: var(--ink-muted); }
+.ar, [lang="ar"] { font-family: var(--font-ar); letter-spacing: 0 !important; font-style: normal !important; text-transform: none !important; }
+::selection { background: var(--helix-violet); color: var(--paper); }
+:focus-visible { outline: none; box-shadow: var(--focus); }
