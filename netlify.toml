@@ -85,3 +85,10 @@
   for = "/helixion-platform/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# Helixion investor presentation: reachable by link only, kept out of search.
+# Built in the Helixion repo (output/helixion-investor-deck.html); never edited here.
+[[headers]]
+  for = "/helixion-presentation/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

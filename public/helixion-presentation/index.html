@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
+<title>Helixion Investor Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#050216;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
+section{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden}
+section:not(.on){display:none !important}
+section div:not([style*="display"]){display:flex;flex-direction:column}
+section ul{padding-left:1.2em} section li{margin:0.15em 0}
+section a{text-decoration:underline;text-underline-offset:4px}
+section video{background:#050216;cursor:pointer}
+section aside{display:none}
+#notes{position:fixed;left:0;right:0;bottom:0;max-height:35%;overflow:auto;background:rgba(10,6,32,.96);color:#C9C3DE;
+  font:16px/1.5 Inter,Arial,sans-serif;padding:16px 24px;border-top:1px solid #2A2350;display:none}
+#bar{position:fixed;right:16px;bottom:12px;color:#8A84A3;font:13px Inter,Arial,sans-serif;opacity:.0;transition:opacity .3s}
+body:hover #bar{opacity:.8}
+</style>
+</head>
+<body>
+<div id="stage">
+<section id="film-v2" data-transition="fade" style="background:#050216;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:0px;display:flex;flex-direction:column">
+<video src="helixion-investor-film-v2.mp4" poster="deck-assets/film-v2-still.jpg" preload="metadata" playsinline data-start="click" aria-label="Helixion film, One brain: one customer’s sarcastic thank-you, and how Helixion reads it against her account (67 seconds)" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px;object-fit:cover"></video>
+<aside>Open with thanks, then click to play the first film, 67 seconds, with sound. One customer writes a sarcastic thank-you after her card was charged with no order. Her inbox reads it as praise and marketing sends her a discount. Helixion gives the three tools one brain: it reads what she said against what happened on her account, holds the offer and has a person call her first. The screens are the platform prototype with sample data. Go straight on to the second film.</aside>
+</section>
+<section id="film-v3" data-transition="fade" style="background:#050216;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:0px;display:flex;flex-direction:column">
+<video src="helixion-investor-film-v3.mp4" poster="deck-assets/film-v3-still.jpg" preload="metadata" playsinline data-start="slide" aria-label="Helixion film, It speaks first: five days before White Friday, Helixion sends three changes to the campaign plan before anyone asks (63 seconds)" style="position:absolute;left:0px;top:0px;width:1920px;height:1080px;object-fit:cover"></video>
+<aside>Second film, 63 seconds, plays with the slide. The first film showed Helixion reacting to one customer. This one shows it speaking first: five days before White Friday, before the campaign is built, it tells the marketing manager to leave out a product customers are complaining about, leave out one that will sell out by lunch, and offer a low-margin one only as a gift. The better campaign arrives drafted; a person says yes. Be clear if asked: this film is a product concept on sample data. Proactive alerts and stock and margin checks are on the roadmap, not in the first product.</aside>
+</section>
+<section id="problem" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">The problem</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:600;line-height:1.1;color:#FFFFFE">Saudi brands can’t hear their customers.</h2>
+<p style="font-size:28px;line-height:1.4;color:#C9C3DE">Small and mid-sized Saudi firms serve customers on WhatsApp and sell to them with campaigns: online stores, delivery, retail and services. Two problems sit between those two jobs.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px;background:#15102E;border:1px solid #2A2350;border-radius:24px;padding:36px 40px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:2px;color:#B189FF">01 · SPLIT</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;font-weight:600;line-height:1.2;color:#FFFFFE">Service and marketing don’t share what they know</h3>
+<p style="font-size:28px;line-height:1.4;color:#C9C3DE">The complaint sits in the service inbox. The marketing tool never sees it, so the next offer goes to the customer who is already angry.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#15102E;border:1px solid #2A2350;border-radius:24px;padding:36px 40px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:2px;color:#B189FF">02 · MISREAD</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;font-weight:600;line-height:1.2;color:#FFFFFE">Global tools misread Saudi customers</h3>
+<p style="font-size:28px;line-height:1.4;color:#C9C3DE">Built for English text, they read Saudi dialect and polite sarcasm as praise. The angry customer looks happy.</p>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#1E1740;border:1px solid #FFB547;border-radius:24px;padding:24px 40px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:2px;color:#FFB547;white-space:nowrap">THE COST</p>
+<p style="font-size:28px;line-height:1.4;color:#FFFFFE">Offers paid to customers about to leave, complaints left unanswered, and about 15,000 SAR a month on tools that never talk to each other.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">SAR: Saudi riyals. A typical stack: HubSpot, Zendesk, Intercom and a social tool · 03</p>
+<aside>The market problem in one line: Saudi brands can’t hear their customers. The firms we serve, small and mid-sized online stores, delivery, retail and services, talk to customers on WhatsApp and sell to them with campaigns, and two problems sit between those jobs. One, split: customer service and marketing run on separate tools, so the complaint never reaches the marketing tool and promotions go to customers with an open complaint or a failed payment. Two, misread: tools built for English read Saudi dialect and courteous sarcasm at face value; a 2026 Saudi-dialect study found the biggest models flatten meaning. The cost: discounts paid to customers who are about to leave, complaints nobody answers, and a stack of about 15,000 riyals a month that never talks to itself.</aside>
+</section>
+<section id="insight" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">The insight</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;color:#FFFFFE">Same words. Two different answers.</h2>
+<p style="font-family:'IBM Plex Sans Arabic', Tahoma, sans-serif;font-size:64px;line-height:1.4;text-align:center;color:#FFFFFE">👏 ما شاء الله عليكم، ما قصرتوا</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:48px">
+<div style="display:flex;flex-direction:column;gap:24px;background:#15102E;border:1px solid #2A2350;border-radius:24px;padding:40px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8A84A3">Customer A · the account</p>
+<ul style="font-size:32px;line-height:1.4;color:#C9C3DE">
+<li>Order paid at 11:20</li>
+<li>Delivered 25 minutes early</li>
+<li>Rated the order 5 stars</li>
+</ul>
+<p style="font-size:32px;font-weight:600;color:#0A0620;background:#B189FF;border-radius:999px;padding:12px 28px">Sincere: send the offer</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px;background:#15102E;border:1px solid #FFB547;border-radius:24px;padding:40px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8A84A3">Customer B · the account</p>
+<ul style="font-size:32px;line-height:1.4;color:#C9C3DE">
+<li>Payment failed, twice</li>
+<li>Card charged 186.50 SAR, no order</li>
+<li>Refund still pending</li>
+</ul>
+<p style="font-size:32px;font-weight:600;color:#0A0620;background:#FFB547;border-radius:999px;padding:12px 28px">Sarcasm: hold the offer, a person calls</p>
+</div>
+</div>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:500;color:#FFFFFE">Only the account tells you which.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">Synthetic customers from the Helixion live demo · 04</p>
+<aside>This is the whole idea. Two customers send the byte-identical sentence. Customer A got the order 25 minutes early and rated it 5 stars: it is sincere, send the offer. Customer B was charged with no order and is waiting on a refund: it is sarcasm, hold the offer and have a person call. Reading the words alone cannot tell them apart, however strong the AI. In our demo we use one of the strongest hosted models on purpose; even it cannot. The account can. Live demo goes here if we are in the room.</aside>
+</section>
+<section id="engine" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">The product · the Dissonance Engine</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:80px;font-weight:600;line-height:1.1;letter-spacing:-1px;color:#FFFFFE;width:1500px">Helixion checks the words against the account.</h2>
+<div style="display:flex;align-items:center;gap:32px">
+<p style="width:420px;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#00E5FF">Reading · what she said</p>
+<p style="font-family:'IBM Plex Sans Arabic', Tahoma, sans-serif;font-size:44px;font-weight:600;line-height:1.4;color:#FFFFFE">👏 ما شاء الله عليكم، ما قصرتوا</p>
+<p style="font-size:24px;color:#00E5FF;border:2px solid #00E5FF;border-radius:999px;padding:6px 20px">Reads: thanks</p>
+</div>
+<div style="width:1664px;height:120px"><svg aria-label="The Helix: what the customer said against what happened on the account" viewBox="0 0 1664 120" style="width:1664px;height:120px"><line x1="52" y1="94.0" x2="52" y2="26.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="156" y1="26.0" x2="156" y2="94.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="260" y1="94.0" x2="260" y2="26.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="364" y1="26.0" x2="364" y2="94.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="468" y1="94.0" x2="468" y2="26.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="572" y1="26.0" x2="572" y2="94.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="676" y1="94.0" x2="676" y2="26.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="780" y1="26.0" x2="780" y2="94.0" stroke="#FFB547" stroke-opacity="1" stroke-width="5" stroke-linecap="round"/><line x1="884" y1="94.0" x2="884" y2="26.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="988" y1="26.0" x2="988" y2="94.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="1092" y1="94.0" x2="1092" y2="26.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="1196" y1="26.0" x2="1196" y2="94.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="1300" y1="94.0" x2="1300" y2="26.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="1404" y1="26.0" x2="1404" y2="94.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="1508" y1="94.0" x2="1508" y2="26.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><line x1="1612" y1="26.0" x2="1612" y2="94.0" stroke="#B189FF" stroke-opacity="0.3" stroke-width="1.5" stroke-linecap="round"/><path d="M0,60.0 L8,68.1 L16,75.8 L24,82.5 L32,88.0 L40,91.8 L48,93.8 L56,93.8 L64,91.8 L72,88.0 L80,82.5 L88,75.8 L96,68.1 L104,60.0 L112,51.9 L120,44.2 L128,37.5 L136,32.0 L144,28.2 L152,26.2 L160,26.2 L168,28.2 L176,32.0 L184,37.5 L192,44.2 L200,51.9 L208,60.0 L216,68.1 L224,75.8 L232,82.5 L240,88.0 L248,91.8 L256,93.8 L264,93.8 L272,91.8 L280,88.0 L288,82.5 L296,75.8 L304,68.1 L312,60.0 L320,51.9 L328,44.2 L336,37.5 L344,32.0 L352,28.2 L360,26.2 L368,26.2 L376,28.2 L384,32.0 L392,37.5 L400,44.2 L408,51.9 L416,60.0 L424,68.1 L432,75.8 L440,82.5 L448,88.0 L456,91.8 L464,93.8 L472,93.8 L480,91.8 L488,88.0 L496,82.5 L504,75.8 L512,68.1 L520,60.0 L528,51.9 L536,44.2 L544,37.5 L552,32.0 L560,28.2 L568,26.2 L576,26.2 L584,28.2 L592,32.0 L600,37.5 L608,44.2 L616,51.9 L624,60.0 L632,68.1 L640,75.8 L648,82.5 L656,88.0 L664,91.8 L672,93.8 L680,93.8 L688,91.8 L696,88.0 L704,82.5 L712,75.8 L720,68.1 L728,60.0 L736,51.9 L744,44.2 L752,37.5 L760,32.0 L768,28.2 L776,26.2 L784,26.2 L792,28.2 L800,32.0 L808,37.5 L816,44.2 L824,51.9 L832,60.0 L840,68.1 L848,75.8 L856,82.5 L864,88.0 L872,91.8 L880,93.8 L888,93.8 L896,91.8 L904,88.0 L912,82.5 L920,75.8 L928,68.1 L936,60.0 L944,51.9 L952,44.2 L960,37.5 L968,32.0 L976,28.2 L984,26.2 L992,26.2 L1000,28.2 L1008,32.0 L1016,37.5 L1024,44.2 L1032,51.9 L1040,60.0 L1048,68.1 L1056,75.8 L1064,82.5 L1072,88.0 L1080,91.8 L1088,93.8 L1096,93.8 L1104,91.8 L1112,88.0 L1120,82.5 L1128,75.8 L1136,68.1 L1144,60.0 L1152,51.9 L1160,44.2 L1168,37.5 L1176,32.0 L1184,28.2 L1192,26.2 L1200,26.2 L1208,28.2 L1216,32.0 L1224,37.5 L1232,44.2 L1240,51.9 L1248,60.0 L1256,68.1 L1264,75.8 L1272,82.5 L1280,88.0 L1288,91.8 L1296,93.8 L1304,93.8 L1312,91.8 L1320,88.0 L1328,82.5 L1336,75.8 L1344,68.1 L1352,60.0 L1360,51.9 L1368,44.2 L1376,37.5 L1384,32.0 L1392,28.2 L1400,26.2 L1408,26.2 L1416,28.2 L1424,32.0 L1432,37.5 L1440,44.2 L1448,51.9 L1456,60.0 L1464,68.1 L1472,75.8 L1480,82.5 L1488,88.0 L1496,91.8 L1504,93.8 L1512,93.8 L1520,91.8 L1528,88.0 L1536,82.5 L1544,75.8 L1552,68.1 L1560,60.0 L1568,51.9 L1576,44.2 L1584,37.5 L1592,32.0 L1600,28.2 L1608,26.2 L1616,26.2 L1624,28.2 L1632,32.0 L1640,37.5 L1648,44.2 L1656,51.9 L1664,60.0" fill="none" stroke="#00E5FF" stroke-width="3" stroke-linecap="round"/><path d="M0,60.0 L8,51.9 L16,44.2 L24,37.5 L32,32.0 L40,28.2 L48,26.2 L56,26.2 L64,28.2 L72,32.0 L80,37.5 L88,44.2 L96,51.9 L104,60.0 L112,68.1 L120,75.8 L128,82.5 L136,88.0 L144,91.8 L152,93.8 L160,93.8 L168,91.8 L176,88.0 L184,82.5 L192,75.8 L200,68.1 L208,60.0 L216,51.9 L224,44.2 L232,37.5 L240,32.0 L248,28.2 L256,26.2 L264,26.2 L272,28.2 L280,32.0 L288,37.5 L296,44.2 L304,51.9 L312,60.0 L320,68.1 L328,75.8 L336,82.5 L344,88.0 L352,91.8 L360,93.8 L368,93.8 L376,91.8 L384,88.0 L392,82.5 L400,75.8 L408,68.1 L416,60.0 L424,51.9 L432,44.2 L440,37.5 L448,32.0 L456,28.2 L464,26.2 L472,26.2 L480,28.2 L488,32.0 L496,37.5 L504,44.2 L512,51.9 L520,60.0 L528,68.1 L536,75.8 L544,82.5 L552,88.0 L560,91.8 L568,93.8 L576,93.8 L584,91.8 L592,88.0 L600,82.5 L608,75.8 L616,68.1 L624,60.0 L632,51.9 L640,44.2 L648,37.5 L656,32.0 L664,28.2 L672,26.2 L680,26.2 L688,28.2 L696,32.0 L704,37.5 L712,44.2 L720,51.9 L728,60.0 L736,68.1 L744,75.8 L752,82.5 L760,88.0 L768,91.8 L776,93.8 L784,93.8 L792,91.8 L800,88.0 L808,82.5 L816,75.8 L824,68.1 L832,60.0 L840,51.9 L848,44.2 L856,37.5 L864,32.0 L872,28.2 L880,26.2 L888,26.2 L896,28.2 L904,32.0 L912,37.5 L920,44.2 L928,51.9 L936,60.0 L944,68.1 L952,75.8 L960,82.5 L968,88.0 L976,91.8 L984,93.8 L992,93.8 L1000,91.8 L1008,88.0 L1016,82.5 L1024,75.8 L1032,68.1 L1040,60.0 L1048,51.9 L1056,44.2 L1064,37.5 L1072,32.0 L1080,28.2 L1088,26.2 L1096,26.2 L1104,28.2 L1112,32.0 L1120,37.5 L1128,44.2 L1136,51.9 L1144,60.0 L1152,68.1 L1160,75.8 L1168,82.5 L1176,88.0 L1184,91.8 L1192,93.8 L1200,93.8 L1208,91.8 L1216,88.0 L1224,82.5 L1232,75.8 L1240,68.1 L1248,60.0 L1256,51.9 L1264,44.2 L1272,37.5 L1280,32.0 L1288,28.2 L1296,26.2 L1304,26.2 L1312,28.2 L1320,32.0 L1328,37.5 L1336,44.2 L1344,51.9 L1352,60.0 L1360,68.1 L1368,75.8 L1376,82.5 L1384,88.0 L1392,91.8 L1400,93.8 L1408,93.8 L1416,91.8 L1424,88.0 L1432,82.5 L1440,75.8 L1448,68.1 L1456,60.0 L1464,51.9 L1472,44.2 L1480,37.5 L1488,32.0 L1496,28.2 L1504,26.2 L1512,26.2 L1520,28.2 L1528,32.0 L1536,37.5 L1544,44.2 L1552,51.9 L1560,60.0 L1568,68.1 L1576,75.8 L1584,82.5 L1592,88.0 L1600,91.8 L1608,93.8 L1616,93.8 L1624,91.8 L1632,88.0 L1640,82.5 L1648,75.8 L1656,68.1 L1664,60.0" fill="none" stroke="#B189FF" stroke-width="3" stroke-linecap="round"/></svg></div>
+<div style="display:flex;align-items:center;gap:32px">
+<p style="width:420px;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#B189FF">Account · what happened</p>
+<p style="font-size:28px;color:#FF6B6B;border:2px solid #FF6B6B;border-radius:999px;padding:8px 24px">Payment failed, twice</p>
+<p style="font-size:28px;color:#FF6B6B;border:2px solid #FF6B6B;border-radius:999px;padding:8px 24px">Charged 186.50 SAR</p>
+<p style="font-size:28px;color:#FF6B6B;border:2px solid #FF6B6B;border-radius:999px;padding:8px 24px">No order</p>
+</div>
+<p style="font-size:32px;line-height:1.4;color:#C9C3DE;width:1500px"><span style="color:#FFB547">Where the two disagree, that contradiction is the signal.</span> Then fixed rules a person wrote decide what gets sent.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">SAR: Saudi riyals. Synthetic customer from the Helixion live demo · 05</p>
+<aside>This is the product in one picture. Two strands: what the customer says, the reading, and what happened on the account, the events. Other tools ask: what does the customer feel? We ask: does what the customer says match what happened to them? When it does not, that is the amber rung, and that contradiction is the signal. We call the part that does this the Dissonance Engine. And the AI never presses send: fixed rules a person wrote do.</aside>
+</section>
+<section id="platform" data-transition="fade" style="background:#050216;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:row;align-items:center;justify-content:space-between">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">The platform · prototype, sample data</p>
+<a target="_blank" rel="noopener" href="https://www.dot-cc.com/helixion-platform" target="_blank" rel="noopener"><img src="deck-assets/helixion-wordmark.png" alt="HELIXION, links to www.dot-cc.com/helixion-platform" style="width:280px;height:42px;object-fit:contain"></a>
+</div>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:600;line-height:1.1;color:#FFFFFE">The inbox: evidence first, the decision last.</h2>
+<div style="display:grid;grid-template-columns:1040px 1fr;gap:48px">
+<img src="deck-assets/platform-inbox-customer-b.jpg" alt="Helixion inbox: Customer B held by Rule 1" style="width:1040px;height:650px;object-fit:contain;border:1px solid #2A2350;border-radius:16px">
+<div style="display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;font-weight:600;color:#00E5FF">Reading</h3>
+<p style="font-size:26px;line-height:1.4;color:#C9C3DE">The model’s reading of the words, always labelled as a reading.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;font-weight:600;color:#B189FF">Account</h3>
+<p style="font-size:26px;line-height:1.4;color:#C9C3DE">Payments, orders and tickets, in time order.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:40px;font-weight:600;color:#FFB547">Decision</h3>
+<p style="font-size:26px;line-height:1.4;color:#C9C3DE">Held by Rule 1, with the reason in one sentence. A person takes it from here.</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">Open the platform: <a target="_blank" rel="noopener" href="https://www.dot-cc.com/helixion-platform" style="color:#B189FF">www.dot-cc.com/helixion-platform</a>. Prototype screenshot, October 2026, sample data · 06</p>
+<aside>This is the platform prototype, not a mock-up on a slide. Customer B’s message on the left. On the right, in this order: the reading of the words, the account events, then the decision. The words read positive; the account shows two failed payments and a charge with no order; Rule 1 holds the marketing, says why in one sentence, and a person takes it. Arabic and English, dark and light. The numbers on the reading are sample values in the prototype, not measured accuracy.</aside>
+</section>
+<section id="layers" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">The platform</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;color:#FFFFFE">Five layers on one shared core.</h2>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;gap:32px;background:#15102E;border-radius:16px;padding:24px 40px">
+<p style="width:130px;font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;color:#B189FF">Layer 1</p>
+<p style="width:360px;font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:600;color:#FFFFFE">Ingestion</p>
+<p style="flex:1;font-size:32px;color:#C9C3DE">WhatsApp and SMS, plus orders, payments and tickets.</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#15102E;border-radius:16px;padding:24px 40px">
+<p style="width:130px;font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;color:#B189FF">Layer 2</p>
+<p style="width:360px;font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:600;color:#FFFFFE">Unified Data</p>
+<p style="flex:1;font-size:32px;color:#C9C3DE">One shared record per customer, hosted in Saudi Arabia.</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#1E1740;border:2px solid #8B4BFF;border-radius:16px;padding:24px 40px">
+<p style="width:130px;font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;color:#B189FF">Layer 3</p>
+<p style="width:360px;font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:600;color:#FFFFFE">AI Engine</p>
+<p style="flex:1;font-size:32px;color:#FFFFFE">Reads Saudi dialect; the Dissonance Engine checks it.</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#15102E;border-radius:16px;padding:24px 40px">
+<p style="width:130px;font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;color:#B189FF">Layer 4</p>
+<p style="width:360px;font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:600;color:#FFFFFE">Automation</p>
+<p style="flex:1;font-size:32px;color:#C9C3DE">Sends, holds or routes, after consent and brand checks.</p>
+</div>
+<div style="display:flex;align-items:center;gap:32px;background:#15102E;border-radius:16px;padding:24px 40px">
+<p style="width:130px;font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;color:#B189FF">Layer 5</p>
+<p style="width:360px;font-family:'Space Grotesk', Arial, sans-serif;font-size:32px;font-weight:600;color:#FFFFFE">Governance</p>
+<p style="flex:1;font-size:32px;color:#C9C3DE">Approval queue, decision log and audit export.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">SMS: text message. The first product is text-first; social channels and voice are on the roadmap · 07</p>
+<aside>Five layers, one shared database underneath, so customer service and marketing finally look at the same customer. Layer 3 is where the Dissonance Engine sits; it is the hardest part to copy. The first product is text-first, WhatsApp and SMS, joined to the client’s own order and ticket events. A client can keep its existing customer relationship management (CRM) system on day one: our Lite Integration Module sits on top of it and reads the events we need. Social listening and voice come later, by choice.</aside>
+</section>
+<section id="rules" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">How it decides</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;color:#FFFFFE">AI suggests. Rules decide.</h2>
+<div style="display:flex;align-items:center;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#15102E;border:1px solid #2A2350;border-radius:20px;padding:32px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#B189FF">1 · Message</p>
+<p style="font-size:24px;line-height:1.4;color:#C9C3DE">Arrives on WhatsApp or SMS, in Saudi dialect.</p>
+</div>
+<svg aria-hidden="true" viewBox="0 0 56 28" style="width:56px;height:28px;flex:none"><path d="M0,8 H34 V0 L56,14 L34,28 V20 H0 Z" fill="#6B19F8"/></svg>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#15102E;border:1px solid #2A2350;border-radius:20px;padding:32px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#B189FF">2 · Reading</p>
+<p style="font-size:24px;line-height:1.4;color:#C9C3DE">The AI gives odds: positive, sarcastic, complaint.</p>
+</div>
+<svg aria-hidden="true" viewBox="0 0 56 28" style="width:56px;height:28px;flex:none"><path d="M0,8 H34 V0 L56,14 L34,28 V20 H0 Z" fill="#6B19F8"/></svg>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#1E1740;border:2px solid #8B4BFF;border-radius:20px;padding:32px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#B189FF">3 · Account check</p>
+<p style="font-size:24px;line-height:1.4;color:#FFFFFE">The Dissonance Engine compares it with orders, payments and tickets.</p>
+</div>
+<svg aria-hidden="true" viewBox="0 0 56 28" style="width:56px;height:28px;flex:none"><path d="M0,8 H34 V0 L56,14 L34,28 V20 H0 Z" fill="#6B19F8"/></svg>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#15102E;border:1px solid #2A2350;border-radius:20px;padding:32px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#FFB547">4 · Governor</p>
+<p style="font-size:24px;line-height:1.4;color:#C9C3DE">Fixed rules decide: send, hold, or route to a person.</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px;border-top:2px solid #8B4BFF;padding:32px 0px 0px 0px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">Money first</h3>
+<p style="font-size:24px;line-height:1.4;color:#C9C3DE">An unresolved payment problem holds all marketing, whatever the AI says.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;border-top:2px solid #8B4BFF;padding:32px 0px 0px 0px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">No reading, no send</h3>
+<p style="font-size:24px;line-height:1.4;color:#C9C3DE">If the AI fails or refuses, nothing goes out and a person reviews.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;border-top:2px solid #8B4BFF;padding:32px 0px 0px 0px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">Every decision a row</h3>
+<p style="font-size:24px;line-height:1.4;color:#C9C3DE">What decided, which rule fired and on what inputs. Ready for any audit.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">Helixion · 08</p>
+<aside>Four steps. The message arrives. The AI reads it and gives probabilities only; it takes no action. The Dissonance Engine checks it against the account. Then the governor, plain code, decides. Three rules matter most. Money first: a failed payment or a charge with no order holds all marketing, and that rule reads no AI output at all, so a wrong AI reading can never release it. No reading, no send. And every decision is a row in our database: who or what decided, which rule fired, and on what inputs. That row is the audit trail.</aside>
+</section>
+<section id="uc-marketing" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">Use case 1 · The marketing manager</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;color:#FFFFFE">Campaigns that are safe by default.</h2>
+<div style="display:grid;grid-template-columns:920px 1fr;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<img src="deck-assets/platform-campaign.jpg" alt="Weekend 20% off campaign: 3 will send, 2 held by a rule, 1 no consent" style="width:920px;height:452px;object-fit:contain;border:1px solid #2A2350;border-radius:16px">
+<p style="font-size:24px;line-height:1.4;color:#8A84A3">The weekend offer in the platform: 3 of 6 contacts send, 2 are held by a rule, 1 has no consent.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#15102E;border:1px solid #2A2350;border-radius:24px;padding:28px 36px"><p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8A84A3">Today</p><p style="font-size:28px;line-height:1.4;color:#FFFFFE">The weekend offer goes to the whole list, even customers waiting on a refund.</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#6B19F8;border-radius:24px;padding:28px 36px"><p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#FFFFFE">With Helixion</p><p style="font-size:28px;line-height:1.4;color:#FFFFFE">Every send checks consent, open tickets and payment problems first. Those customers wait; the rest go.</p></div>
+<p style="font-size:28px;line-height:1.4;color:#C9C3DE">No discounts to angry customers. Consent checked on every send. No extra work.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">Illustrative use case on synthetic customers. Screenshot: Helixion platform prototype, sample data · 09</p>
+<aside>First user: the marketing manager. Today the weekend offer goes to the whole list, including the customer who was charged with no order an hour ago. That is how brands end up in screenshots. With Helixion nothing changes in how the manager builds the campaign. The difference is at the moment of sending: every message first checks consent, open tickets and payment problems. On screen: the weekend 20% offer sends to 3 of 6 contacts; 2 are held by a rule, 1 has no consent. Customer B is held, an agent calls, the refund is completed, and the offer is released. Safe by default, no extra work.</aside>
+</section>
+<section id="uc-cx" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">Use case 2 · The customer-service lead</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;color:#FFFFFE">The polite complaint, caught.</h2>
+<div style="display:grid;grid-template-columns:720px 1fr;gap:48px">
+<img src="deck-assets/platform-inbox-customer-e.jpg" alt="Helixion inbox: Customer E held by Rule 5" style="width:720px;height:568px;object-fit:contain;border:1px solid #2A2350;border-radius:16px">
+<div style="display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:8px;border-left:6px solid #00E5FF;padding:4px 0px 4px 28px">
+<p style="font-family:'IBM Plex Sans Arabic', Tahoma, sans-serif;font-size:40px;line-height:1.5;text-align:right;color:#FFFFFE">الله يعطيكم العافية، ثالث مرة أطلب ونفس القصة</p>
+<p style="font-size:26px;line-height:1.4;color:#C9C3DE">“God give you strength. Third time I order, and the same story.” Customer E</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#15102E;border:1px solid #2A2350;border-radius:24px;padding:28px 36px"><p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8A84A3">Today</p><p style="font-size:28px;line-height:1.4;color:#FFFFFE">A word-count tool sees “God give you strength” and scores it warm. The complaint goes unanswered.</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#6B19F8;border-radius:24px;padding:28px 36px"><p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#FFFFFE">With Helixion</p><p style="font-size:28px;line-height:1.4;color:#FFFFFE">The account is clean, so no rule fires. The dialect reading flags a complaint; a person follows up today.</p></div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">Illustrative use case on synthetic customers. Screenshot: Helixion platform prototype, sample data · 10</p>
+<aside>Second user: the customer-service lead. Customer E writes, “God give you strength. Third time I order, and the same story.” It opens with a blessing, so a basic word-count tool scores it warm. Both orders were delivered, so there is nothing bad on the account and no rule fires. This is exactly why the AI is in the loop: the dialect reading catches the complaint, the offer is held by Rule 5, and a person follows up today with the reason written in plain words. The account catches the sarcasm; the AI catches the courtesy. Together they catch both. What they gain: quiet churn caught early, the reason in plain words, the offer held until it is fixed.</aside>
+</section>
+<section id="uc-owner" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">Use case 3 · The business owner</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;color:#FFFFFE">Fewer tools. One audit trail.</h2>
+<div style="display:grid;grid-template-columns:640px 1fr;gap:56px">
+<div style="display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#15102E;border:1px solid #2A2350;border-radius:24px;padding:28px 36px"><p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8A84A3">Today</p><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:600;line-height:1.1;color:#FFFFFE">≈15,000 SAR</p><p style="font-size:24px;line-height:1.4;color:#C9C3DE">A month, for HubSpot, Zendesk, Intercom and a social tool, none of them talking.</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#6B19F8;border-radius:24px;padding:28px 36px"><p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#FFFFFE">With Helixion</p><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:600;line-height:1.1;color:#FFFFFE">From 2,500 SAR</p><p style="font-size:24px;line-height:1.4;color:#FFFFFE">A month, one platform. About 60% less tech spend at full pricing.</p></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px">
+<img src="deck-assets/platform-decision-log.jpg" alt="Helixion decision log: one row per decision, with rule, version and who decided" style="width:968px;height:370px;object-fit:contain;border:1px solid #2A2350;border-radius:16px">
+<p style="font-size:28px;line-height:1.4;color:#C9C3DE"><b style="color:#FFFFFE">One audit trail.</b> Every send, hold and approval is a row. When the regulator asks, export the answer.</p>
+<p style="font-size:28px;line-height:1.4;color:#C9C3DE"><b style="color:#FFFFFE">Data at home, and keep your CRM.</b> Stored and decided on Saudi servers; works on top of the tools you run.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">CRM: customer relationship management. Price ladder 2,500, 4,000 and 5,000 SAR a month in Years 1 to 3 · 11</p>
+<aside>Third user: the owner, who pays for all of it. A typical stack of HubSpot, Zendesk, Intercom and a social tool runs about 15,000 SAR a month, and none of it talks. Helixion starts at 2,500 SAR a month, about 60% less tech spend at full pricing. Every send, hold and approval is a recorded row, shown here in the platform’s decision log, so when SDAIA asks, the answer is one export. Everything we store, read and decide stays on Saudi servers; the WhatsApp message itself passes through Meta in transit, as it does for every business on WhatsApp. And no client has to replace its CRM on day one: our Lite Integration Module works on top of the tools they already run.</aside>
+</section>
+<section id="market" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">The market</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;color:#FFFFFE">A 5.5 billion riyal market at home.</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px;border-top:2px solid #2A2350;padding:32px 0px 0px 0px">
+<p style="height:68px;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8A84A3">TAM · total addressable market</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:96px;font-weight:600;line-height:1.1;color:#FFFFFE">5.5B SAR</p>
+<p style="font-size:32px;line-height:1.4;color:#C9C3DE">All Saudi spend on marketing and CX software, 2026.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;border-top:2px solid #8B4BFF;padding:32px 0px 0px 0px">
+<p style="height:68px;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8A84A3">SAM · serviceable available market</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:96px;font-weight:600;line-height:1.1;color:#B189FF">1.58B SAR</p>
+<p style="font-size:32px;line-height:1.4;color:#C9C3DE">Saudi small and mid-sized firms buying cloud tools.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;border-top:2px solid #FFB547;padding:32px 0px 0px 0px">
+<p style="height:68px;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8A84A3">SOM · serviceable obtainable, Year 1</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:96px;font-weight:600;line-height:1.1;color:#FFB547">15.8M SAR</p>
+<p style="font-size:32px;line-height:1.4;color:#C9C3DE">1% of SAM, rising to 2% to 2.4% (31.5M to 37.8M) by Year 3.</p>
+</div>
+</div>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:500;line-height:1.2;color:#FFFFFE">Our Year 3 target, 30M SAR a year, is about 1.9% of SAM: inside reach.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">Sources: IMARC, MarketsandMarkets, Monsha’at SME Monitor 2023; dollars at 3.75 SAR. Small-firm uptake of 10% is our assumption · 12</p>
+<aside>We sized it on Saudi marketing and CX software only, no global numbers. TAM: 5.5 billion riyals, Saudi digital marketing software plus CX management software in 2026. SAM: 1.58 billion, built bottom-up from Monsha’at’s firm counts times our own price ladder: 18,723 medium firms at the Year 3 tier, plus 10% of 150,788 small firms at the entry tier; the 10% is our assumption. SOM: 1% of SAM in Year 1, 1.5% in Year 2, 2% to 2.4% in Year 3. Our Year 3 revenue target of 30 million is about 1.9% of SAM. If asked why Years 1 and 2 sit below SOM: SOM is what the market lets us win; the forecast is what we plan to win while the product is built. They meet in Year 3.</aside>
+</section>
+<section id="competition" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">The competition</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;color:#FFFFFE">Where Helixion stands.</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px;background:#15102E;border:1px solid #2A2350;border-radius:24px;padding:40px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8A84A3">AI agent platforms · Lucidya, Unifonic</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:500;line-height:1.2;color:#C9C3DE">Act on what the model thinks the customer feels.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#1E1740;border:2px solid #8B4BFF;border-radius:24px;padding:40px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#B189FF">Helixion</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:500;line-height:1.2;color:#FFFFFE">Acts on what happened to the account, under rules a person wrote.</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:64px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">The narrow claim</h3>
+<p style="font-size:24px;line-height:1.4;color:#C9C3DE">We have not found a product that does all three:</p>
+<ul style="font-size:24px;line-height:1.4;color:#C9C3DE">
+<li>checks the message against the account for contradiction</li>
+<li>makes marketing suppression a fixed rule that no AI reading can release</li>
+<li>logs every decision with its inputs</li>
+</ul>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">The moat</h3>
+<p style="font-size:32px;line-height:1.4;color:#C9C3DE">Each client adds to a record of what Saudi customers said against what happened to them. It grows with every client, and a rival cannot buy it.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">Lucidya: AI agents since March 2026. Unifonic: relaunched as an AI customer-experience platform, July 2026 · 13</p>
+<aside>Lucidya and Unifonic both ship AI agents now, and they are strong. Several platforms also join account data to messages for routing, so we never claim that part. The difference is the mechanism: they act on what the model thinks the customer feels; we check the account first, then a rule decides, and the governor can refuse the agent. We say “we have not found” and make no claim of being the only one. Hosting in Saudi Arabia is a reason to buy now, but anyone can copy it, so we do not call it the moat. The moat is the labelled Saudi record the Dissonance Engine builds: what customers said, against what happened to them.</aside>
+</section>
+<section id="business" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">The business</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;color:#FFFFFE">A monthly subscription per client.</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:96px">
+<div style="display:flex;flex-direction:column;gap:20px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">Price per client, a month</h3>
+<div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2A2350;padding:16px 0px">
+<p style="font-size:32px;color:#C9C3DE">Year 1</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;color:#FFFFFE">2,500 SAR</p>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2A2350;padding:16px 0px">
+<p style="font-size:32px;color:#C9C3DE">Year 2</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;color:#FFFFFE">4,000 SAR</p>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2A2350;padding:16px 0px">
+<p style="font-size:32px;color:#C9C3DE">Year 3</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;color:#B189FF">5,000 SAR</p>
+</div>
+<p style="font-size:24px;line-height:1.4;color:#8A84A3">Modelled figures: lifetime value 240K SAR against 15K SAR to win a client. The first pilots will measure the real ones.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">Yearly revenue forecast</h3>
+<div style="display:flex;align-items:end;gap:48px;height:420px;border-bottom:2px solid #2A2350">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:end;gap:12px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;color:#FFFFFE">300K</p>
+<div style="height:8px;background:#6B19F8;border-radius:4px"></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:end;gap:12px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;color:#FFFFFE">7.2M</p>
+<div style="height:76px;background:#6B19F8;border-radius:8px 8px 0px 0px"></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:end;gap:12px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;color:#B189FF">30M</p>
+<div style="height:316px;background:linear-gradient(180deg, #B189FF 0%, #6B19F8 100%);border-radius:8px 8px 0px 0px"></div>
+</div>
+</div>
+<div style="display:flex;gap:48px">
+<p style="flex:1;font-size:24px;color:#8A84A3">Year 1 · 10 clients</p>
+<p style="flex:1;font-size:24px;color:#8A84A3">Year 2 · 150 clients</p>
+<p style="flex:1;font-size:24px;color:#8A84A3">Year 3 · 500 clients</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">Annual recurring revenue in SAR, small and mid-sized business tier. All figures are forecasts · 14</p>
+<aside>Simple model: a monthly subscription per client, small and mid-sized business tier, 2,500 riyals a month in Year 1, 4,000 in Year 2, 5,000 in Year 3. That gives a revenue forecast of 300 thousand in Year 1 with ten clients, 7.2 million in Year 2 with 150, and 30 million in Year 3 with 500. Unit economics are modelled; the first pilots will measure them: lifetime value of 240 thousand against a 15 thousand cost to win a client. We say clearly that the real figures come from the first pilots. If pushed on the sales budget: this seed wins the first ten clients through warm networks and design partners; Year 2 growth is funded by revenue plus a next round.</aside>
+</section>
+<section id="roadmap" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">The plan</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;color:#FFFFFE">Twelve months from close.</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px">
+<div style="display:flex;flex-direction:column;gap:16px;background:#15102E;border-top:4px solid #B189FF;border-radius:16px;padding:32px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#B189FF">Months 1 to 4</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">The Spine</h3>
+<ul style="font-size:24px;line-height:1.4;color:#C9C3DE">
+<li>One inbox for WhatsApp and SMS</li>
+<li>Account events and the governor</li>
+</ul>
+<p style="font-size:24px;line-height:1.4;color:#FFFFFE;background:#1E1740;border-radius:12px;padding:12px 16px">Proof: 3 design partners signed</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#15102E;border-top:4px solid #8B4BFF;border-radius:16px;padding:32px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#B189FF">Months 5 to 8</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">The Saudi brain</h3>
+<ul style="font-size:24px;line-height:1.4;color:#C9C3DE">
+<li>Dialect model tuned on consented data</li>
+<li>Dissonance Engine live in Saudi Arabia</li>
+</ul>
+<p style="font-size:24px;line-height:1.4;color:#FFFFFE;background:#1E1740;border-radius:12px;padding:12px 16px">Proof: accuracy published, met or not</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#15102E;border-top:4px solid #6B19F8;border-radius:16px;padding:32px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#B189FF">Months 9 to 12</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">To market</h3>
+<ul style="font-size:24px;line-height:1.4;color:#C9C3DE">
+<li>Five paid pilots</li>
+<li>First CRM connector, status page</li>
+</ul>
+<p style="font-size:24px;line-height:1.4;color:#0A0620;background:#FFB547;border-radius:12px;padding:12px 16px">Proof: 10 paying clients</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#15102E;border-top:4px solid #2A2350;border-radius:16px;padding:32px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8A84A3">Year 2 and on</p>
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">Ecosystem</h3>
+<ul style="font-size:24px;line-height:1.4;color:#C9C3DE">
+<li>Voice and social listening</li>
+<li>Enterprise tier, connector marketplace</li>
+</ul>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3">Month 1 starts when the company exists and the money lands; the paperwork comes first · 15</p>
+<aside>Twelve months, counted from the day the money lands. Months 1 to 4, the Spine: one inbox for WhatsApp and SMS, the account-event feed, the governor; proof is three signed design partners. Months 5 to 8, the Saudi brain: a dialect model tuned on consented Saudi messages, the Dissonance Engine in production in Saudi Arabia, and an accuracy report we publish whether we hit the target or not. Months 9 to 12, to market: five paid pilots converted to ten paying clients, one CRM connector, a public status page. Year 2: voice, social listening, an enterprise tier. Every step has a proof you can open.</aside>
+</section>
+<section id="team" data-transition="fade" style="background:#0A0620;color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:#B189FF">The team</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;color:#FFFFFE">Three founders, and the team this round hires.</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#15102E;border:1px solid #2A2350;border-radius:24px;padding:40px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">Hussein</h3>
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#B189FF">Co-founder · technical lead</p>
+<p style="font-size:24px;line-height:1.4;color:#C9C3DE">The product, the architecture and the live demo. [One-line background to add]</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#15102E;border:1px solid #2A2350;border-radius:24px;padding:40px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">Amer</h3>
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#B189FF">Co-founder · commercial lead</p>
+<p style="font-size:24px;line-height:1.4;color:#C9C3DE">Market, sales, partners and the first clients. [One-line background to add]</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#15102E;border:1px solid #2A2350;border-radius:24px;padding:40px">
+<h3 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:44px;font-weight:600;line-height:1.2;color:#FFFFFE">Mohannad</h3>
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#B189FF">Co-founder</p>
+<p style="font-size:24px;line-height:1.4;color:#C9C3DE">[Role and one-line background to add]</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<p style="font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#8A84A3">Funded by this round</p>
+<div style="display:flex;flex-wrap:wrap;gap:16px">
+<p style="font-size:24px;color:#FFFFFE;background:#1E1740;border-radius:999px;padding:12px 24px">4 full-stack developers</p>
+<p style="font-size:24px;color:#FFFFFE;background:#1E1740;border-radius:999px;padding:12px 24px">1 AI and Arabic-language specialist</p>
+<p style="font-size:24px;color:#FFFFFE;background:#1E1740;border-radius:999px;padding:12px 24px">1 product designer</p>
+<p style="font-size:24px;color:#FFFFFE;background:#1E1740;border-radius:999px;padding:12px 24px">1 database administrator</p>
+<p style="font-size:24px;color:#FFFFFE;background:#1E1740;border-radius:999px;padding:12px 24px">1 solution architect</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#8A84A3"><a target="_blank" rel="noopener" href="https://www.helixion.me" style="color:#B189FF">www.helixion.me</a> · <a target="_blank" rel="noopener" href="https://www.dot-cc.com/helixion-platform" style="color:#B189FF">www.dot-cc.com/helixion-platform</a> · 16</p>
+<aside>Introduce the team verbally, one line each. Hussein builds: product, architecture, the demo you saw. Amer sells: market, partners, the first clients. Mohannad: [his line]. The round funds eight hires: four full-stack developers, an AI and Arabic-language specialist, a designer, a database administrator and a solution architect. If asked who is full-time: today none of us; funding converts it in stages agreed with each employer, with a proper handover. No names, no dates.</aside>
+</section>
+<section id="thanks" data-transition="fade" style="background:radial-gradient(circle at 50% 42%, #2A0F78 0%, #12082F 36%, #050216 70%);color:#FFFFFE;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:64px">
+<img src="deck-assets/helixion-wordmark.png" alt="HELIXION" style="width:900px;height:135px;object-fit:contain">
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:88px;font-weight:600;line-height:1.1;color:#FFFFFE;text-align:center">Thank you</h2>
+<aside>Thank them for their time, then open the floor for questions.</aside>
+</section>
+</div>
+<div id="notes"></div>
+<div id="bar">← → to move · F full screen · N speaker notes</div>
+<script>
+const slides=[...document.querySelectorAll('#stage > section')];
+const stage=document.getElementById('stage'), notes=document.getElementById('notes');
+let i=0;
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`scale(${s}) translate(-50%,-50%)`;stage.style.transformOrigin='0 0';stage.style.left='50%';stage.style.top='50%';}
+// a film that waits for a click starts with the first action on its slide (key, click or remote); the next action moves on
+function startFilm(){const v=slides[i].querySelector('video[data-start="click"]');
+  if(v&&!v.dataset.started){v.dataset.started='1';v.currentTime=0;v.play().catch(()=>{});return true;}return false;}
+document.getElementById('stage').addEventListener('click',e=>{if(e.target.closest('a,video'))return;startFilm();});
+function show(n){
+  n=Math.max(0,Math.min(slides.length-1,n));
+  slides[i].querySelectorAll('video').forEach(v=>v.pause());
+  slides[i].classList.remove('on'); i=n; slides[i].classList.add('on');
+  slides[i].querySelectorAll('video[data-start="click"]').forEach(v=>{delete v.dataset.started;v.currentTime=0;});
+  history.replaceState(null,'','#'+(i+1));
+  const a=slides[i].querySelector('aside'); notes.textContent=a?a.textContent:'';
+  slides[i].querySelectorAll('video[data-start="slide"]').forEach(v=>{v.currentTime=0;v.play().catch(()=>{});});
+}
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();if(!startFilm())show(i+1);}
+  else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();show(i-1);}
+  else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
+  else if(e.key==='n'||e.key==='N'){notes.style.display=notes.style.display==='block'?'none':'block';}
+});
+document.querySelectorAll('#stage video').forEach(v=>v.addEventListener('click',()=>{if(!v.dataset.started){v.dataset.started='1';v.currentTime=0;v.play();}else v.paused?v.play():v.pause();}));
+addEventListener('resize',fit); fit(); addEventListener('hashchange',()=>{const n=(parseInt(location.hash.slice(1))||1)-1; if(n!==i)show(n);});
+slides.forEach(s=>s.classList.remove('on')); slides[0].classList.add('on');
+show((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>
