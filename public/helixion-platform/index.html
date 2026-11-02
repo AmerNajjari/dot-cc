@@ -20,17 +20,24 @@
   .auth { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); min-height: 100vh; }
 
   /* story side */
-  .story { position: relative; background: var(--night-0); color: var(--paper); display: flex; flex-direction: column; justify-content: space-between; padding: var(--s6) clamp(24px, 5vw, 72px); overflow: hidden; }
-  .story .wm { width: 150px; display: block; }
-  .story .mid { display: flex; flex-direction: column; gap: var(--s5); }
-  .story .tag { font-family: var(--font-ar); font-weight: 700; font-size: clamp(40px, 5vw, 72px); line-height: 1.25; }
-  html[dir="ltr"] .story .tag { text-align: left; }
-  .story .sub { color: #A39DBA; font-size: clamp(16px, 1.3vw, 19px); max-width: 40ch; }
-  .story .hx { width: calc(100% + 2 * clamp(24px, 5vw, 72px)); margin-inline: calc(-1 * clamp(24px, 5vw, 72px)); height: 90px; display: block; }
-  .proof { list-style: none; display: flex; flex-direction: column; gap: var(--s3); }
-  .proof li { display: grid; grid-template-columns: 22px 1fr; gap: var(--s3); font-size: var(--t-sm); color: #D9D4EC; }
-  .proof svg { width: 20px; height: 20px; color: var(--helix-glow); }
-  .story .fine { font-size: var(--t-xs); color: #8A84A3; }
+  .story { position: relative; color: var(--paper); display: flex; flex-direction: column; justify-content: space-between; gap: var(--s7); padding: var(--s6) clamp(24px, 5vw, 72px); overflow: hidden;
+    background: radial-gradient(110% 70% at 0% 0%, #1B0B4D 0%, rgba(5,2,22,0) 58%), radial-gradient(80% 60% at 100% 100%, rgba(107,25,248,.16) 0%, rgba(5,2,22,0) 62%), var(--night-0);
+    border-inline-end: 1px solid rgba(255,255,254,.06); }
+  .story .wm { width: 148px; display: block; }
+  .story .mid { display: flex; flex-direction: column; gap: var(--s5); max-width: 560px; }
+  .story .kicker { font-family: var(--font-display); font-size: var(--t-sm); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--helix-glow); }
+  .story h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(34px, 3.4vw, 52px); line-height: 1.08; letter-spacing: -.02em; }
+  [dir="rtl"] .story .kicker, [dir="rtl"] .story h2 { font-family: var(--font-ar); letter-spacing: 0; line-height: 1.35; }
+  .story .sub { color: #B9B3CF; font-size: clamp(15px, 1.15vw, 17px); line-height: 1.6; max-width: 46ch; }
+  .story .hx { width: calc(100% + 2 * clamp(24px, 5vw, 72px)); margin-inline: calc(-1 * clamp(24px, 5vw, 72px)); height: 64px; display: block; opacity: .85; }
+  .proof { list-style: none; display: grid; gap: var(--s4); }
+  .proof li { display: grid; grid-template-columns: 40px 1fr; gap: var(--s4); align-items: center; }
+  .proof .ic { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: rgba(177,137,255,.08); border: 1px solid rgba(177,137,255,.22); color: var(--helix-glow); }
+  .proof svg { width: 20px; height: 20px; }
+  .proof b { display: block; font-weight: 600; font-size: var(--t-md); color: var(--paper); }
+  .proof small { display: block; font-size: var(--t-sm); color: #A39DBA; }
+  .story .foot { display: flex; justify-content: space-between; align-items: center; gap: var(--s4); font-size: var(--t-xs); color: #8A84A3; padding-top: var(--s4); border-top: 1px solid rgba(255,255,254,.08); }
+  .story .foot a { color: #B9B3CF; }
 
   /* form side */
   .side { display: flex; flex-direction: column; padding: var(--s5) clamp(20px, 4vw, 56px) var(--s6); }
@@ -93,9 +100,9 @@
   @media (max-width: 900px) {
     .auth { grid-template-columns: 1fr; }
     .story { padding: var(--s5) var(--s4) var(--s4); gap: var(--s4); }
-    .story .tag { font-size: 34px; }
-    .story .hx { height: 56px; margin-inline: calc(-1 * var(--s4)); width: calc(100% + 2 * var(--s4)); }
-    .story .proof, .story .fine { display: none; }
+    .story h2 { font-size: 30px; }
+    .story .hx { height: 48px; margin-inline: calc(-1 * var(--s4)); width: calc(100% + 2 * var(--s4)); }
+    .story .proof, .story .foot, .story .kicker { display: none; }
     .side { padding: var(--s4) var(--s4) var(--s6); }
     .bar { position: absolute; top: var(--s4); inset-inline-end: var(--s4); }
     .bar .seg { border-color: rgba(255,255,254,.18); }
@@ -111,16 +118,17 @@
   <section class="story" aria-label="Helixion">
     <img class="wm" src="assets/helixion-wordmark.svg" alt="Helixion">
     <div class="mid">
-      <p class="tag" lang="ar" dir="rtl">ما نخليك تهلوس</p>
+      <p class="kicker" data-t="kicker"></p>
+      <h2 data-t="head"></h2>
       <p class="sub" data-t="sub"></p>
       <svg class="hx" id="hx" aria-hidden="true"></svg>
       <ul class="proof">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19l1.2-3.5A7.5 7.5 0 1 1 9 18.3z"/></svg><span data-t="p1"></span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M10 9v6M14 9v6"/></svg><span data-t="p2"></span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg><span data-t="p3"></span></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19l1.2-3.5A7.5 7.5 0 1 1 9 18.3z"/></svg></span><div><b data-t="p1"></b><small data-t="p1d"></small></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M10 9v6M14 9v6"/></svg></span><div><b data-t="p2"></b><small data-t="p2d"></small></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></span><div><b data-t="p3"></b><small data-t="p3d"></small></div></li>
       </ul>
     </div>
-    <p class="fine" data-t="fine"></p>
+    <div class="foot"><span data-t="fine"></span><a href="https://www.helixion.me" target="_blank" rel="noopener">helixion.me</a></div>
   </section>
 
   <section class="side">
@@ -192,8 +200,11 @@
 
 <script>
 const T = {
-  en: { sub: 'One brain for customer experience and marketing. It reads every message against the account, so nobody acts on a story that is not true.',
-    p1: 'WhatsApp and SMS in one Arabic inbox', p2: 'Marketing held when the account says otherwise', p3: 'Processed in the Kingdom, built for PDPL', fine: 'Prototype · sample data',
+  en: { kicker: 'Built for Saudi businesses', head: 'One brain for customer experience and marketing.',
+    sub: 'Helixion reads every customer message against what happened on the account, so no team acts on a story that is not true.',
+    p1: 'One Arabic inbox', p1d: 'WhatsApp and SMS, read in Saudi dialect.',
+    p2: 'Marketing that checks first', p2d: 'Offers wait when the account says otherwise.',
+    p3: 'Data kept in the Kingdom', p3d: 'Processed in Saudi Arabia, built for the Personal Data Protection Law.', fine: 'Prototype with sample data',
     dark: 'Dark', light: 'Light', 'tab.in': 'Sign in', 'tab.up': 'Create account', google: 'Google', apple: 'Apple', or: 'or with your email',
     'h.in': 'Welcome back.', 'l.in': 'Sign in to your workspace.', 'h.up': 'Let\'s get you set up.', 'l.up': 'Two minutes now, then we build your Brand DNA together.',
     name: 'Full name', co: 'Company', email: 'Work email', phone: 'Mobile number', phoneH: 'We send a code here to confirm it\'s you.', pw: 'Password', forgot: 'Forgot it?', show: 'Show', hide: 'Hide', keep: 'Keep me signed in on this device',
@@ -205,8 +216,11 @@ const T = {
     proto: 'Prototype: nothing you type is sent or stored on a server.',
     'otp.h': 'Check your phone.', 'otp.lede': 'We sent a 6-digit code to', 'otp.go': 'Verify and continue', 'otp.none': 'No code?', 'otp.resend': 'Send again', 'otp.back': 'Change number', 'otp.proto': 'Prototype: any 6 digits work.', 'e.otp': 'That code is not complete.', 'otp.sent': 'A new code is on its way.',
     'r.h': 'Reset your password.', 'r.p': 'Enter your work email and we\'ll send you a link.', 'r.go': 'Send reset link', 'r.back': 'Back to sign in', 'r.sent': 'If that email has an account, a reset link is on its way. Check your inbox.' },
-  ar: { sub: 'عقل واحد لتجربة العملاء والتسويق. يقرأ كل رسالة مقابل الحساب، فلا أحد يتصرف بناءً على قصة غير صحيحة.',
-    p1: 'واتساب والرسائل النصية في صندوق عربي واحد', p2: 'يوقف التسويق إذا قال الحساب غير ذلك', p3: 'معالجة داخل المملكة ومتوافقة مع نظام حماية البيانات', fine: 'نموذج أولي · بيانات تجريبية',
+  ar: { kicker: 'مصمّمة للأعمال في السعودية', head: 'عقل واحد لتجربة العملاء والتسويق.',
+    sub: 'يقرأ Helixion كل رسالة من العميل مقابل ما حدث في حسابه، فلا يتصرف أي فريق بناءً على قصة غير صحيحة.',
+    p1: 'صندوق عربي واحد', p1d: 'واتساب والرسائل النصية، بفهم اللهجة السعودية.',
+    p2: 'تسويق يتحقق أولاً', p2d: 'تنتظر العروض إذا قال الحساب غير ذلك.',
+    p3: 'بياناتك داخل المملكة', p3d: 'معالجة داخل السعودية ومتوافقة مع نظام حماية البيانات الشخصية.', fine: 'نموذج أولي ببيانات تجريبية',
     dark: 'داكن', light: 'فاتح', 'tab.in': 'تسجيل الدخول', 'tab.up': 'إنشاء حساب', google: 'جوجل', apple: 'آبل', or: 'أو ببريدك الإلكتروني',
     'h.in': 'أهلاً بعودتك.', 'l.in': 'سجّل الدخول إلى مساحة عملك.', 'h.up': 'خلّنا نجهّز حسابك.', 'l.up': 'دقيقتان الآن، ثم نبني DNA علامتك معاً.',
     name: 'الاسم الكامل', co: 'الشركة', email: 'بريد العمل', phone: 'رقم الجوال', phoneH: 'نرسل رمزاً إلى هذا الرقم للتأكد أنه أنت.', pw: 'كلمة المرور', forgot: 'نسيتها؟', show: 'إظهار', hide: 'إخفاء', keep: 'أبقني مسجلاً على هذا الجهاز',
