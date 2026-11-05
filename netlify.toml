@@ -34,6 +34,29 @@
   to = "/travelgate/"
   status = 301
 
+# Aani & Dani proposal: locked with a password (tools/lock_page.py in amer-os), so this public repository only
+# holds the encrypted page. Link only, kept out of search, never cached. Built in the client-aani-dani repo.
+[[headers]]
+  for = "/aani-dani-proposal/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+[[redirects]]
+  from = "/Aani&Dani"
+  to = "/aani-dani-proposal/"
+  status = 301
+
+[[redirects]]
+  from = "/Aani&Dani/"
+  to = "/aani-dani-proposal/"
+  status = 301
+
+[[redirects]]
+  from = "/Aani%26Dani"
+  to = "/aani-dani-proposal/"
+  status = 301
+
 # Client questionnaire (AIIC): reachable by link only, kept out of search. Answers are emailed through
 # FormSubmit (formsubmit.co) to an@dot-cs.com, never into this repository.
 [[headers]]
