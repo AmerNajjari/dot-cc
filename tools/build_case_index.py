@@ -16,12 +16,18 @@ TEXT = {
            "desc": "Seventeen real dot. tech studio engagements in Saudi Arabia, each answering one question with the measured result. Client names withheld.",
            "h1": "Client results, one question per page",
            "lead": "Seventeen real dot. tech studio engagements. Each page answers one question with the measured result. Client names are withheld.",
-           "crumb": "client results", "other": "العربية", "industry": "Industry"},
+           "crumb": "client results", "other": "العربية", "industry": "Industry",
+           "faq": [("What results does dot. tech studio deliver?", "Measured before and after numbers from real engagements in Saudi insurance, payments, manufacturing and healthcare: faster quotes and reports, money found in reconciliations, and regulator deadlines met. Each page above answers one question with one result."),
+                   ("Why are the client names hidden?", "The work is for regulated companies, so names stay private. The numbers, the industry and what was done are real."),
+                   ("How does working with dot. tech studio start?", "With a paid diagnosis month that reads your systems, data and workflow and ends in a written 90-day plan, or with the 4-hour AI enablement session for one person.")]},
     "ar": {"dir": "rtl", "base": "ar/case-studies", "title": "نتائج العملاء، سؤال واحد في كل صفحة | dot. tech studio، السعودية",
            "desc": "سبعة عشر مشروعًا حقيقيًا من dot. tech studio في السعودية، كل صفحة تجيب عن سؤال واحد بالنتيجة المقاسة. أسماء العملاء محجوبة.",
            "h1": "نتائج العملاء، سؤال واحد في كل صفحة",
            "lead": "سبعة عشر مشروعًا حقيقيًا من dot. tech studio. كل صفحة تجيب عن سؤال واحد بالنتيجة المقاسة. أسماء العملاء محجوبة.",
-           "crumb": "نتائج العملاء", "other": "English", "industry": "القطاع"},
+           "crumb": "نتائج العملاء", "other": "English", "industry": "القطاع",
+           "faq": [("ما النتائج التي يحققها dot. tech studio؟", "أرقام مقاسة قبل وبعد من مشاريع حقيقية في التأمين والمدفوعات والتصنيع والصحة في السعودية: عروض أسعار وتقارير أسرع، وأموال مستردة في المطابقات، ومواعيد تنظيمية تم الوفاء بها."),
+                   ("لماذا أسماء العملاء محجوبة؟", "العمل لشركات خاضعة للتنظيم، لذلك تبقى الأسماء خاصة. الأرقام والقطاع وما تم إنجازه حقيقية."),
+                   ("كيف يبدأ العمل مع dot. tech studio؟", "بشهر تشخيص مدفوع يقرأ أنظمتك وبياناتك وسير العمل وينتهي بخطة مكتوبة لتسعين يومًا.")]},
 }
 
 
@@ -55,6 +61,10 @@ def build(lang):
     items = "\n".join(
         f'<li><a href="{SITE}/{t["base"]}/{c["slug"]}/">{c["q"]}</a><br><span class="kicker">{c["kicker"]}</span> {html.escape(c["answer"])}</li>'
         for c in cases(lang))
+    import json as _j
+    faq_ld = _j.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in t["faq"]]}, ensure_ascii=False)
+    faq_html = "\n".join(f"<h3>{q}</h3>\n<p>{a}</p>" for q, a in t["faq"])
     page = f"""<!doctype html>
 <html lang="{lang}" dir="{t['dir']}">
 <head>
@@ -83,6 +93,7 @@ def build(lang):
 <meta property="og:image" content="{SITE}/og/tech-studio.png">
 <link rel="icon" href="{SITE}/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="{SITE}/apple-touch-icon.png">
+<script type="application/ld+json">{faq_ld}</script>
 <script type="application/ld+json">{{"@context": "https://schema.org", "@type": "CollectionPage", "name": "{t['h1']}", "url": "{url}", "inLanguage": "{lang}", "isPartOf": {{"@type": "WebSite", "name": "dot.", "url": "{SITE}"}}}}</script>
 {style}
 <style>.cases{{list-style:none;padding:0}}.cases li{{margin:0 0 18px;padding-bottom:16px;border-bottom:1px solid var(--line)}}.cases a{{font-weight:700;font-size:17px}}.cases .kicker{{display:inline;margin:0}}</style>
@@ -99,6 +110,8 @@ def build(lang):
 <ul class="cases">
 {items}
 </ul>
+<h2>{'Questions' if lang == 'en' else 'أسئلة'}</h2>
+{faq_html}
 <a class="cta" href="{SITE}/tech-studio-results/">{'All results on one page' if lang == 'en' else 'كل النتائج في صفحة واحدة'} &rarr;</a>
 </main>
 {foot}
