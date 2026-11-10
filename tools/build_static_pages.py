@@ -548,7 +548,9 @@ CASE_STUDY_PATH = "tech-studio-results"
 # inbox, same proven delivery mechanism, no new backend to maintain. Static
 # pages currently ship zero JS and none is required here: formsubmit.co
 # handles the POST and its own redirect natively.
-FORMSUBMIT_ACTION = "https://formsubmit.co/info@dot-cs.com"
+# 2026-11-11: enquiries go to Amer (an@dot-cs.com) with a copy to info@; info@ alone never reached him.
+FORMSUBMIT_ACTION = "https://formsubmit.co/an@dot-cs.com"
+FORMSUBMIT_CC = "info@dot-cs.com"
 
 def lead_form_html(lang, page_label, subject):
     """page_label: which static page this is embedded on (goes in a plain,
@@ -570,6 +572,7 @@ def lead_form_html(lang, page_label, subject):
 <h2>{html.escape(heading)}</h2>
 <p class="lead" style="margin-bottom:16px">{html.escape(hint)}</p>
 <form id="{form_id}" action="{FORMSUBMIT_ACTION}" method="POST">
+<input type="hidden" name="_cc" value="{FORMSUBMIT_CC}">
 <input type="hidden" name="_subject" value="New enquiry from the dot. website ({html.escape(subject)})">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
