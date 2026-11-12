@@ -161,6 +161,7 @@ a{color:inherit}
       <a href="/creative-studio/">dot. creative studio &mdash; brand identity &amp; campaigns</a>
       <a href="/tech-studio/">dot. tech studio &mdash; AI, business systems &amp; data</a>
       <a href="/tech-studio-profile/">dot. tech studio &mdash; company profile</a>
+      <a href="/ai-enablement/">dot. tech studio &mdash; AI enablement, one four-hour session</a>
       <a href="/creative-consultancy/">dot. creative consultancy &mdash; business + brand consulting</a>
     </nav>
     <button type="button" class="panel p-studio" data-site="creative-studio" aria-label="dot. creative studio. Brand strategy, identity, and campaigns you can't scroll past. Enter the site.">
@@ -358,7 +359,8 @@ a{color:inherit}
       try{window.gtag&&window.gtag("event","generate_lead",{lead_source:String(d.site||"unknown")})}catch(err){}
       return;
     }
-    if(d.dot!=="go"||!SITES[d.site])return;
+    if(d.dot==="page"&&typeof d.path==="string"&&/^\/[a-z0-9-]+\/$/.test(d.path)){location.href=d.path;return;}
+if(d.dot!=="go"||!SITES[d.site])return;
     if(d.lang==="ar"||d.lang==="en")wantLang[d.site]=d.lang;
     go(d.site);
   });

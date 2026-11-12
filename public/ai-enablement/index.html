@@ -2,7 +2,8 @@
 <html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#04050A">
 <title>AI enablement: one session, four hours | dot. Riyadh</title>
 <meta name="description" content="A four-hour, one-to-one AI session from dot. in Riyadh. You work on your own tasks and leave able to use AI tools in your own area of expertise, every day.">
 <link rel="canonical" href="https://www.dot-cc.com/ai-enablement/">
@@ -38,118 +39,216 @@
 {"@type":"Question","name":"Can the session be in Arabic?","acceptedAnswer":{"@type":"Answer","text":"Yes. The session can run in Arabic or English, and we show how the tools work in both languages."}},
 {"@type":"Question","name":"Is it one to one or for a team?","acceptedAnswer":{"@type":"Answer","text":"The four-hour session is one to one. For a whole team there is a two-day plan, and for a company that wants AI agents doing real work every day, we build its own system."}}
 ]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#111;--panel:#1A1A1A;--line:#2E2E2E;--mut:#9A9A9A;--soft:#E0E0E0;--white:#fff;--teal:#00F4CB;--lime:#E1FF00}
+:root{
+  --void:#04050A;--ink:#0B0D14;--line:rgba(237,240,245,.14);--line2:rgba(237,240,245,.28);
+  --text:#EDF0F5;--mut:#8C95A3;--teal:#00F4CB;--red:#FF0000;--blue:#0068FF;--amber:#FFB600;--lime:#E1FF00;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--sans:"Inter Tight",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --gut:clamp(16px,3.2vw,40px)
+}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--white);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-  background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1.2px);background-size:24px 24px}
+html{background:var(--void)}
+body{background:var(--void);color:var(--text);font:16px/1.6 var(--sans);overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 50% 40%,#0c1a24 0%,var(--void) 60%)}
 a{color:inherit}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-header.top{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
-header.top svg{height:26px;width:auto;display:block}
-header.top nav{display:flex;gap:18px;font-size:14px;color:var(--mut)}
-header.top nav a{text-decoration:none}
-header.top nav a:hover{color:var(--white)}
-.rule{border:0;border-top:2px dotted var(--line)}
-.kick{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
-/* hero */
-.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;padding:64px 0 72px}
-h1{font-size:clamp(42px,7vw,88px);line-height:.95;font-weight:900;letter-spacing:-.03em;margin:14px 0 20px}
+::selection{background:var(--teal);color:#000}
+
+/* the sky */
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+.edge{position:fixed;left:0;right:0;z-index:4;pointer-events:none;height:96px}
+.edge.t{top:0;background:linear-gradient(180deg,rgba(4,5,10,.92),rgba(4,5,10,0))}
+.edge.b{bottom:0;height:110px;background:linear-gradient(0deg,rgba(4,5,10,.92),rgba(4,5,10,0))}
+@media (min-width:861px){.edge{height:70px}.edge.b{height:80px}}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 50%,transparent 45%,rgba(4,5,10,.55) 100%)}
+#tags{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.tag3d{position:absolute;left:0;top:0;font:500 11px/1.3 var(--mono);color:var(--text);white-space:nowrap;
+  opacity:0;transition:opacity .5s;will-change:transform}
+.tag3d b{display:inline-block;min-width:22px;padding:1px 5px;margin-right:6px;border:1px solid var(--line2);border-radius:3px;font-weight:500;color:var(--teal);text-align:center}
+.tag3d i{font-style:normal;color:var(--mut)}
+#links{position:fixed;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+
+/* corner HUD, the Igloo way */
+.hud{position:fixed;z-index:5;font:400 12px/1.5 var(--mono);color:var(--text);letter-spacing:.01em}
+.hud .m{color:var(--mut)}
+.hud.tl{top:var(--gut);left:var(--gut)}
+.hud.tl svg{height:22px;width:auto;display:block;margin-bottom:10px}
+.hud.tr{top:var(--gut);right:var(--gut);text-align:right;max-width:250px}
+.hud.tr .mf{transition:opacity .5s}
+body.away .hud.tr .mf{opacity:0;pointer-events:none}
+.hud.tr nav{display:flex;gap:14px;justify-content:flex-end;margin-bottom:10px}
+.hud.tr nav a{text-decoration:none;color:var(--mut)}
+.hud.tr nav a:hover,.hud.tr nav a:focus-visible{color:var(--text)}
+.hud.tr .book-mini{display:inline-block;margin-top:10px;padding:7px 12px;border:1px solid var(--teal);border-radius:999px;color:var(--teal);text-decoration:none}
+.hud.tr .book-mini:hover{background:var(--teal);color:#000}
+.hud.bl{bottom:var(--gut);left:var(--gut)}
+.hud.br{bottom:var(--gut);right:var(--gut);text-align:right}
+.hud button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:6px 0;min-height:24px}
+.hud button:focus-visible{outline:1px solid var(--teal);outline-offset:4px}
+.bars{display:inline-flex;gap:2px;align-items:flex-end;height:11px}
+.bars i{width:2px;background:var(--text);height:3px;transition:height .2s}
+.snd-on .bars i{animation:eq 1s infinite ease-in-out}
+.snd-on .bars i:nth-child(2){animation-delay:.2s}.snd-on .bars i:nth-child(3){animation-delay:.4s}.snd-on .bars i:nth-child(4){animation-delay:.1s}
+@keyframes eq{0%,100%{height:3px}50%{height:11px}}
+.meter{display:flex;gap:4px;justify-content:flex-end;margin-top:8px}
+.meter i{width:18px;height:2px;background:var(--line2);transition:background .4s}
+.meter i.on{background:var(--teal)}
+
+/* the journey */
+main{position:relative;z-index:3}
+.ch{min-height:100vh;display:flex;align-items:center;padding:120px var(--gut)}
+.ch.r{justify-content:flex-end}
+.ch.c{justify-content:center;text-align:center}
+.ch.hero{align-items:flex-end;padding-bottom:clamp(120px,17vh,190px)}
+.ch.hero .pane{max-width:660px}
+.pane{max-width:520px;width:100%}
+.ch.c .pane{max-width:760px}
+.ch:not(.c):not(.hero) .pane{max-width:560px;padding:clamp(24px,3vw,40px);border:1px solid var(--line);border-radius:20px;
+  background:linear-gradient(160deg,rgba(8,11,18,.78),rgba(4,5,10,.62));backdrop-filter:blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%)}
+.kick{font:500 12px/1.4 var(--mono);color:var(--teal);letter-spacing:.04em;margin-bottom:18px}
+.kick::before{content:"////// "}
+h1{font:800 clamp(42px,6vw,92px)/.92 var(--sans);letter-spacing:-.045em;margin-bottom:24px;text-transform:uppercase}
 h1 .t{color:var(--teal)}
-.lede{font-size:clamp(18px,2vw,21px);color:var(--soft);max-width:560px}
-.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:700;text-decoration:none;font-size:16px}
-.btn.p{background:var(--teal);color:#1A1A1A}
-.btn.p:hover{background:#5cf9df}
-.btn.s{border:1.5px solid var(--line);color:var(--white)}
-.btn.s:hover{border-color:var(--white)}
-.facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:36px}
-.facts div b{display:block;font-size:34px;font-weight:900;line-height:1}
-.facts div span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
-.clock{position:relative;aspect-ratio:1;max-width:440px;width:100%;justify-self:end}
-.clock svg{width:100%;height:100%;display:block}
-/* sections */
-section{padding:72px 0;border-top:2px dotted var(--line)}
-h2{font-size:clamp(30px,4vw,48px);line-height:1;font-weight:900;letter-spacing:-.02em;margin:12px 0 14px}
-.sub{color:var(--soft);max-width:640px;margin-bottom:34px}
-.grid{display:grid;gap:16px}
-.g4{grid-template-columns:repeat(4,1fr)}
-.g3{grid-template-columns:repeat(3,1fr)}
-.card{background:rgba(26,26,26,.94);border:1px solid var(--line);border-radius:26px;padding:24px;position:relative;overflow:hidden}
-.card .n{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--teal);text-transform:uppercase}
-.card h3{font-size:20px;line-height:1.2;margin:10px 0 8px}
-.card p{color:var(--mut);font-size:15px}
-.card.dot::after{content:"";position:absolute;right:-40px;top:-40px;width:100px;height:100px;border-radius:50%;background:var(--teal);opacity:.14}
-.leave li{list-style:none;display:flex;gap:14px;padding:16px 0;border-top:1px dotted var(--line);font-size:18px}
-.leave li::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--teal);flex:none;margin-top:8px}
-.leave li span{color:var(--mut);display:block;font-size:15px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.who{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.who span{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14px;color:var(--soft)}
-/* proof */
-.proof{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
-.agents .a{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px dotted var(--line)}
-.agents .a i{width:10px;height:10px;border-radius:50%;background:var(--lime);flex:none;box-shadow:0 0 0 0 rgba(225,255,0,.6);animation:live 2.4s infinite}
-.agents .a b{font-weight:700}
-.agents .a span{margin-left:auto;font-size:13px;color:var(--mut);text-align:right}
-@keyframes live{0%{box-shadow:0 0 0 0 rgba(225,255,0,.55)}70%{box-shadow:0 0 0 9px rgba(225,255,0,0)}100%{box-shadow:0 0 0 0 rgba(225,255,0,0)}}
-/* ladder */
-.step .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 10px;margin-bottom:12px}
-.step.on{border-color:var(--teal)}
-.step.on .tag{background:var(--teal);color:#1A1A1A}
-.step .tag.o{border:1px solid var(--line);color:var(--mut)}
-/* faq */
-details{border-top:1px dotted var(--line);padding:18px 0}
-details summary{cursor:pointer;font-weight:700;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
-details summary::after{content:"+";color:var(--teal);font-size:22px;line-height:1}
+h2{font:800 clamp(32px,4.4vw,58px)/1 var(--sans);letter-spacing:-.035em;margin-bottom:16px}
+h3{font:700 19px/1.25 var(--sans);letter-spacing:-.01em;margin-bottom:6px}
+.lede{font-size:clamp(17px,1.6vw,20px);color:#C9CFD8;max-width:560px}
+.ch.c .lede{margin:0 auto}
+.sub{color:#B5BCC7;font-size:17px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:14px 26px;border-radius:999px;font:700 15px/1 var(--sans);text-decoration:none;transition:transform .2s,background .2s}
+.btn.p{background:var(--teal);color:#04050A}
+.btn.p:hover{background:#6CFFE6;transform:translateY(-1px)}
+.btn.s{border:1px solid var(--line2);color:var(--text)}
+.btn.s:hover{border-color:var(--text)}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.ch.c .ctas{justify-content:center}
+.facts{display:flex;gap:40px;margin-top:44px;font-family:var(--mono)}
+.ch.c .facts{justify-content:center}
+.facts b{display:block;font:800 40px/1 var(--sans);color:var(--text)}
+.facts span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.12em}
+
+.list{list-style:none;margin-top:28px;border-top:1px solid var(--line)}
+.list li{display:grid;grid-template-columns:44px 1fr;gap:6px;padding:16px 0;border-bottom:1px solid var(--line)}
+.list li em{font:500 11px/1.9 var(--mono);color:var(--teal);font-style:normal}
+.list li span{display:block;color:var(--mut);font-size:15px;margin-top:2px}
+
+.hours{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:28px}
+.hours>div{background:rgba(4,5,10,.72);padding:20px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.hours .n{font:500 11px/1 var(--mono);color:var(--teal);margin-bottom:12px}
+.hours p{color:var(--mut);font-size:15px}
+
+.who{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.who span{font:400 12px/1 var(--mono);border:1px solid var(--line2);border-radius:999px;padding:9px 13px;background:rgba(4,5,10,.5)}
+
+.agents{margin-top:26px;border:1px solid var(--line);border-radius:14px;padding:8px 20px;background:rgba(4,5,10,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.agents .a{display:grid;grid-template-columns:14px 1fr auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
+.agents .a:last-child{border-bottom:0}
+.agents i{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px var(--teal);animation:pulse 2.4s infinite}
+.agents span{font:400 11px/1 var(--mono);color:var(--mut)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+.steps{display:grid;grid-template-columns:1fr;gap:10px;margin-top:26px;text-align:left}
+.steps div{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:rgba(4,5,10,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.steps div.on{border-color:var(--teal)}
+.steps .tg{display:inline-block;font:500 11px/1 var(--mono);padding:6px 9px;border-radius:999px;margin-bottom:0;border:1px solid var(--line2);color:var(--mut)}
+.steps .on .tg{background:var(--teal);border-color:var(--teal);color:#04050A}
+.steps p{color:var(--mut);font-size:14px;margin-top:6px}
+.steps h3{display:inline;margin-left:8px;font-size:17px;vertical-align:middle}
+.steps .tg{vertical-align:middle}
+
+details{border-bottom:1px solid var(--line);padding:18px 0}
+details:first-of-type{border-top:1px solid var(--line);margin-top:24px}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-weight:700;font-size:17px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:400 20px/1 var(--mono);color:var(--teal)}
 details[open] summary::after{content:"\2212"}
-details p{color:var(--soft);margin-top:10px;max-width:720px}
-/* form */
-.book{background:var(--teal);color:#1A1A1A;border-radius:26px;padding:44px;display:grid;grid-template-columns:1fr 1.2fr;gap:40px}
-.book h2{color:#1A1A1A}
-.book .sub{color:#1A1A1A;opacity:.8}
-.book label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
-.book input,.book textarea{width:100%;background:#fff;border:1.5px solid #1A1A1A;border-radius:14px;padding:13px 14px;font:inherit;font-size:16px;color:#1A1A1A}
+details p{color:var(--mut);margin-top:10px;font-size:15px}
+
+.book{max-width:980px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:40px;
+  border:1px solid var(--line2);border-radius:22px;padding:clamp(24px,4vw,48px);background:rgba(4,5,10,.74);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.book .pick{margin-top:26px}
+.book .or{font-size:14px;color:var(--mut);margin-top:22px}
+.book label{display:block;font:500 11px/1 var(--mono);color:var(--mut);margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em}
+.book input,.book textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line2);border-radius:10px;padding:13px 14px;font:inherit;font-size:16px;color:var(--text)}
+.book input:focus,.book textarea:focus{outline:none;border-color:var(--teal)}
 .book textarea{min-height:110px;resize:vertical}
-.book .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-.book .f{margin-bottom:12px}
-.book button{background:#1A1A1A;color:#fff;border:0;border-radius:999px;padding:15px 28px;font:inherit;font-weight:700;cursor:pointer}
-.book button:hover{background:#000}
-.book .note{font-size:13px;margin-top:10px;opacity:.75}
-.book .pick{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:#1A1A1A;color:#fff;border-radius:999px;padding:15px 28px;font-weight:700;text-decoration:none}
-.book .pick:hover{background:#000}
-.book .or{font-size:14px;margin-top:18px;opacity:.8}
+.book .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.book .f{margin-bottom:14px}
+.book button{background:var(--text);color:#04050A;border:0;border-radius:999px;min-height:48px;padding:14px 28px;font:700 15px/1 var(--sans);cursor:pointer}
+.book button:hover{background:#fff}
+.book .note{font:400 11px/1.5 var(--mono);color:var(--mut);margin-top:12px}
 .book form{position:relative}
 .book .hp{position:absolute;left:0;top:0;width:1px;height:1px;padding:0;border:0;overflow:hidden;opacity:0;pointer-events:none;clip:rect(0 0 0 0)}
-footer{padding:36px 0 48px;color:var(--mut);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-footer a{text-decoration:none}
-@media (max-width:900px){
-  .hero,.two,.proof,.book{grid-template-columns:1fr}
-  .clock{justify-self:center;max-width:320px}
-  .g4{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr}
-  .book{padding:28px}
-}
-@media (max-width:560px){
-  .wrap{padding:0 16px}
-  .g4{grid-template-columns:1fr}
+
+footer{position:relative;z-index:3;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:28px var(--gut) 90px;font:400 11px/1.5 var(--mono);color:var(--mut);border-top:1px solid var(--line)}
+footer a{text-decoration:none}footer a:hover{color:var(--text)}
+
+/* the opening fade */
+.ch .pane>*{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.ch.in .pane>*{opacity:1;transform:none}
+.ch.in .pane>*:nth-child(2){transition-delay:.08s}.ch.in .pane>*:nth-child(3){transition-delay:.16s}
+.ch.in .pane>*:nth-child(4){transition-delay:.24s}.ch.in .pane>*:nth-child(5){transition-delay:.32s}
+.no-js .ch .pane>*{opacity:1;transform:none}
+
+@media (max-width:860px){
+  .ch,.ch.r{justify-content:flex-start;padding:110px var(--gut) 90px}
+  .ch.c{justify-content:center}
+  .pane{max-width:none}
+  .ch:not(.c):not(.hero){align-items:flex-end}
+  .ch.hero{padding-bottom:110px}
+  .ch.hero .pane{background:linear-gradient(180deg,rgba(4,5,10,0),rgba(4,5,10,.72) 70px);margin:0 calc(var(--gut)*-1);padding:70px var(--gut) 0}
+  .ch.c .pane{background:rgba(4,5,10,.6);border-radius:20px;padding:24px 18px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .steps{grid-template-columns:1fr}
+  .book{grid-template-columns:1fr}
   .book .row{grid-template-columns:1fr}
-  header.top nav a.hide{display:none}
-  section{padding:56px 0}
+  .hud.tr nav{display:none}
+  .hud.tr .mf{display:none}
+  .hud.br .coords{display:none}
+  .facts{gap:28px}
+  .tag3d{font-size:10px}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important}html{scroll-behavior:auto}}
+@media (max-width:420px){.hours{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  .ch .pane>*{opacity:1;transform:none;transition:none}
+  .agents i,.snd-on .bars i{animation:none}
+}
 </style>
 </head>
-<body>
-<div class="wrap">
-<header class="top">
-  <a href="/" aria-label="dot. home"><svg viewBox="0 0 373.71 100"><path fill="#fff" d="M53.94 83.53C42.11 83.53 32.53 73.95 32.53 62.12C32.53 50.29 42.11 40.71 53.94 40.71C65.77 40.71 75.35 50.29 75.35 62.12C75.35 73.95 65.77 83.53 53.94 83.53M80.31 10.56L80.29 44.18L80.15 44.18C74.66 31.81 59.53 24.52 41.8 24.52C20.85 24.52 0 39.51 0 62.33C0 85.15 19.53 100 41.8 100C59.53 100 74.79 91.21 80.42 78.7L80.56 78.7L87.57 100L112.74 100L112.74 0ZM80.31 10.56M175.14 83.53C163.31 83.53 153.72 73.95 153.72 62.12C153.72 50.29 163.31 40.71 175.14 40.71C186.97 40.71 196.56 50.29 196.56 62.12C196.56 73.95 186.97 83.53 175.14 83.53M174.93 24.52C143.53 24.52 122.93 39.51 122.93 62.33C122.93 85.15 143.53 100 174.93 100C206.45 100 227.05 85.15 227.05 62.33C227.05 39.51 206.45 24.52 174.93 24.52M285.99 100C268.34 100 248.58 89.580 248.58 66.58L248.58 45.83L228.79 45.83L228.79 24.52L248.59 24.52L248.59 10.56L279.67 0.01L279.67 24.52L306.29 24.52L313.3 45.83L279.67 45.83L279.67 66.58C279.67 78.46 304.59 77.48 310.79 67.7L318.26 91.27C308.9 97.29 298.83 100 285.99 100"/><path fill="#00F4CB" d="M352.28 100C340.47 100 330.88 90.42 330.88 78.59C330.88 66.76 340.47 57.18 352.28 57.18C364.11 57.18 373.71 66.76 373.71 78.59C373.71 90.42 364.11 100 352.28 100"/></svg></a>
-  <nav><a class="hide" href="/tech-studio/">tech studio</a><a class="hide" href="/tech-studio-results/">results</a><a href="#book">Book a call</a></nav>
-</header>
-<hr class="rule">
+<body class="no-js">
+<canvas id="sky" aria-hidden="true"></canvas>
+<svg id="links" aria-hidden="true"></svg>
+<div class="vignette" aria-hidden="true"></div>
+<div id="tags" aria-hidden="true"></div>
+<div class="edge t" aria-hidden="true"></div><div class="edge b" aria-hidden="true"></div>
 
-<div class="hero">
-  <div>
+<div class="hud tl">
+  <a href="/" aria-label="dot. home"><svg viewBox="0 0 373.71 100" role="img" aria-label="dot."><path fill="#fff" d="M53.94 83.53C42.11 83.53 32.53 73.950 32.53 62.12C32.53 50.29 42.11 40.71 53.94 40.71C65.77 40.71 75.35 50.29 75.35 62.12C75.35 73.95 65.77 83.53 53.94 83.53M80.31 10.56L80.29 44.18L80.15 44.18C74.66 31.81 59.53 24.52 41.8 24.52C20.85 24.52 0 39.51 0 62.33C0 85.150 19.53 100 41.8 100C59.53 100 74.79 91.21 80.42 78.7L80.56 78.7L87.57 100L112.74 100L112.74 0ZM80.31 10.56M175.14 83.53C163.31 83.53 153.72 73.95 153.72 62.12C153.72 50.29 163.31 40.71 175.14 40.71C186.97 40.71 196.56 50.29 196.56 62.12C196.56 73.95 186.97 83.53 175.14 83.53M174.93 24.52C143.53 24.52 122.93 39.51 122.93 62.33C122.93 85.15 143.53 100 174.93 100C206.45 100 227.05 85.15 227.05 62.33C227.05 39.51 206.45 24.52 174.93 24.52M285.99 100C268.34 100 248.58 89.580 248.58 66.58L248.58 45.83L228.79 45.83L228.79 24.52L248.59 24.52L248.59 10.56L279.67 0.01L279.67 24.52L306.29 24.52L313.3 45.83L279.67 45.83L279.67 66.58C279.67 78.46 304.59 77.48 310.79 67.7L318.26 91.27C308.9 97.29 298.83 100 285.99 100"/><path fill="#00F4CB" d="M352.28 100C340.47 100 330.88 90.42 330.88 78.59C330.88 66.76 340.47 57.18 352.28 57.18C364.11 57.18 373.71 66.76 373.71 78.59C373.71 90.42 364.11 100 352.28 100"/></svg></a>
+  <div class="m">// tech studio · Riyadh</div>
+  <div class="m">// AI enablement</div>
+</div>
+
+<div class="hud tr">
+  <nav aria-label="Site"><a href="/tech-studio/">tech studio</a><a href="/tech-studio-results/">results</a><a href="#book">Book a call</a></nav>
+  <div class="mf">////// One session<br><span class="m">Four hours, one to one, on your own work. You leave able to use AI in your own field, every day.</span></div>
+  <a class="book-mini" href="https://calendar.app.google/obspbWoDW8FZsa4VA" target="_blank" rel="noopener">Book 20 min &rarr;</a>
+</div>
+
+<div class="hud bl">
+  <div id="cue">Scroll down to<br>discover.</div>
+  <button id="snd" type="button" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Sound: <span id="sndt">Off</span></span></button>
+</div>
+
+<div class="hud br">
+  <div class="coords m" id="coords">24.7136° N · 46.6753° E</div>
+  <div id="chap">00 / 07 · Launch</div>
+  <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+
+<main>
+<section class="ch hero" id="top" data-name="Launch">
+  <div class="pane">
     <div class="kick">dot. tech studio · AI enablement</div>
     <h1>Four hours.<br>Then AI works <span class="t">for you.</span></h1>
     <p class="lede">One session, one to one, on your own work. You leave able to use AI tools in your own area of expertise, every day, without waiting for anyone.</p>
@@ -163,68 +262,51 @@ footer a{text-decoration:none}
       <div><b>1:1</b><span>you and us</span></div>
     </div>
   </div>
-  <div class="clock" aria-hidden="true">
-    <svg viewBox="0 0 400 400">
-      <circle cx="200" cy="200" r="180" fill="none" stroke="#2E2E2E" stroke-width="2" stroke-dasharray="2 8"/>
-      <g id="arcs"></g>
-      <circle cx="200" cy="200" r="96" fill="#1A1A1A" stroke="#2E2E2E"/>
-      <text x="200" y="196" text-anchor="middle" font-size="64" font-weight="900" fill="#fff" font-family="-apple-system,Helvetica,Arial">4h</text>
-      <text x="200" y="226" text-anchor="middle" font-size="13" letter-spacing="2" fill="#9A9A9A" font-family="-apple-system,Helvetica,Arial">YOUR WORK</text>
-      <circle cx="200" cy="20" r="10" fill="#00F4CB"/>
-    </svg>
-  </div>
-</div>
+</section>
 
-<section id="leave">
-  <div class="two">
-    <div>
-      <div class="kick">What you leave with</div>
-      <h2>Not a course. Your own work, done with AI.</h2>
-      <p class="sub">Every minute is spent on tasks from your real week. Nothing generic, no slides about the future.</p>
-    </div>
-    <ul class="leave">
-      <li><div>Your own tasks, done with AI in the room<span>We pick three jobs from your week and do them together, start to finish.</span></div></li>
-      <li><div>A short list of tools that fit your role<span>Chosen for your work, not a tour of everything on the market.</span></div></li>
-      <li><div>Your own saved instructions<span>Written for your daily jobs, so the next time takes minutes.</span></div></li>
-      <li><div>A plan for your next 30 days<span>What to hand to AI first, and what to keep for yourself.</span></div></li>
+<section class="ch" id="leave" data-name="What you leave with">
+  <div class="pane">
+    <div class="kick">What you leave with</div>
+    <h2>Not a course. Your own work, done with AI.</h2>
+    <p class="sub">Every minute is spent on tasks from your real week. Nothing generic, no slides about the future.</p>
+    <ul class="list">
+      <li><em>01</em><div>Your own tasks, done with AI in the room<span>We pick three jobs from your week and do them together, start to finish.</span></div></li>
+      <li><em>02</em><div>A short list of tools that fit your role<span>Chosen for your work, not a tour of everything on the market.</span></div></li>
+      <li><em>03</em><div>Your own saved instructions<span>Written for your daily jobs, so the next time takes minutes.</span></div></li>
+      <li><em>04</em><div>A plan for your next 30 days<span>What to hand to AI first, and what to keep for yourself.</span></div></li>
     </ul>
   </div>
 </section>
 
-<section id="how">
-  <div class="kick">How the four hours run</div>
-  <h2>One hour each. One job each.</h2>
-  <p class="sub">The order stays the same; what fills it is yours.</p>
-  <div class="grid g4">
-    <div class="card dot"><div class="n">Hour 1</div><h3>Map your week</h3><p>Where your time goes, and which jobs AI can take or speed up.</p></div>
-    <div class="card dot"><div class="n">Hour 2</div><h3>Pick your tools</h3><p>Set up the few tools that fit those jobs, on your own accounts.</p></div>
-    <div class="card dot"><div class="n">Hour 3</div><h3>Do the real work</h3><p>Your own tasks, done with AI, until the result is one you would send.</p></div>
-    <div class="card dot"><div class="n">Hour 4</div><h3>Make it stick</h3><p>Save your instructions, write your 30-day plan, answer every question.</p></div>
-  </div>
-</section>
-
-<section id="who">
-  <div class="two">
-    <div>
-      <div class="kick">Who it is for</div>
-      <h2>People who run things and have no time to learn the slow way.</h2>
-    </div>
-    <div>
-      <p class="sub" style="margin-bottom:16px">Owners and leaders of companies of about 20 to 500 people, in any sector, in Saudi Arabia and the Gulf.</p>
-      <div class="who"><span>Owners</span><span>CEOs</span><span>General managers</span><span>Chief operating officers</span><span>Heads of sales</span><span>Heads of marketing</span><span>Business development</span><span>Commercial leads</span></div>
+<section class="ch r" id="how" data-name="The four hours">
+  <div class="pane">
+    <div class="kick">How the four hours run</div>
+    <h2>One hour each. One job each.</h2>
+    <p class="sub">The order stays the same; what fills it is yours.</p>
+    <div class="hours">
+      <div><div class="n">Hour 01</div><h3>Map your week</h3><p>Where your time goes, and which jobs AI can take or speed up.</p></div>
+      <div><div class="n">Hour 02</div><h3>Pick your tools</h3><p>Set up the few tools that fit those jobs, on your own accounts.</p></div>
+      <div><div class="n">Hour 03</div><h3>Do the real work</h3><p>Your own tasks, done with AI, until the result is one you would send.</p></div>
+      <div><div class="n">Hour 04</div><h3>Make it stick</h3><p>Save your instructions, write your 30-day plan, answer every question.</p></div>
     </div>
   </div>
 </section>
 
-<section id="proof">
-  <div class="proof">
-    <div>
-      <div class="kick">Why us</div>
-      <h2>We run dot. on the thing we teach.</h2>
-      <p class="sub">dot. runs its own AI agents every day. They catch leads, draft every follow-up and write the weekly brief. A person still says yes before anything leaves. In your session you see how it works, and why the human yes stays.</p>
-    </div>
-    <div class="card agents">
-      <div class="n" style="margin-bottom:6px">Running at dot. today</div>
+<section class="ch" id="who" data-name="Who it is for">
+  <div class="pane">
+    <div class="kick">Who it is for</div>
+    <h2>People who run things and have no time to learn the slow way.</h2>
+    <p class="sub">Owners and leaders of companies of about 20 to 500 people, in any sector, in Saudi Arabia and the Gulf.</p>
+    <div class="who"><span>Owners</span><span>CEOs</span><span>General managers</span><span>Chief operating officers</span><span>Heads of sales</span><span>Heads of marketing</span><span>Business development</span><span>Commercial leads</span></div>
+  </div>
+</section>
+
+<section class="ch r" id="proof" data-name="Why us">
+  <div class="pane">
+    <div class="kick">Why us</div>
+    <h2>We run dot. on the thing we teach.</h2>
+    <p class="sub">dot. runs its own AI agents every day. They catch leads, draft every follow-up and write the weekly brief. A person still says yes before anything leaves. In your session you see how it works, and why the human yes stays.</p>
+    <div class="agents">
       <div class="a"><i></i><b>Lead catcher</b><span>every 2 hours</span></div>
       <div class="a"><i></i><b>LinkedIn drafter</b><span>every day</span></div>
       <div class="a"><i></i><b>Stalled-lead nudge</b><span>every working day</span></div>
@@ -233,35 +315,41 @@ footer a{text-decoration:none}
   </div>
 </section>
 
-<section id="next">
-  <div class="kick">After the session</div>
-  <h2>Start with one person. Grow when it pays.</h2>
-  <p class="sub">Most start with the four hours. When the results show, the rest of the team follows.</p>
-  <div class="grid g3">
-    <div class="card step on"><span class="tag">Start here</span><h3>AI enablement</h3><p>One person, four hours, one to one. Able to use AI in their own work the same day.</p></div>
-    <div class="card step"><span class="tag o">For a team</span><h3>The two-day team plan</h3><p>The same approach for a whole team, built around how that team actually works.</p></div>
-    <div class="card step"><span class="tag o">For the company</span><h3>Your own system</h3><p>AI agents doing real jobs across your company every day, with a person's yes where it matters.</p></div>
+<section class="ch" id="next" data-name="After the session">
+  <div class="pane">
+    <div class="kick">After the session</div>
+    <h2>Start with one person. Grow when it pays.</h2>
+    <p class="sub">Most start with the four hours. When the results show, the rest of the team follows.</p>
+    <div class="steps">
+      <div class="on"><span class="tg">Start here</span><h3>AI enablement</h3><p>One person, four hours, one to one. Able to use AI in their own work the same day.</p></div>
+      <div><span class="tg">For a team</span><h3>The two-day team plan</h3><p>The same approach for a whole team, built around how that team actually works.</p></div>
+      <div><span class="tg">For the company</span><h3>Your own system</h3><p>AI agents doing real jobs across your company every day, with a person's yes where it matters.</p></div>
+    </div>
   </div>
 </section>
 
-<section id="faq">
-  <div class="kick">Questions</div>
-  <h2>Before you book.</h2>
-  <details><summary>Do I need any technical background?</summary><p>No. The session starts from the work you already do. If you can write an email, you can do everything we cover.</p></details>
-  <details><summary>Which AI tools does the session use?</summary><p>The ones that fit your work. We pick them in the first hour, based on your role and your tasks, so you leave with a short list you will actually use rather than a tour of every tool.</p></details>
-  <details><summary>Can the session be in Arabic?</summary><p>Yes. The session can run in Arabic or English, and we show how the tools work in both languages.</p></details>
-  <details><summary>Is it one to one or for a team?</summary><p>The four-hour session is one to one. For a whole team there is a two-day plan, and for a company that wants AI agents doing real work every day, we build its own system.</p></details>
+<section class="ch" id="faq" data-name="Questions">
+  <div class="pane">
+    <div class="kick">Questions</div>
+    <h2>Before you book.</h2>
+    <details><summary>Do I need any technical background?</summary><p>No. The session starts from the work you already do. If you can write an email, you can do everything we cover.</p></details>
+    <details><summary>Which AI tools does the session use?</summary><p>The ones that fit your work. We pick them in the first hour, based on your role and your tasks, so you leave with a short list you will actually use rather than a tour of every tool.</p></details>
+    <details><summary>Can the session be in Arabic?</summary><p>Yes. The session can run in Arabic or English, and we show how the tools work in both languages.</p></details>
+    <details><summary>Is it one to one or for a team?</summary><p>The four-hour session is one to one. For a whole team there is a two-day plan, and for a company that wants AI agents doing real work every day, we build its own system.</p></details>
+  </div>
 </section>
 
-<section id="book" style="border-top:0;padding-top:24px">
+<section class="ch c" id="book" data-name="Book">
+  <div class="pane">
   <div class="book">
-    <div>
+    <div style="text-align:left">
+      <div class="kick">Landing</div>
       <h2>Book a 20-minute call.</h2>
       <p class="sub">Pick a time that suits you. Sunday to Thursday, Riyadh time, on Google Meet.</p>
-      <a class="pick" href="https://calendar.app.google/obspbWoDW8FZsa4VA" target="_blank" rel="noopener">Book 20 minutes &rarr;</a>
+      <a class="btn p pick" href="https://calendar.app.google/obspbWoDW8FZsa4VA" target="_blank" rel="noopener">Book 20 minutes &rarr;</a>
       <p class="or">Rather write first? Tell us what takes most of your week and we reply within one working day.</p>
     </div>
-    <form id="lf-form-ai" action="https://formsubmit.co/an@dot-cs.com" method="POST">
+    <form id="lf-form-ai" action="https://formsubmit.co/an@dot-cs.com" method="POST" style="text-align:left">
       <input type="hidden" name="_cc" value="info@dot-cs.com">
       <input type="hidden" name="_subject" value="AI enablement enquiry from the dot. website">
       <input type="hidden" name="_template" value="table">
@@ -283,34 +371,326 @@ footer a{text-decoration:none}
       <p class="note">We use your details only to reply to you.</p>
     </form>
   </div>
+  </div>
 </section>
+</main>
 
 <footer>
   <span>dot. · Riyadh, Saudi Arabia · <a href="mailto:info@dot-cs.com">info@dot-cs.com</a></span>
-  <span><a href="/">dot-cc.com</a></span>
+  <span><a href="/">dot-cc.com</a> · <a href="/tech-studio/">tech studio</a></span>
 </footer>
-</div>
-<script>
-(function(){
-  // four hour arcs around the clock
-  var g=document.getElementById("arcs"),C=200,R=150,cols=["#00F4CB","#00F4CB","#00F4CB","#00F4CB"];
-  for(var i=0;i<4;i++){
-    var a0=(-90+i*90+4)*Math.PI/180,a1=(-90+(i+1)*90-4)*Math.PI/180;
-    var p=document.createElementNS("http://www.w3.org/2000/svg","path");
-    p.setAttribute("d","M"+(C+R*Math.cos(a0))+" "+(C+R*Math.sin(a0))+" A"+R+" "+R+" 0 0 1 "+(C+R*Math.cos(a1))+" "+(C+R*Math.sin(a1)));
-    p.setAttribute("fill","none");p.setAttribute("stroke",cols[i]);p.setAttribute("stroke-width","22");p.setAttribute("stroke-linecap","round");
-    p.setAttribute("stroke-opacity",String(.35+i*.2));
-    g.appendChild(p);
-    var m=(a0+a1)/2,t=document.createElementNS("http://www.w3.org/2000/svg","text");
-    t.setAttribute("x",C+(R+0)*Math.cos(m));t.setAttribute("y",C+(R+0)*Math.sin(m)+5);t.setAttribute("text-anchor","middle");
-    t.setAttribute("font-size","13");t.setAttribute("font-weight","800");t.setAttribute("fill","#1A1A1A");t.setAttribute("font-family","-apple-system,Helvetica,Arial");
-    t.textContent=String(i+1);g.appendChild(t);
+
+<script>document.body.classList.remove('no-js');</script>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const SMALL = innerWidth < 860;
+const canvas = document.getElementById('sky');
+let renderer;
+try { renderer = new THREE.WebGLRenderer({canvas, antialias:!SMALL, alpha:false, powerPreference:'high-performance'}); }
+catch(e){ revealAll(); throw e; }
+renderer.setPixelRatio(Math.min(devicePixelRatio, SMALL ? 1.5 : 2));
+renderer.setClearColor(0x04050a, 1);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x04050a, 0.0065);
+const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 2000);
+
+const C = { teal:0x00F4CB, red:0xFF0000, blue:0x0068FF, amber:0xFFB600, lime:0xE1FF00 };
+
+/* soft round point sprite shader, shared by stars and galaxy */
+const pointMat = (opts={}) => new THREE.ShaderMaterial({
+  transparent:true, depthWrite:false, blending:THREE.AdditiveBlending, vertexColors:true,
+  uniforms:{ uTime:{value:0}, uPx:{value:renderer.getPixelRatio()}, uSize:{value:opts.size||1}, uTw:{value:opts.twinkle||0} },
+  vertexShader:`
+    attribute float aSize; attribute float aSeed;
+    uniform float uTime,uPx,uSize,uTw; varying vec3 vC; varying float vA;
+    void main(){
+      vC = color;
+      vec4 mv = modelViewMatrix*vec4(position,1.);
+      gl_Position = projectionMatrix*mv;
+      float tw = 1. - uTw*0.5*(1.+sin(uTime*1.7+aSeed*40.));
+      vA = tw;
+      gl_PointSize = aSize*uSize*uPx*(160./-mv.z);
+    }`,
+  fragmentShader:`
+    varying vec3 vC; varying float vA;
+    void main(){
+      float d = length(gl_PointCoord-.5);
+      float a = smoothstep(.5,0.,d); a*=a;
+      gl_FragColor = vec4(vC, a*vA);
+    }`
+});
+
+/* 1. deep star field */
+{
+  const N = SMALL ? 2500 : 6000, p = new Float32Array(N*3), c = new Float32Array(N*3), s = new Float32Array(N), sd = new Float32Array(N);
+  const col = new THREE.Color();
+  for(let i=0;i<N;i++){
+    const r = 260 + Math.random()*500, th = Math.random()*Math.PI*2, ph = Math.acos(2*Math.random()-1);
+    p[i*3]=r*Math.sin(ph)*Math.cos(th); p[i*3+1]=r*Math.cos(ph); p[i*3+2]=r*Math.sin(ph)*Math.sin(th);
+    col.setHSL(.5+Math.random()*.15, .25, .75+Math.random()*.25); col.toArray(c,i*3);
+    s[i] = Math.random()<.04 ? 9 : 2+Math.random()*4; sd[i]=Math.random();
   }
-  var f=document.getElementById("lf-form-ai");
-  if(f) f.addEventListener("submit",function(){
-    if(typeof gtag==="function") gtag("event","generate_lead",{lead_source:"ai-enablement",transport_type:"beacon"});
-  });
-})();
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.BufferAttribute(p,3)); g.setAttribute('color',new THREE.BufferAttribute(c,3));
+  g.setAttribute('aSize',new THREE.BufferAttribute(s,1)); g.setAttribute('aSeed',new THREE.BufferAttribute(sd,1));
+  var stars = new THREE.Points(g, pointMat({size:2.2, twinkle:.8})); scene.add(stars);
+}
+
+/* 2. the spiral galaxy the dot sits in */
+const galaxy = new THREE.Group(); scene.add(galaxy);
+{
+  const N = SMALL ? 16000 : 42000, R = 95, arms = 4, p = new Float32Array(N*3), c = new Float32Array(N*3), s = new Float32Array(N), sd = new Float32Array(N);
+  const inner = new THREE.Color(0xE8FFF9), mid = new THREE.Color(C.teal), outer = new THREE.Color(C.blue), col = new THREE.Color();
+  for(let i=0;i<N;i++){
+    const r = Math.pow(Math.random(),1.6)*R;
+    const a = (i%arms)/arms*Math.PI*2 + r*0.075;
+    const sp = Math.pow(Math.random(),2.6)*(Math.random()<.5?1:-1)*(3+r*.22);
+    const sp2 = Math.pow(Math.random(),2.6)*(Math.random()<.5?1:-1)*(1.2+r*.05);
+    const sp3 = Math.pow(Math.random(),2.6)*(Math.random()<.5?1:-1)*(3+r*.22);
+    p[i*3]=Math.cos(a)*r+sp; p[i*3+1]=sp2; p[i*3+2]=Math.sin(a)*r+sp3;
+    const t = r/R;
+    if(t<.35) col.copy(inner).lerp(mid,t/.35); else col.copy(mid).lerp(outer,(t-.35)/.65);
+    if(Math.random()<.015) col.set(Math.random()<.5?C.amber:C.red);
+    col.multiplyScalar(.55+Math.random()*.45); col.toArray(c,i*3);
+    s[i]=1+Math.random()*2.4; sd[i]=Math.random();
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.BufferAttribute(p,3)); g.setAttribute('color',new THREE.BufferAttribute(c,3));
+  g.setAttribute('aSize',new THREE.BufferAttribute(s,1)); g.setAttribute('aSeed',new THREE.BufferAttribute(sd,1));
+  galaxy.add(new THREE.Points(g, pointMat({size:1.3, twinkle:.25})));
+  galaxy.position.set(0,-14,-70); galaxy.rotation.set(.42,0,.12);
+}
+
+/* planet material: lit sphere with a rim of light, the look of a planet against space */
+const planetMat = (hex, rim=1.2) => new THREE.ShaderMaterial({
+  uniforms:{ uC:{value:new THREE.Color(hex)}, uL:{value:new THREE.Vector3(-.6,.5,.7).normalize()}, uRim:{value:rim}, uTime:{value:0} },
+  vertexShader:`varying vec3 vN; varying vec3 vV; varying vec3 vP;
+    void main(){ vN=normalize(normalMatrix*normal); vec4 mv=modelViewMatrix*vec4(position,1.); vV=normalize(-mv.xyz); vP=position; gl_Position=projectionMatrix*mv; }`,
+  fragmentShader:`uniform vec3 uC; uniform vec3 uL; uniform float uRim,uTime; varying vec3 vN; varying vec3 vV; varying vec3 vP;
+    float h(vec3 p){return fract(sin(dot(p,vec3(12.9898,78.233,37.719)))*43758.5453);}
+    float n3(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+      return mix(mix(mix(h(i),h(i+vec3(1,0,0)),f.x),mix(h(i+vec3(0,1,0)),h(i+vec3(1,1,0)),f.x),f.y),
+                 mix(mix(h(i+vec3(0,0,1)),h(i+vec3(1,0,1)),f.x),mix(h(i+vec3(0,1,1)),h(i+vec3(1,1,1)),f.x),f.y),f.z);}
+    void main(){
+      float d = max(dot(vN,uL),0.);
+      float bands = n3(vP*1.6+vec3(0.,uTime*.05,0.))*.6 + n3(vP*4.)*.4;
+      vec3 base = uC*(.025+.62*d)*(.55+.6*bands);
+      float rim = pow(1.-max(dot(vN,vV),0.),3.2)*uRim;
+      gl_FragColor = vec4(base + uC*rim, 1.);
+    }`
+});
+const haloMat = (hex, power=3., k=.9) => new THREE.ShaderMaterial({
+  transparent:true, depthWrite:false, blending:THREE.AdditiveBlending, side:THREE.BackSide,
+  uniforms:{uC:{value:new THREE.Color(hex)},uP:{value:power},uK:{value:k}},
+  vertexShader:`varying vec3 vN; varying vec3 vV; void main(){ vN=normalize(normalMatrix*normal); vec4 mv=modelViewMatrix*vec4(position,1.); vV=normalize(-mv.xyz); gl_Position=projectionMatrix*mv; }`,
+  fragmentShader:`uniform vec3 uC; uniform float uP,uK; varying vec3 vN; varying vec3 vV;
+    void main(){ float i = pow(max(dot(vN,vV),0.)*1.02, uP)*uK; gl_FragColor=vec4(uC*i, i); }`
+});
+const planets = [];
+function planet(hex, r, pos, rim, haloK){
+  const g = new THREE.Group();
+  const m = new THREE.Mesh(new THREE.SphereGeometry(r, 64, 64), planetMat(hex, rim)); g.add(m);
+  g.add(new THREE.Mesh(new THREE.SphereGeometry(r*1.35, 48, 48), haloMat(hex, 3.2, haloK)));
+  g.position.copy(pos); scene.add(g); planets.push(m); return g;
+}
+
+/* 3. the dot: tech studio teal, the centre of everything */
+const dot = planet(C.teal, 3, new THREE.Vector3(0,0,0), 1.5, .75);
+{ // a thin dotted orbit ring and a dust ring around the dot
+  const ring = new THREE.Group(); dot.add(ring); ring.rotation.x = Math.PI/2.15;
+  const N = SMALL?1400:3200, p=new Float32Array(N*3), c=new Float32Array(N*3), s=new Float32Array(N), sd=new Float32Array(N), col=new THREE.Color();
+  for(let i=0;i<N;i++){ const a=Math.random()*Math.PI*2, r=4.3+Math.random()*1.7+Math.pow(Math.random(),4)*1.5;
+    p[i*3]=Math.cos(a)*r; p[i*3+1]=Math.sin(a)*r; p[i*3+2]=(Math.random()-.5)*.08;
+    col.set(C.teal).lerp(new THREE.Color(0xffffff),Math.random()*.5).multiplyScalar(.5+Math.random()*.5); col.toArray(c,i*3);
+    s[i]=.5+Math.random()*1.3; sd[i]=Math.random(); }
+  const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.BufferAttribute(p,3)); g.setAttribute('color',new THREE.BufferAttribute(c,3));
+  g.setAttribute('aSize',new THREE.BufferAttribute(s,1)); g.setAttribute('aSeed',new THREE.BufferAttribute(sd,1));
+  ring.add(new THREE.Points(g, pointMat({size:.55, twinkle:.3})));
+}
+
+/* 4. four hour moons on one orbit, joined like a constellation */
+const hourOrbit = new THREE.Group(); hourOrbit.rotation.set(-.32,0,.18); scene.add(hourOrbit);
+{
+  const pts=[]; for(let i=0;i<=128;i++){const a=i/128*Math.PI*2; pts.push(new THREE.Vector3(Math.cos(a)*8.5,0,Math.sin(a)*8.5));}
+  const line = new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineDashedMaterial({color:0x8c95a3,dashSize:.18,gapSize:.32,transparent:true,opacity:.45}));
+  line.computeLineDistances(); hourOrbit.add(line);
+}
+const moons = [];
+for(let i=0;i<4;i++){
+  const a = -Math.PI/2 + i*Math.PI/2 + .35;
+  const m = new THREE.Mesh(new THREE.SphereGeometry(.42,32,32), planetMat(0xEDF0F5, 1.4));
+  m.position.set(Math.cos(a)*8.5,0,Math.sin(a)*8.5); hourOrbit.add(m); moons.push(m); planets.push(m);
+}
+
+/* 5. the agents: four satellites with blinking lights on a tight, tilted orbit */
+const agentOrbit = new THREE.Group(); agentOrbit.rotation.set(.9,.3,-.4); dot.add(agentOrbit);
+const sats = [];
+for(let i=0;i<4;i++){
+  const s = new THREE.Group();
+  const body = new THREE.Mesh(new THREE.BoxGeometry(.22,.22,.22), new THREE.MeshBasicMaterial({color:0xEDF0F5}));
+  const wing = new THREE.Mesh(new THREE.BoxGeometry(.9,.02,.22), new THREE.MeshBasicMaterial({color:0x2a3340}));
+  const lamp = new THREE.Mesh(new THREE.SphereGeometry(.07,12,12), new THREE.MeshBasicMaterial({color:C.teal}));
+  lamp.position.y=.16; s.add(body,wing,lamp); s.userData.lamp=lamp;
+  const a=i/4*Math.PI*2; s.position.set(Math.cos(a)*4.9,0,Math.sin(a)*4.9); agentOrbit.add(s); sats.push(s);
+}
+
+/* 6. the dot. family: the other studios as far planets */
+const studios = [
+  {hex:C.red,   r:1.7, p:new THREE.Vector3(-34,7,-26), name:'creative studio'},
+  {hex:C.blue,  r:2.3, p:new THREE.Vector3(31,-4,-34),  name:'creative consultancy'},
+  {hex:C.amber, r:1.4, p:new THREE.Vector3(-22,-8,22),  name:'arch studio'},
+  {hex:C.lime,  r:.9,  p:new THREE.Vector3(24,10,14),   name:'dot. group'}
+].map(o => Object.assign(o,{g:planet(o.hex,o.r,o.p,1.3,.8)}));
+
+/* 7. the three growth steps: one person, a team, a company, as a line of rising planets */
+const growth = [
+  {r:.7,  p:new THREE.Vector3(-1.5,15.6,-6)},
+  {r:1.2, p:new THREE.Vector3(4.8,17.2,-8)},
+  {r:1.9, p:new THREE.Vector3(12.5,19.2,-10)}
+].map((o,i)=>Object.assign(o,{g:planet(i===0?C.teal:(i===1?0x5fe8d6:0xEDF0F5),o.r,o.p,1.4,.7)}));
+
+/* HTML tags that ride on 3D points, with thin lines between numbered points (the constellation) */
+const tagsEl = document.getElementById('tags'), linksEl = document.getElementById('links');
+const tags = [];
+function tag(obj, html, show, off=[14,-10]){
+  const el = document.createElement('div'); el.className='tag3d'; el.innerHTML=html; tagsEl.appendChild(el);
+  const t={obj,el,show,off,x:0,y:0,vis:false}; tags.push(t); return t;
+}
+const hourNames = ['Map your week','Pick your tools','Do the real work','Make it stick'];
+const moonTags = moons.map((m,i)=>tag(m, `<b>0${i+1}</b>Hour ${i+1} <i>· ${hourNames[i]}</i>`, ['how']));
+const satNames = ['Lead catcher','LinkedIn drafter','Stalled-lead nudge','Week brief'];
+const satTags = sats.map((s,i)=>tag(s, `<b>A${i+1}</b>${satNames[i]}`, ['proof']));
+studios.forEach(s=>tag(s.g, `<b>&#9679;</b>${s.name}`, ['faq']));
+const growNames = ['Start here · one person','Team · two days','Company · your own system'];
+const growTags = growth.map((g,i)=>tag(g.g, `<b>0${i+1}</b>${growNames[i]}`, ['next']));
+tag(dot, `<b>00</b>You <i>· your own work</i>`, ['top','leave','how']);
+
+const SVGNS='http://www.w3.org/2000/svg';
+const chains = [ {list:moonTags, show:'how', loop:true}, {list:growTags, show:'next', loop:false}, {list:satTags, show:'proof', loop:true} ];
+chains.forEach(ch=>{ ch.lines = ch.list.map(()=>{ const l=document.createElementNS(SVGNS,'line'); l.setAttribute('stroke','rgba(237,240,245,.45)'); l.setAttribute('stroke-width','1'); l.style.transition='opacity .5s'; l.style.opacity=0; linksEl.appendChild(l); return l; }); });
+
+/* camera path: one stop per chapter */
+const stops = {
+  top:   {p:[-5.2,2.4,21], t:[-5.6,-1,0]},
+  leave: {p:[-8.5,1.6,10],t:[-3.2,.2,0]},
+  how:   {p:[6,13,15],    t:[1.6,-.5,0]},
+  who:   {p:[-16,5,30],   t:[-14,-3,-16]},
+  proof: {p:[5.5,-1.6,12.5], t:[-3.4,0,0]},
+  next:  {p:[-2.4,15.5,19], t:[-3.4,16.6,-9]},
+  faq:   {p:[30,16,58],   t:[0,-4,-20]},
+  book:  {p:[0,.4,8.6],   t:[0,-.2,0]}
+};
+const ids = Object.keys(stops);
+const secs = ids.map(id=>document.getElementById(id));
+const V = a => new THREE.Vector3(...a);
+const camP = V(stops.top.p), camT = V(stops.top.t), goalP = camP.clone(), goalT = camT.clone();
+let active = 'top';
+const ease = x => x<.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2;
+
+function scrollGoal(){
+  const mid = scrollY + innerHeight*.5;
+  let i = 0; for(let k=0;k<secs.length;k++){ if(secs[k].offsetTop <= mid) i=k; }
+  const a = secs[i], b = secs[Math.min(i+1,secs.length-1)];
+  const start = a.offsetTop + a.offsetHeight*.5, end = b.offsetTop + b.offsetHeight*.5;
+  let f = end>start ? (mid-start)/(end-start) : 0; f = Math.min(Math.max(f,0),1);
+  if(mid < start) f = 0;
+  const e = ease(f), A = stops[ids[i]], B = stops[ids[Math.min(i+1,ids.length-1)]];
+  goalP.copy(V(A.p)).lerp(V(B.p), e); goalT.copy(V(A.t)).lerp(V(B.t), e);
+  const now = ids[f>.5 ? Math.min(i+1,ids.length-1) : i];
+  if(now!==active){ active=now; hud(); }
+}
+const chapEl=document.getElementById('chap'), meter=[...document.querySelectorAll('.meter i')], cue=document.getElementById('cue');
+function hud(){
+  const k = ids.indexOf(active);
+  chapEl.textContent = `0${k} / 0${ids.length-1} · ${document.getElementById(active).dataset.name}`;
+  meter.forEach((m,j)=>m.classList.toggle('on', j<=k));
+  document.body.classList.toggle('away', k>0);
+  cue.innerHTML = k===ids.length-1 ? 'You have<br>landed.' : 'Scroll down to<br>discover.';
+}
+hud();
+
+/* chapter text fades in as it arrives */
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }),{threshold:.25});
+secs.forEach(s=>io.observe(s));
+function revealAll(){ document.querySelectorAll('.ch').forEach(s=>s.classList.add('in')); }
+
+/* pointer parallax, small */
+let mx=0,my=0; addEventListener('pointermove',e=>{ mx=(e.clientX/innerWidth-.5); my=(e.clientY/innerHeight-.5); },{passive:true});
+
+function resize(){
+  const w=innerWidth,h=innerHeight; renderer.setSize(w,h,false); camera.aspect=w/h;
+  camera.fov = w<h ? 64 : 50; camera.updateProjectionMatrix();
+  linksEl.setAttribute('viewBox',`0 0 ${w} ${h}`);
+}
+if(SMALL){ stops.top={p:[0,1.5,25],t:[0,-8.2,0]}; stops.book={p:[0,.4,11],t:[0,-3.2,0]}; }
+addEventListener('resize',()=>{resize();scrollGoal();}); resize();
+addEventListener('scroll',scrollGoal,{passive:true}); scrollGoal();
+camP.copy(goalP); camT.copy(goalT);
+
+const v = new THREE.Vector3(), clock = new THREE.Clock();
+let visible = true; document.addEventListener('visibilitychange',()=>{visible=!document.hidden;});
+function frame(){
+  requestAnimationFrame(frame);
+  if(!visible) return;
+  const t = clock.getElapsedTime(), spin = RM ? 0 : 1;
+  const k = RM ? 1 : .055;
+  camP.lerp(goalP,k); camT.lerp(goalT,k);
+  camera.position.set(camP.x + mx*1.2*spin, camP.y - my*.8*spin, camP.z);
+  camera.lookAt(camT);
+
+  galaxy.rotation.y = t*.012*spin;
+  stars.rotation.y = t*.003*spin;
+  dot.rotation.y = t*.08*spin;
+  hourOrbit.rotation.y = t*.05*spin;
+  agentOrbit.rotation.y = -t*.32*spin;
+  sats.forEach((s,i)=>{ s.rotation.y=-agentOrbit.rotation.y; s.userData.lamp.visible = RM || Math.sin(t*3+i*1.7)>-.2; });
+  studios.forEach((s,i)=>{ s.g.position.y = s.p.y + Math.sin(t*.4+i)*.6*spin; s.g.rotation.y=t*.1*spin; });
+  growth.forEach((g,i)=>{ g.g.position.y = g.p.y + Math.sin(t*.6+i*1.3)*.25*spin; });
+  planets.forEach(m=>m.material.uniforms.uTime.value=t);
+  stars.material.uniforms.uTime.value=t;
+
+  renderer.render(scene,camera);
+
+  // tags ride their planets
+  const w=innerWidth,h=innerHeight;
+  for(const tg of tags){
+    tg.obj.getWorldPosition(v); v.project(camera);
+    const on = tg.show.includes(active) && v.z<1 && Math.abs(v.x)<1.05 && Math.abs(v.y)<1.05;
+    tg.x=(v.x*.5+.5)*w; tg.y=(-v.y*.5+.5)*h;
+    tg.el.style.transform=`translate(${(tg.x+tg.off[0]).toFixed(1)}px,${(tg.y+tg.off[1]).toFixed(1)}px)`;
+    if(on!==tg.vis){ tg.vis=on; tg.el.style.opacity = on?1:0; }
+  }
+  for(const ch of chains){
+    const show = active===ch.show, n=ch.list.length;
+    ch.lines.forEach((l,i)=>{
+      const j=i+1; if(j>=n && !ch.loop){ l.style.opacity=0; return; }
+      const a=ch.list[i], b=ch.list[j%n];
+      l.setAttribute('x1',a.x); l.setAttribute('y1',a.y); l.setAttribute('x2',b.x); l.setAttribute('y2',b.y);
+      l.style.opacity = show && a.vis && b.vis ? 1 : 0;
+    });
+  }
+}
+frame();
+
+/* sound: a quiet space hum made in the browser, off until asked for */
+const sndBtn=document.getElementById('snd'), sndT=document.getElementById('sndt'); let ac=null, master=null;
+sndBtn.addEventListener('click',()=>{
+  if(!ac){
+    ac = new (window.AudioContext||window.webkitAudioContext)();
+    master = ac.createGain(); master.gain.value=0; master.connect(ac.destination);
+    const lp = ac.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=420; lp.Q.value=4; lp.connect(master);
+    [55,82.41,110.3,164.8].forEach((f,i)=>{ const o=ac.createOscillator(); o.type=i%2?'sine':'triangle'; o.frequency.value=f; o.detune.value=(i-1.5)*6;
+      const g=ac.createGain(); g.gain.value=[.5,.32,.18,.08][i]; o.connect(g).connect(lp); o.start(); });
+    const lfo=ac.createOscillator(); lfo.frequency.value=.07; const lg=ac.createGain(); lg.gain.value=260; lfo.connect(lg).connect(lp.frequency); lfo.start();
+  }
+  const on = sndBtn.getAttribute('aria-pressed')!=='true';
+  ac.resume(); master.gain.setTargetAtTime(on?.09:0, ac.currentTime, .6);
+  sndBtn.setAttribute('aria-pressed',on); sndT.textContent=on?'On':'Off'; document.body.classList.toggle('snd-on',on);
+});
 </script>
+<noscript><style>.ch .pane>*{opacity:1!important;transform:none!important}</style></noscript>
 </body>
 </html>
