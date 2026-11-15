@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="The four hackathon prompts: NABC, competitor analysis, master MVP prompt and the 100-customer test.">
+<link rel="icon" href="https://www.dot-cc.com/favicon.ico" sizes="any">
+<title>Hackathon Prompts</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<style>
+/* Layout: a phone-first prompt sheet in the deck's language: paper, ink and one red. One column of four prompt cards;
+   each card has its object, a big number and one red Copy button. Deliberately a single light look. */
+:root {
+  color-scheme: light;
+  --paper: #F5F4F0; --ink: #111111; --red: #E8251B; --mut: #5B5852; --dim: #8E8A82; --line: #D8D4CB; --white: #FFFFFF;
+  --display: 'Archivo', 'Arial Black', sans-serif; --text: 'Archivo', Arial, sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--text); font-size: 16px; line-height: 1.5;
+  background-image: radial-gradient(circle, rgba(17,17,17,.09) 1px, transparent 1.3px); background-size: 22px 22px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 72px; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))); background: var(--white); border-bottom: 2px solid var(--ink);
+  padding: 10px max(16px, env(safe-area-inset-left, 0px)); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--white); }
+.brand { font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 15px; letter-spacing: -.01em; }
+.brand i { font-style: normal; color: var(--red); }
+.jump { display: flex; gap: 6px; }
+.jump a { width: 34px; height: 34px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 14px; color: var(--ink); text-decoration: none; background: var(--white); }
+.jump a.on, .jump a:hover { background: var(--red); border-color: var(--red); color: #fff; }
+.wrap { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px; padding-top: 30px; }
+.eyebrow { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--red); display: flex; gap: 10px; align-items: center; }
+.eyebrow::before { content: ""; width: 26px; height: 4px; background: currentColor; }
+h1 { font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: clamp(38px, 10vw, 66px); line-height: .95; letter-spacing: -.04em; margin: 10px 0 12px; text-wrap: balance; }
+h1 span { color: var(--red); }
+.lead { margin: 0; color: var(--mut); font-size: 17px; max-width: 58ch; }
+.rules { background: var(--ink); color: #F5F4F0; border-radius: 16px; padding: 18px 20px; }
+.rules h2 { font-family: var(--display); font-stretch: 118%; font-weight: 900; font-size: 18px; margin: 0 0 10px; letter-spacing: -.02em; }
+.rules ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.rules li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; color: #C9C5BC; font-size: 15px; }
+.rules li::before { content: ""; width: 12px; height: 12px; margin-top: 5px; border-radius: 50%; background: var(--red); }
+.rules li b { color: #fff; }
+article { background: var(--white); border: 2.5px solid var(--ink); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 14px; box-shadow: 6px 6px 0 var(--ink); scroll-margin-top: 76px; min-width: 0; }
+article.on { box-shadow: 6px 6px 0 var(--red); border-color: var(--red); }
+.ph { display: grid; grid-template-columns: auto 1fr 64px; gap: 14px; align-items: center; }
+.num { font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 54px; line-height: .85; color: var(--red); letter-spacing: -.05em; }
+.ph h2 { font-family: var(--display); font-stretch: 122%; font-weight: 900; font-size: 22px; line-height: 1.05; margin: 0 0 4px; letter-spacing: -.03em; text-wrap: balance; }
+.ph p { margin: 0; color: var(--mut); font-size: 14px; }
+.ph svg { width: 64px; height: 64px; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.meta span { font-size: 12px; font-weight: 800; letter-spacing: .04em; border: 2px solid var(--ink); border-radius: 999px; padding: 3px 12px; }
+.meta span.t { background: var(--ink); color: #fff; }
+.acts { display: flex; flex-wrap: wrap; gap: 10px; }
+button { font: 800 16px var(--text); border-radius: 12px; padding: 14px 20px; cursor: pointer; border: 2.5px solid var(--ink); }
+button.copy { background: var(--red); color: #fff; border-color: var(--red); flex: 1 1 220px; letter-spacing: .02em; }
+button.copy.done { background: var(--ink); border-color: var(--ink); }
+button.save { background: var(--white); color: var(--ink); }
+button:focus-visible, .jump a:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+pre { margin: 0; background: var(--paper); border: 2px solid var(--line); border-radius: 12px; padding: 14px; font: 13px/1.55 var(--mono); color: #222; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 300px; overflow-y: auto; user-select: all; -webkit-user-select: all; }
+.status { font-size: 13px; color: var(--mut); min-height: 1.2em; margin: 0; }
+footer { border-top: 2px solid var(--ink); padding-top: 14px; color: var(--mut); font-size: 14px; }
+footer b { color: var(--ink); }
+@media (max-width: 520px) { .ph { grid-template-columns: auto 1fr; } .ph svg { display: none; } .num { font-size: 44px; } .jump a { width: 30px; height: 30px; } }
+@media (prefers-reduced-motion: no-preference) { article { transition: box-shadow .25s, border-color .25s; } }
+</style>
+<style>:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)} body{margin:0} img{max-width:100%} [hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="o-document" viewBox="0 0 120 120"><g fill="none" stroke="#111" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path fill="#fff" d="M26 10h48l22 22v80H26z"/><path fill="#E4E0D8" d="M74 10v22h22z"/><path d="M38 48h46M38 60h46M38 72h32"/><path stroke="#E8251B" d="M38 94c6-10 10 4 14-4s8-6 12 0 6 2 10-2"/></g></symbol><symbol id="o-chat" viewBox="0 0 120 120"><g fill="none" stroke="#111" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path fill="#fff" d="M18 16h58a10 10 0 0 1 10 10v28a10 10 0 0 1-10 10H40L24 78V64h-6A10 10 0 0 1 8 54V26a10 10 0 0 1 10-10z"/><path fill="#E8251B" d="M102 50H50a10 10 0 0 0-10 10v26a10 10 0 0 0 10 10h34l16 14V96h2a10 10 0 0 0 10-10V60a10 10 0 0 0-10-10z"/><g fill="#111" stroke="none"><circle cx="32" cy="40" r="4"/><circle cx="47" cy="40" r="4"/><circle cx="62" cy="40" r="4"/></g></g></symbol><symbol id="o-users" viewBox="0 0 120 120"><g fill="none" stroke="#111" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><circle fill="#E4E0D8" cx="80" cy="38" r="14"/><path fill="#E4E0D8" d="M54 98a26 26 0 0 1 52 0z"/><circle fill="#fff" cx="46" cy="44" r="17"/><path fill="#E8251B" d="M14 106a32 32 0 0 1 64 0z"/></g></symbol><symbol id="o-globe" viewBox="0 0 120 120"><g fill="none" stroke="#111" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><circle fill="#fff" cx="60" cy="60" r="46"/><path fill="#E8251B" stroke="none" d="M30 30c10-6 20 0 18 10s-14 8-14 18-10 6-12-4 0-18 8-24zM70 70c10-4 22 2 20 12s-14 14-22 8-6-16 2-20z"/><ellipse cx="60" cy="60" rx="20" ry="46"/><path d="M14 60h92M22 36h76M22 84h76"/><circle cx="60" cy="60" r="46"/></g></symbol></defs></svg>
+
+<div class="bar">
+  <div class="brand">Hackathon Prompts<i>.</i></div>
+  <nav class="jump" aria-label="Prompts"><a href="#prompt-1">1</a><a href="#prompt-2">2</a><a href="#prompt-3">3</a><a href="#prompt-4">4</a></nav>
+</div>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">From idea to MVP</p>
+    <h1>Four prompts, <span>in order.</span></h1>
+    <p class="lead">Tap <b>Copy prompt</b>, paste it into ChatGPT, Claude or Gemini with web search on, and fill every [bracket].</p>
+  </header>
+
+  <section class="rules">
+    <h2>Rules for every prompt</h2>
+    <ul>
+      <li><span><b>Web search on.</b> An answer without sources is a guess.</span></li>
+      <li><span><b>Fill every [bracket].</b> The more specific your customer, the better the answer.</span></li>
+      <li><span>If the answer stops, type <b>continue</b>.</span></li>
+      <li><span><b>Check 3 numbers yourself.</b> Open the source link and find the number on the page. No link, or not on the page: delete it.</span></li>
+      <li><span><b>Simulated customers are a rehearsal, not proof.</b> Confirm with 10 real people.</span></li>
+    </ul>
+  </section>
+
+  <article id="prompt-1">
+    <div class="ph"><span class="num">1</span><div><h2>NABC challenge</h2><p>Finds your biggest risk and gives you 3 questions to ask real customers.</p></div><svg aria-hidden="true"><use href="#o-chat"/></svg></div>
+    <div class="meta"><span class="t">15 minutes</span><span>Identify the Value</span></div>
+    <div class="acts"><button class="copy" id="copy-1" data-p="1">Copy prompt</button><button class="save" id="save-1" data-p="1" data-name="prompt-1-nabc-challenge.txt" hidden>Save as file</button></div>
+    <pre id="text-1" tabindex="0">Act as a critical startup advisor. Challenge my idea using NABC: Need, Approach, Benefits per cost, Competition. Be direct, not polite. Use web search for facts and give a source link for every number.
+
+My idea in one sentence: [ ]
+Target customer (who, where, age, job or situation): [ ]
+How they solve this problem today: [ ]
+Country and city: [Saudi Arabia, Riyadh]
+Language for your answer: [English / Arabic]
+
+1. For each of N, A, B and C: what is strong, what is weak, and the one question I must answer.
+   - Need: who exactly has the problem, how painful is it, how do they solve it today?
+   - Approach: what is my unique solution and business model?
+   - Benefits per cost: what does the customer gain compared with what they pay and give up?
+   - Competition: who else solves it, including the option of doing nothing?
+2. Tell me which of the four is my biggest risk, and why.
+3. Give me 3 questions to ask real target customers this week that would prove or break that risk. Ask about their past behaviour, not their opinion of my idea (for example: "When did this last happen to you?", "What did you do about it?", "What did it cost you?").
+
+Keep the whole answer under 350 words.</pre>
+    <p class="status" id="status-1" role="status"></p>
+  </article>
+
+  <article id="prompt-2">
+    <div class="ph"><span class="num">2</span><div><h2>Competitor analysis</h2><p>Maps local, regional and global competitors, then tells you which features your MVP needs.</p></div><svg aria-hidden="true"><use href="#o-globe"/></svg></div>
+    <div class="meta"><span class="t">15 minutes</span><span>Identify the Value</span></div>
+    <div class="acts"><button class="copy" id="copy-2" data-p="2">Copy prompt</button><button class="save" id="save-2" data-p="2" data-name="prompt-2-competitor-analysis.txt" hidden>Save as file</button></div>
+    <pre id="text-2" tabindex="0">Act as a senior market analyst. Map our competitors in three markets (local, regional, global), then tell us which features our MVP needs. Use web search. Be critical, not polite.
+
+RULES
+- Every competitor needs a link. Every number (price, users, funding, year) needs a source link and a year. If you cannot find one, write "Unknown". Never invent a competitor, a price or a statistic.
+- Include indirect alternatives: what people do today instead (WhatsApp groups, Excel, a manual service, doing nothing).
+- Use reviews (app stores, Google Maps, social media) to find what customers complain about.
+- Short tables, no essays. If you run out of space, stop after a step and wait for me to type "continue".
+
+OUR INPUTS
+- Idea in one sentence: [ ]
+- Target customer (who, where, age, job or situation): [ ]
+- Local market (country and city): [Saudi Arabia, Riyadh]
+- Regional market: [GCC and the Middle East and North Africa]
+- Language for your answer: [English / Arabic]
+
+STEP 1. Local market
+3 to 5 competitors or alternatives in our country. Table: name | link | what they offer | who it is for | price | key features | strength | weakness (what customers complain about) | source and year.
+
+STEP 2. Regional market
+The same table for 3 to 5 players in our region.
+
+STEP 3. Global market
+The same table for 3 to 5 global leaders or benchmarks. Add one line each: what can we learn from them, and what would NOT work in our local market (language, payment habits, culture, regulation).
+
+STEP 4. Feature map
+One table: features in rows, all competitors in columns, a tick where they have the feature. Then sort the features into three groups:
+- Table stakes: almost everyone has it, so customers expect it.
+- Differentiators: only one or two have it, and customers praise it.
+- Gaps: customers ask for it or complain about it, and nobody does it well, especially locally.
+
+STEP 5. Advice for our MVP (the main result)
+Recommend at most 5 features for our MVP:
+- Must-have: the 2 or 3 table stakes we cannot launch without.
+- Our edge: 1 or 2 features taken from the gaps, where we can beat local competitors.
+- Leave out for now: features competitors have that we should NOT build yet, and why.
+For each recommended feature, give one line of evidence from Steps 1 to 4.
+
+STEP 6. Positioning and checks
+- One sentence: "Unlike [main competitor], we [key difference] for [target customer]."
+- A fair price range for our market, based on the competitors' prices.
+- The 3 numbers in this analysis that matter most to our decision, each with its source link, so we can check them ourselves.</pre>
+    <p class="status" id="status-2" role="status"></p>
+  </article>
+
+  <article id="prompt-3">
+    <div class="ph"><span class="num">3</span><div><h2>Master MVP prompt</h2><p>Six company heads review your idea. You get your MVP (Part 6) and a secure build prompt (Part 7).</p></div><svg aria-hidden="true"><use href="#o-document"/></svg></div>
+    <div class="meta"><span class="t">30 minutes</span><span>Develop the Value</span></div>
+    <div class="acts"><button class="copy" id="copy-3" data-p="3">Copy prompt</button><button class="save" id="save-3" data-p="3" data-name="prompt-3-master-mvp.txt" hidden>Save as file</button></div>
+    <pre id="text-3" tabindex="0">You are our startup advisory board. Play six senior heads who each review our idea from their own seat, plus a chair who keeps everyone focused on the smallest product we can build and test this week:
+1. Head of Sales: who pays, and how we close the first 10 customers
+2. Head of Marketing: who it is for, what we say, where they hear it
+3. Financial Head: costs, pricing, unit economics, cash
+4. Legal Advisor: licences, contracts, data protection and consumer rules in our country
+5. Head of IT and Security: what to build, and how to keep it secure and private
+6. Head of Business Development: partners, channels, distribution
+
+Use web search. Be critical, not polite: if the idea is weak, say so and say why.
+
+RULES
+- Every number needs a source link and a year. If you cannot find one, write "Unknown" or label it "Estimate" and show your reasoning. Never invent competitors, prices, funding or statistics.
+- Tag each important claim: [Fact + source], [Estimate] or [Assumption].
+- Use local and regional sources first, then global ones.
+- Keep the MVP tiny: one user, one core flow, at most 5 features, buildable on Replit in one day by our team.
+- Short bullets and tables, no essays. If you run out of space, stop at the end of a part and wait for me to type "continue".
+
+OUR INPUTS
+- Idea in one sentence: [ ]
+- Target customer (who, where, age, job or situation): [ ]
+- Country and city: [Saudi Arabia, Riyadh]
+- Our NABC result from Prompt 1, and our biggest risk: [paste]
+- What we heard when we practised our 3 customer questions: [paste]
+- Our competitor analysis from Prompt 2 (the feature map and the MVP advice): [paste]
+- Price idea, if any: [ ]
+- Team size and skills: [ ]
+- Language for your answer: [English / Arabic]
+
+GIVE US 8 PARTS
+
+PART 1. Idea snapshot
+- The idea, the customer, the problem and the outcome, in 4 lines.
+- Our 3 riskiest assumptions, ranked. Cover: will they want it, will they pay enough, can we build and run it, is it legal. For each: how we could test it within one day.
+
+PART 2. NABC check
+- Sharpen our NABC; do not start over. Name the weakest of the four and why.
+
+PART 3. Market and customers
+- Customer behaviour today: how the target customer solves this now, what they spend, where they look for solutions, who influences the decision, and what makes them trust a new product.
+- Market size: a rough, sourced estimate of how many target customers exist in our city and country. Show the math.
+- Competitors: use our competitor analysis from Prompt 2; do not redo it. Summarise it in 5 lines and challenge anything that looks wrong or unsourced.
+- The white space: the gap none of them fills well, in 2 sentences.
+
+PART 4. Business Model Canvas
+- One line per block: customer segments, value propositions, channels, customer relationships, revenue streams, key resources, key activities, key partners, cost structure.
+
+PART 5. The six-heads review
+For each head: their top 3 risks or requirements, and ONE must-do before launch.
+- Sales: who signs and who pays, how we sell, how we get the first 10 paying customers.
+- Marketing: a positioning line in English and Arabic, the first channel, the launch message, and how an unknown brand earns trust.
+- Finance: a price recommendation with reasoning, the cost to build and run the MVP for 3 months, the cost to serve one customer versus what they pay, and a break-even estimate. Show the math.
+- Legal: what applies in our country, for example commercial registration, sector licences (health, finance, education, food), personal data protection (in Saudi Arabia, the Personal Data Protection Law), e-commerce and consumer protection, VAT and e-invoicing, terms of use, privacy policy, trademark. Flag anything that could stop us. Say clearly this is not legal advice, and list the 3 questions to ask a lawyer.
+- IT and Security: a simple stack that runs on Replit; the data we must store and the data we must NOT store; login and user roles; protecting personal data (collect the minimum, encrypt, control access); keeping keys and passwords out of the code; spam and abuse risks; backups.
+- Business development: 3 partners or channels that could bring customers faster, and what we offer each of them.
+Then the chair's verdict: Go, Change or Stop, with one sentence why.
+
+PART 6. MVP definition
+- One user (a short persona), one core flow (3 to 5 steps from opening the app to getting the value), at most 5 must-have features. Start from the features our competitor analysis recommended, and say which you kept, changed or dropped.
+- Out of scope: what we will NOT build.
+- Success metric with a number, for example: "6 of 10 test users finish the core flow in under 3 minutes, and 4 say they would pay [price]".
+- Stop or change rule: the result that tells us to change direction.
+
+PART 7. Replit build prompt (ready to paste)
+Write one complete prompt for the Replit Agent that includes:
+- The app's purpose in one sentence and the target user.
+- The core flow, screen by screen.
+- The data model (tables and fields), storing only what the flow needs.
+- Secure by default: login through Replit's built-in authentication or a standard library (never home-made password storage), input validation on every form, keys kept in Replit Secrets (never in the code), access rules so users only see their own data, the minimum personal data.
+- Look and feel: simple, mobile-first, Arabic right-to-left and English, our colours [ ].
+- 5 realistic sample records so the demo works on day one.
+- A feedback button and a counter of completed core flows, so we can measure the success metric.
+- What NOT to build (from Part 6).
+- It must be demoable in 3 minutes.
+
+PART 8. Test plan
+- 5 questions to ask 10 real target customers after they try it.
+- What to measure inside the app.
+- The input for our 100-customer test (Prompt 4): a one-paragraph product description, the price, the target market and the main alternatives they use today.
+
+Before you finish, check your own answer: every number has a source or a label; Part 7 contains nothing outside Part 6; the MVP can be built in one day.</pre>
+    <p class="status" id="status-3" role="status"></p>
+  </article>
+
+  <article id="prompt-4">
+    <div class="ph"><span class="num">4</span><div><h2>100-customer market test</h2><p>100 simulated people from your target market react to your MVP. Paste Part 8 of the master prompt.</p></div><svg aria-hidden="true"><use href="#o-users"/></svg></div>
+    <div class="meta"><span class="t">15 minutes</span><span>Develop the Value</span></div>
+    <div class="acts"><button class="copy" id="copy-4" data-p="4">Copy prompt</button><button class="save" id="save-4" data-p="4" data-name="prompt-4-100-customer-test.txt" hidden>Save as file</button></div>
+    <pre id="text-4" tabindex="0">Act as a consumer research team running a simulated test of our product with 100 people from our target market. We want honest, realistic reactions, not encouragement. Most people in real markets ignore new products; your panel must reflect that.
+
+PRODUCT (paste from Part 8 of the master prompt)
+- What it is: [ ]
+- Price: [ ]
+- Target market (country, city, who): [ ]
+- What they use today instead: [ ]
+- Language for your answer: [English / Arabic]
+
+STEP 1. Build the panel
+Create 100 realistic people who match our target market's real mix. Base the mix on real data where you can find it (for example national statistics on population, age, income and internet use) and state the mix you used: age, gender, city, income level, job or situation, digital habits, how they solve the problem today, attitude to new products. Spread them across the adoption curve as in real markets: about 3 innovators, 13 early adopters, 34 early majority, 34 late majority, 16 laggards.
+
+STEP 2. Ask each person
+For each of the 100: would they try it (yes, maybe, no); would they pay our price (yes, no, or only at a lower price: how much); their main reason; their biggest objection or fear (trust, price, privacy, effort, habit, family or social approval); where they would most likely hear about it.
+Show the answers as a compact table, 25 rows at a time; after each 25, wait for me to type "continue". If I type "summary only", skip the table and go to Step 3.
+
+STEP 3. Summary (label it "Simulated")
+- % who would try it, % who would pay our price, and the price most would accept.
+- Results by segment: the warmest segment (our first customers) and the coldest.
+- The top 5 objections, with how many people raised each.
+- Behaviour insights: habits and cultural or social factors in our market that help or block adoption (for example trust in new brands, payment preferences, family influence, language).
+- The 3 changes to our MVP or our message that would turn the most "maybe" answers into "yes".
+- What this simulation cannot tell us.
+
+STEP 4. Check it with real people
+Give us 5 short questions to ask 10 real people from the warmest segment today, to confirm or break the 3 biggest findings.</pre>
+    <p class="status" id="status-4" role="status"></p>
+  </article>
+
+  <footer><b>Before the build session,</b> check Part 7 against the clinic list: one sentence of purpose, one user, one core flow, one core feature, only the data you need, security basics, look and feel, what NOT to build, a 3-minute demo.</footer>
+</div>
+
+<script>
+(function () {
+  function txt(n) { return document.getElementById('text-' + n).textContent; }
+  function say(n, m) { document.getElementById('status-' + n).textContent = m; }
+  function selectText(n) { var r = document.createRange(); r.selectNodeContents(document.getElementById('text-' + n)); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+  document.querySelectorAll('button.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var n = b.dataset.p;
+      var ok = function () { b.textContent = 'Copied ✓'; b.classList.add('done'); say(n, 'Copied. Paste it into your AI chat and fill the [brackets].');
+        setTimeout(function () { b.textContent = 'Copy prompt'; b.classList.remove('done'); }, 2500); };
+      var fail = function () { selectText(n); say(n, 'The prompt is selected. Press and hold it, then choose Copy.'); };
+      try { navigator.clipboard.writeText(txt(n)).then(ok, fail); } catch (e) { fail(); }
+    });
+  });
+  function show() {
+    var h = (location.hash || '').replace('#', '');
+    document.querySelectorAll('article').forEach(function (a) { a.classList.toggle('on', a.id === h); });
+    document.querySelectorAll('.jump a').forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + h); });
+    var el = h && document.getElementById(h);
+    if (el && el.tagName === 'ARTICLE') el.scrollIntoView({ block: 'start' });
+  }
+  window.addEventListener('hashchange', show); show();
+  function plainSave(b) {
+    b.hidden = false;
+    b.addEventListener('click', function () {
+      var n = b.dataset.p, url = URL.createObjectURL(new Blob([txt(n)], { type: 'text/plain' })), a = document.createElement('a');
+      a.href = url; a.download = b.dataset.name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+      say(n, 'Saved to your downloads.');
+    });
+  }
+  var buttons = document.querySelectorAll('button.save');
+  if (window.claude && window.claude.use) {
+    window.claude.use('downloads').then(function (dl) {
+      if (!dl) return;
+      buttons.forEach(function (b) {
+        b.hidden = false;
+        b.addEventListener('click', function () {
+          var n = b.dataset.p;
+          dl.save({ filename: b.dataset.name, data: txt(n) }).then(function () { say(n, 'File saved.'); },
+            function (e) { if (e && e.code === 'declined') { say(n, 'Not saved.'); } else { b.hidden = true; say(n, 'Saving is not available here. Use Copy prompt.'); } });
+        });
+      });
+    });
+  } else { buttons.forEach(plainSave); }
+})();
+</script>
+
+</body>
+</html>

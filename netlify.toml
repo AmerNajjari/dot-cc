@@ -115,3 +115,15 @@
   for = "/helixion-presentation/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# Hackathon workshop deck and its prompt sheet (Marwan Al-Masouti and Amer Najjari): reachable by link
+# and QR code only, kept out of search. Built in amer-os (_local/hackathon/src); never edited here.
+[[headers]]
+  for = "/hackathon/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/hackathon-prompts/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
