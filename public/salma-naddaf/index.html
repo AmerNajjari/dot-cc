@@ -1,0 +1,1178 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salma Naddaf</title>
+<meta name="description" content="Salma Naddaf, DIY home decor creator. 12.6M followers on Facebook, TikTok, Instagram and YouTube. Work with Salma.">
+<link rel="canonical" href="https://www.dot-cc.com/salma-naddaf/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dot-cc.com/salma-naddaf/">
+<meta property="og:title" content="Salma Naddaf: made by hand, watched by millions">
+<meta property="og:description" content="DIY home decor creator with 12.6M followers on Facebook, TikTok, Instagram and YouTube. Start a collaboration.">
+<meta property="og:image" content="https://www.dot-cc.com/salma-naddaf/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+<style>
+/* Zain: Arabic display and text (SIL Open Font License, licence beside the files) */
+@font-face{font-family:"Zain";src:url(assets/fonts/zain-light.woff2) format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Zain";src:url(assets/fonts/zain-regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Zain";src:url(assets/fonts/zain-bold.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Zain";src:url(assets/fonts/zain-extrabold.woff2) format("woff2");font-weight:800;font-display:swap}
+
+/* Layout: one makeover, top to bottom. 12-col grid at 1440 (80px margins, 24px gutter), 4-col at 375.
+   Ivory ground, olive ink text; the reach is the one dark section. The flat-top hexagon from her shelf is the only motif. */
+:root{
+  --ivory:#F6EDE8; --cream:#EEDEBC; --taupe:#D3C0B0; --honey:#EABF94;
+  --gold:#EAC68A; --blush:#F0CBBA; --olive:#6E684B; --leaf:#7D7843;
+  --ink:#55503A;                 /* derived: deep olive's hue at 28% lightness, AA on every light colour */
+  --f-en:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --f-ar:"Zain", "Geeza Pro", "Noto Sans Arabic", sans-serif;
+  --t-giant:clamp(88px,14vw,200px); --t-count:clamp(40px,4.4vw,64px);
+  --t-h1:clamp(44px,6.4vw,92px); --t-h2:clamp(32px,4.4vw,64px);
+  --t-body:clamp(16px,1.25vw,19px); --t-label:13px;
+  --glide:cubic-bezier(.16,1,.3,1); --click:cubic-bezier(.34,1.56,.64,1);
+  --side:max(16px, env(safe-area-inset-left,0px), 5.56vw);
+  --side-r:max(16px, env(safe-area-inset-right,0px), 5.56vw);
+  --pad:clamp(96px,12vw,176px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--f-en);font-size:var(--t-body);line-height:1.6;font-synthesis:none;overflow-x:clip}
+img{max-width:100%;height:auto;display:block}
+[hidden]{display:none!important}
+a{color:inherit}
+::selection{background:var(--gold);color:var(--ink)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:4px;box-shadow:0 0 0 1px var(--ink)}
+.wrap{padding-left:var(--side);padding-right:var(--side-r)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+.tool{position:absolute;pointer-events:none;z-index:3}
+.tool img{width:100%;height:auto}
+.tool > span{display:block}
+
+/* Headlines: roman 800 first half, italic 300 second half. Italic has no other job. */
+.hl{margin:0;font-weight:800;letter-spacing:-.03em;line-height:.95;color:var(--olive);text-wrap:balance}
+.hl .i{display:block;font-style:italic;font-weight:300;letter-spacing:-.02em}
+.h1{font-size:clamp(40px,4.5vw,66px)}
+.h2{font-size:var(--t-h2);letter-spacing:-.025em;line-height:1}
+.label{font-size:var(--t-label);font-weight:600;text-transform:uppercase;letter-spacing:.14em;line-height:1.2}
+.lede{max-width:60ch;margin:0}
+.num{font-variant-numeric:tabular-nums lining-nums;font-weight:800;letter-spacing:-.04em}
+.u{font-style:italic;font-weight:300;font-size:.5em;vertical-align:.62em;margin-left:.04em;letter-spacing:0}
+.btn{display:inline-flex;align-items:center;gap:.6em;background:var(--ink);color:var(--ivory);text-decoration:none;font-weight:700;font-size:16px;letter-spacing:.01em;line-height:1;padding:18px 26px;border-radius:2px;transition:background .3s var(--glide),transform .3s var(--glide)}
+.btn:hover{background:var(--olive)}
+.btn .arr{transition:transform .3s var(--glide)}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* Nav */
+.nav{position:fixed;inset:0 0 auto;z-index:20;height:calc(64px + env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);display:flex;align-items:center;justify-content:space-between;transition:background .3s var(--glide),box-shadow .3s var(--glide)}
+.nav.solid{background:color-mix(in srgb,var(--ivory) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--taupe)}
+.wordmark{font-weight:700;font-size:18px;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.lang{font-weight:600;font-size:15px;line-height:1.2;text-decoration:underline;text-decoration-color:var(--leaf);text-decoration-thickness:1.5px;text-underline-offset:4px;padding:8px 14px;background:var(--ivory);border:0;border-radius:2px;color:var(--ink);cursor:pointer;font-family:var(--f-ar)}
+.lang:hover{background:var(--cream)}
+[lang="ar"] .lang{font-family:var(--f-en)}
+
+/* 1 Hero */
+.hero{position:relative;min-height:max(720px,100svh);overflow:clip}
+.hero{--pw:41.7%}
+.hero-photo{position:absolute;top:0;bottom:0;inset-inline-end:0;width:var(--pw);margin:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:56% 22%}
+.hero-text{position:relative;z-index:2;min-height:max(720px,100svh);align-content:end;padding-bottom:clamp(56px,9vh,104px)}
+.hero-text > div{grid-column:1 / 8;display:grid;gap:28px;justify-items:start}
+.hero .label{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.hero .label > span{white-space:nowrap}
+.hexmark{width:22px;height:19px;flex:none}
+.hero .lede{max-width:34ch}
+.t-scissors{width:120px;top:15%;inset-inline-end:calc(var(--pw) - 60px)}
+.t-scissors img{transform:rotate(-12deg)}
+.t-tape{width:150px;bottom:3%;inset-inline-start:calc(var(--side) + 280px)}
+.t-brush{width:220px;top:44%;inset-inline-end:calc(var(--pw) - 110px)}
+.t-brush img{transform:rotate(8deg)}
+
+/* 2 The maker */
+.maker{background:var(--cream);padding-block:var(--pad);position:relative;overflow:clip}
+.maker .grid{align-items:center;row-gap:48px}
+.maker-photo{grid-column:2 / 7;position:relative;margin:0}
+.maker-photo .board{position:absolute;inset:40px -24px -40px 24px;background:var(--honey);inset-inline-start:24px;inset-inline-end:-24px}
+.maker-photo img{position:relative;z-index:1;width:100%;aspect-ratio:4 / 5.5;object-fit:cover;object-position:50% 30%}
+.t-kraft{width:220px;top:-60px;inset-inline-end:-90px;z-index:0}
+.t-kraft img{transform:rotate(-8deg)}
+.maker-text{grid-column:8 / 13;display:grid;gap:28px}
+.facts{display:grid;grid-template-columns:repeat(3,auto);gap:12px 32px;margin:8px 0 0;justify-content:start}
+.facts div{display:flex;flex-direction:column-reverse;gap:2px}
+.facts dt{font-size:13px;font-weight:600;line-height:1.3}
+.facts dd{margin:0;font-size:32px;line-height:1}
+.facts dd .u{font-size:.55em}
+
+/* 3 The makes */
+.makes{position:relative;background:var(--ivory)}
+.makes-pin{height:400vh}
+.makes-stage{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-rows:auto 1fr;padding-top:calc(96px + env(safe-area-inset-top,0px))}
+.makes-head{grid-column:1 / 8}
+.track{display:flex;align-items:center;gap:64px;padding-inline:var(--side) var(--side-r);width:max-content;will-change:transform}
+.frame{position:relative;margin:0;flex:none;display:grid;gap:14px}
+.mat{background:var(--cream);padding:12px;outline:1px solid var(--taupe);outline-offset:-1px;transform-origin:50% 60%}
+.mat img{height:min(56svh,560px);width:auto;max-width:none}
+.frame figcaption{font-weight:700;font-size:17px;letter-spacing:-.01em}
+.frame .tool{z-index:3}
+.f-shelf .tool{width:240px;top:-34px;inset-inline-start:-70px}
+.f-basket .tool{width:190px;bottom:20px;inset-inline-end:-80px}
+.f-art .tool{width:110px;top:-30px;inset-inline-end:-46px}
+.f-art .tool img{transform:rotate(10deg)}
+.f-niche .tool{width:210px;bottom:70px;inset-inline-start:-90px}
+.f-niche .tool img{transform:rotate(-18deg)}
+.f-table .tool{width:230px;bottom:26px;inset-inline-end:-60px}
+.f-table .tool img{transform:rotate(-4deg)}
+.track-end{flex:none;width:1px}
+
+/* 4 The reach: the only dark section */
+.reach{background:var(--ink);color:var(--ivory);position:relative}
+.reach .hl{color:var(--ivory)}
+.reach .hl .i{color:var(--gold)}
+.reach-intro{padding-top:var(--pad);padding-bottom:12vh}
+.reach-intro .hl{grid-column:1 / 9}
+.reach-intro p{grid-column:1 / 7;margin-top:28px;color:var(--ivory)}
+.reach-intro{grid-template-rows:auto auto 1fr}
+.awards{grid-column:9 / 13;grid-row:1 / span 3;position:relative;margin:0;min-height:400px;align-self:center}
+.plq{position:absolute;width:min(210px,15vw);top:0}
+.plq img{width:100%;filter:drop-shadow(0 18px 24px rgba(0,0,0,.35))}
+.plq-s{inset-inline-start:0;top:10px}
+.plq-s img{transform:rotate(-8deg)}
+.plq-g{inset-inline-end:0;top:90px;z-index:1}
+.plq-g img{transform:rotate(6deg)}
+.awards-cap{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:13px;font-weight:600;color:var(--ivory);opacity:.85}
+.reach-pin{height:350vh}
+.reach-stage{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center}
+.cluster{--W:min(300px,34svh);--H:calc(var(--W) * .866);position:relative;width:calc(var(--W) * 2.5 + 24px);height:calc(var(--H) * 2 + 16px);margin-top:-4svh}
+.hex{position:absolute;left:50%;top:50%;width:var(--W);height:var(--H);margin-left:calc(var(--W) / -2);margin-top:calc(var(--H) / -2);display:grid;place-items:center;text-decoration:none;color:var(--ivory);pointer-events:none;transform:translate(var(--x,0px),var(--y,0px))}
+.hex svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.hex .hit{fill:transparent;pointer-events:fill;cursor:pointer;transition:fill .3s var(--glide)}
+.hex .ring{fill:none;stroke:var(--honey);stroke-width:8px;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.hex .focus{fill:none;stroke:var(--gold);stroke-width:3px;vector-effect:non-scaling-stroke;opacity:0}
+.hex:focus{outline:none}
+.hex:focus-visible{outline:none;box-shadow:none}
+.hex:focus-visible .focus{opacity:1}
+.hex-in{position:relative;display:grid;justify-items:center;gap:6px;text-align:center;pointer-events:none;transition:transform .3s var(--glide)}
+.hex-in .label{font-size:12px;color:var(--ivory)}
+.hex-in .num{font-size:var(--t-count);line-height:.9;color:var(--gold)}
+.hex-in .sub{font-size:13px;line-height:1.2}
+.hex-in .open{font-size:13px;font-weight:700;opacity:0;transform:translateY(4px);transition:opacity .3s var(--glide),transform .3s var(--glide)}
+.hex.p:hover .hit,.hex.p:focus-visible .hit{fill:var(--honey)}
+.hex.p:hover .hex-in,.hex.p:focus-visible .hex-in{transform:translateY(-6px);color:var(--ink)}
+.hex.p:hover .hex-in .num,.hex.p:focus-visible .hex-in .num,.hex.p:hover .label,.hex.p:focus-visible .label{color:var(--ink)}
+.hex.p:hover .open,.hex.p:focus-visible .open{opacity:1;transform:none}
+.hex.total{color:var(--ink);pointer-events:none}
+.hex.total .hit{fill:var(--gold);pointer-events:none}
+.hex.total .ring{stroke:var(--gold)}
+.hex.total .label{color:var(--ink)}
+.hex.total .num{color:var(--ink);font-size:calc(var(--t-count) * 1.25)}
+.hex.total .sub{min-height:1.2em;max-width:16ch}
+.hex.fb{--x:calc(var(--W) * -.75 - 12px);--y:calc(var(--H) * -.5 - 8px)}
+.hex.tt{--x:calc(var(--W) * .75 + 12px);--y:calc(var(--H) * -.5 - 8px)}
+.hex.ig{--x:calc(var(--W) * -.75 - 12px);--y:calc(var(--H) * .5 + 8px)}
+.hex.yt{--x:calc(var(--W) * .75 + 12px);--y:calc(var(--H) * .5 + 8px)}
+[dir="rtl"] .hex.fb,[dir="rtl"] .hex.ig{--x:calc(var(--W) * .75 + 12px)}
+[dir="rtl"] .hex.tt,[dir="rtl"] .hex.yt{--x:calc(var(--W) * -.75 - 12px)}
+.t-kit{width:240px;left:50%;top:50%;margin:-120px 0 0 -120px}
+.t-kit > span{position:relative}
+.t-kit .lid{position:absolute;inset:6% 52% 6% 2%;background:var(--olive);border-radius:14px;transform-origin:100% 50%;opacity:0}
+.t-ruler{width:230px;left:50%;top:50%;margin-left:-115px;opacity:0}
+.t-saw{width:240px;left:50%;top:50%;margin-left:-120px;opacity:0}
+.market{position:absolute;left:0;right:0;bottom:calc(28px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;justify-content:center;gap:8px 28px;font-size:14px;line-height:1.4;text-align:center}
+.market p{margin:0}
+.tag{display:inline-block;border:1px solid var(--taupe);padding:1px 8px;border-radius:2px;font-size:12px;font-weight:600;margin-inline-start:6px;vertical-align:1px}
+.note{opacity:.85}
+
+/* 4b Who watches: her own insights, on the dark ground */
+.who{padding-top:8vh;padding-bottom:var(--pad)}
+.who-h{grid-column:1 / 10}
+.stats{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px;margin-top:56px;padding-top:28px;border-top:1px solid rgba(246,237,232,.28)}
+.stat p{margin:0;font-size:15px;line-height:1.45;max-width:24ch}
+.stat .num{font-size:clamp(44px,4.2vw,64px);line-height:1;color:var(--gold);margin-bottom:10px;max-width:none}
+.charts{grid-column:1 / -1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 64px;margin-top:72px}
+.bars{margin:0}
+.bars figcaption{color:var(--ivory);margin-bottom:18px}
+.bars ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.bars li{display:grid;grid-template-columns:minmax(0,8.5em) 1fr 3.6em;align-items:center;gap:14px;padding:7px 0;font-size:15px;line-height:1.3}
+.btrack{height:12px;position:relative;border-inline-start:1px solid rgba(246,237,232,.45)}
+.bar{position:absolute;inset-block:0;inset-inline-start:0;width:calc(var(--v) / 40 * 100%);background:var(--honey);border-start-end-radius:4px;border-end-end-radius:4px;transform-origin:left center;transition:transform .9s var(--glide),background-color .2s;transition-delay:calc(var(--i) * 80ms + 200ms),0s}
+[dir="rtl"] .bar{transform-origin:right center}
+.bars li:hover .bar{background:var(--gold)}
+.bars li:hover{color:var(--gold)}
+.pct{font-weight:700;font-variant-numeric:tabular-nums lining-nums;text-align:end}
+.motion .bars:not(.in) .bar{transform:scaleX(0)}
+.src{grid-column:1 / 10;margin:48px 0 0;font-size:13px;line-height:1.5;opacity:.85}
+@media (max-width:767px){
+  .who-h,.src{grid-column:1 / -1}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+  .stat .num{font-size:44px}
+  .stat p{font-size:14px}
+  .charts{grid-template-columns:1fr;gap:48px;margin-top:56px}
+  .bars li{grid-template-columns:minmax(0,7.5em) 1fr 3.4em;gap:10px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){.bar{transition:background-color .2s}}
+
+/* 5 At home */
+.home{padding-block:var(--pad);position:relative;overflow:clip}
+.home .hl{grid-column:6 / 13;margin-bottom:72px}
+.home-photos{align-items:start}
+.ph{margin:0;position:relative}
+.ph img{width:100%;height:auto}
+.ph-a{grid-column:1 / 6}
+.ph-b{grid-column:6 / 9;margin-top:120px}
+.ph-b::before{content:"";position:absolute;inset:24px -24px -24px 24px;background:var(--blush);z-index:-1}
+[dir="rtl"] .ph-b::before{inset:24px 24px -24px -24px}
+.ph-b{z-index:0;isolation:isolate}
+.ph-c{grid-column:10 / 13;margin-top:-60px}
+.t-flowers{width:170px;top:28%;inset-inline-end:calc(-170px * .3)}
+.t-flowers > span{transform-origin:50% 100%}
+
+/* 6 Brands */
+.brands{background:var(--cream);padding-block:var(--pad);position:relative}
+.brands-head{grid-column:1 / 7;display:grid;gap:24px;margin-bottom:64px}
+.results{margin-bottom:72px}
+.results-total{margin:0 0 28px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;font-size:18px;font-weight:600}
+.results-total .num{font-size:clamp(48px,5vw,72px);line-height:1;color:var(--olive)}
+.res-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.res{display:grid;grid-template-columns:104px minmax(0,1fr);gap:18px;background:var(--ivory);padding:16px;box-shadow:0 12px 28px -22px rgba(85,80,58,.6)}
+.res-thumb{width:104px;height:185px;object-fit:cover}
+.res-body{display:grid;align-content:start;gap:6px;min-width:0}
+.res-brand{font-weight:700;font-size:15px;text-decoration:none;overflow-wrap:break-word}
+.res-brand:hover{color:var(--olive)}
+.res-views{margin:0;display:flex;align-items:baseline;gap:8px;font-size:15px}
+.res-views .num{font-size:40px;line-height:1.05;color:var(--olive)}
+.res-dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 12px;margin:8px 0 0}
+.res-dl div{display:flex;flex-direction:column-reverse;gap:1px}
+.res-dl dt{font-size:12px;line-height:1.3}
+.res-dl dd{margin:0;font-weight:800;font-size:16px;font-variant-numeric:tabular-nums lining-nums}
+[lang="ar"] .res-brand{font-family:var(--f-en);direction:ltr;text-align:end}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 24px;position:relative}
+.card{position:relative;display:grid;align-content:space-between;gap:14px;min-height:150px;padding:28px 22px 20px;text-decoration:none;color:var(--ink);
+  background:var(--honey) repeating-linear-gradient(90deg,transparent 0 5px,rgba(85,80,58,.045) 5px 6px);transform:rotate(var(--tilt,0deg));transition:transform .3s var(--glide),background-color .3s var(--glide);box-shadow:0 10px 24px -18px rgba(85,80,58,.55)}
+.card:hover,.card:focus-visible{transform:translateY(-4px) rotate(0deg);background-color:var(--gold)}
+.card .handle{font-weight:700;font-size:18px;letter-spacing:-.01em;line-height:1.2;overflow-wrap:break-word;min-width:0}
+.card .cat{font-size:14px;line-height:1.35}
+.card .cfoot{display:flex;justify-content:space-between;align-items:end;gap:8px}
+.card .arr{font-weight:700}
+.staple{position:absolute;top:-1px;left:50%;width:18px;height:2px;margin-left:-9px;background:var(--ink);border-radius:1px}
+.card:nth-child(1){--tilt:-2deg}.card:nth-child(2){--tilt:1.5deg}.card:nth-child(3){--tilt:-1deg}.card:nth-child(4){--tilt:2deg}
+.card:nth-child(5){--tilt:1deg}.card:nth-child(6){--tilt:-1.5deg}.card:nth-child(7){--tilt:2deg}.card:nth-child(8){--tilt:-2deg}
+.t-stapler{width:90px;opacity:0;left:0;top:0;z-index:5}
+.t-stapler > span{transform-origin:85% 80%}
+
+/* 7 Work with Salma */
+.work{background:var(--blush);padding-top:var(--pad);padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+.work .grid{align-items:center;row-gap:56px}
+.work-photo{grid-column:1 / 6;margin:0;justify-self:center;width:min(480px,100%)}
+.work-photo img{width:100%;aspect-ratio:1;object-fit:cover;clip-path:circle(49% at 50% 50%)}
+.work-text{grid-column:7 / 13;display:grid;gap:28px;justify-items:start;position:relative}
+.work .hl .i{position:relative;display:block}
+.stroke{display:block;width:100%;height:22px;overflow:visible;margin-top:6px}
+.stroke path{fill:none;stroke:var(--leaf);stroke-width:6;stroke-linecap:round}
+.t-brush2{width:200px;left:0;top:0;opacity:1}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.mail code{font-family:var(--f-en);font-weight:600;font-size:17px;user-select:all;-webkit-user-select:all;direction:ltr;unicode-bidi:isolate}
+.copy{font:600 14px var(--f-en);background:none;border:1.5px solid var(--ink);color:var(--ink);padding:7px 12px;border-radius:2px;cursor:pointer}
+[lang="ar"] .copy{font-family:var(--f-ar)}
+.copy:hover{background:var(--ink);color:var(--blush)}
+.watch{grid-column:1 / 13;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:24px;border-top:1px solid var(--taupe);padding-top:40px;margin-top:24px}
+.watch h3{grid-column:1 / 5;margin:0;font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.watch ul{grid-column:5 / 13;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 24px}
+.watch li a{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--taupe);text-decoration:none;font-size:16px}
+.watch li a:hover{color:var(--olive)}
+.watch li a:hover .v{color:var(--leaf)}
+.watch .v{font-weight:800;font-variant-numeric:tabular-nums lining-nums;white-space:nowrap}
+.foot{grid-column:1 / 13;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;font-size:13px;padding-top:48px}
+.foot nav{display:flex;flex-wrap:wrap;gap:8px 20px}
+.foot a{text-decoration:none;border-bottom:1px solid var(--leaf)}
+
+/* Reveals (motion only; at rest everything is in place) */
+.motion [data-rv]{transition:opacity .6s var(--glide),transform .6s var(--glide);transition-delay:var(--d,0ms)}
+.motion [data-rv]:not(.in){opacity:0;transform:translateY(40px)}
+.motion.cards-wait .card:not(.landed){opacity:0;transform:translateY(-24px) rotate(var(--pre,-6deg))}
+.motion .card{transition:transform .3s var(--click),opacity .3s var(--glide),background-color .3s var(--glide)}
+.motion .hero-in{animation:heroIn .6s var(--glide) both;animation-delay:var(--d,0ms)}
+@keyframes heroIn{from{opacity:0;transform:translateY(24px)}}
+.motion .tool-in{animation:toolIn 1.2s var(--glide) both;animation-delay:var(--d,0ms)}
+@keyframes toolIn{from{opacity:0;transform:translate(var(--fx,0),var(--fy,0)) rotate(var(--fr,0deg))}}
+.motion .t-scissors > span{--fx:-12vw;--fy:-8vh;--fr:-35deg}
+.motion .t-tape > span{--fx:14vw;--fy:-6vh;--fr:-180deg;--d:150ms}
+.motion .t-brush > span{--fx:10vw;--fy:12vh;--fr:30deg;--d:300ms}
+.motion .snip{animation:snip .6s var(--glide) 1.3s 1}
+@keyframes snip{25%{transform:rotate(8deg)}50%{transform:none}75%{transform:rotate(8deg)}}
+[dir="rtl"] .motion .t-scissors > span,.motion[dir="rtl"] .t-scissors > span{--fx:12vw;--fr:35deg}
+.motion[dir="rtl"] .t-tape > span{--fx:-14vw;--fr:180deg}
+.motion[dir="rtl"] .t-brush > span{--fx:-10vw;--fr:-30deg}
+
+/* Contact form */
+.form-dlg{width:min(600px,calc(100% - 32px));max-height:calc(100svh - 32px);overflow:auto;border:0;padding:0;background:var(--ivory);color:var(--ink);box-shadow:0 30px 80px -30px rgba(40,38,28,.6)}
+.form-dlg::backdrop{background:rgba(52,49,36,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.f-top{display:flex;justify-content:space-between;align-items:start;gap:16px;padding:28px 28px 0}
+.f-title{font-size:clamp(28px,3vw,36px)}
+.f-close{flex:none;width:44px;height:44px;border:0;background:var(--cream);color:var(--ink);font-size:26px;line-height:1;cursor:pointer;border-radius:2px}
+.f-close:hover{background:var(--honey)}
+#cform,.f-done{padding:8px 28px 28px;display:grid;gap:20px}
+.f-lead{margin:0;font-size:16px}
+.f-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 16px}
+.field{display:grid;gap:6px;min-width:0}
+.f-message{grid-column:1 / -1}
+.field label{font-size:14px;font-weight:600}
+.field .opt{font-weight:400}
+.field input,.field textarea{font:inherit;font-size:16px;color:var(--ink);background:#FBF7F4;border:1.5px solid var(--taupe);border-radius:2px;padding:12px 14px;width:100%;min-width:0}
+.field textarea{resize:vertical;min-height:110px}
+.field input:focus,.field textarea:focus{border-color:var(--ink);outline:none}
+.field input:focus-visible,.field textarea:focus-visible{outline:3px solid var(--gold);outline-offset:1px;box-shadow:none}
+.field [aria-invalid="true"]{border-color:#9B3B2B}
+.err{margin:0;font-size:13px;font-weight:600;color:#9B3B2B}
+.f-send{justify-self:start}
+.f-note{margin:0;font-size:13px;opacity:.9}
+.f-done-h{margin:0;font-size:24px;font-weight:800;color:var(--olive)}
+.f-done p{margin:0}
+.f-done code{font-family:var(--f-en);font-weight:700;font-size:17px;user-select:all;-webkit-user-select:all}
+.f-done .btn{justify-self:start}
+button.btn{border:0;cursor:pointer;font-family:inherit}
+.motion .form-dlg[open]{animation:dlgIn .3s var(--glide)}
+@keyframes dlgIn{from{opacity:0;transform:translateY(16px)}}
+@media (max-width:560px){.f-grid{grid-template-columns:1fr}.f-top{padding:22px 20px 0}#cform,.f-done{padding:8px 20px 22px}}
+
+/* Arabic */
+[lang="ar"] body{font-family:var(--f-ar);line-height:1.75;font-size:calc(var(--t-body) * 1.12)}
+[lang="ar"] .hl,[lang="ar"] .hl .i,[lang="ar"] .label,[lang="ar"] .wordmark,[lang="ar"] .card .handle,[lang="ar"] .watch h3,[lang="ar"] .frame figcaption{letter-spacing:0}
+[lang="ar"] .hl{font-weight:800;line-height:1.2}
+[lang="ar"] .h1{font-size:clamp(40px,4.9vw,72px)}
+[lang="ar"] .h2{font-size:clamp(30px,4.2vw,60px)}
+[lang="ar"] .hl .i{font-style:normal;font-weight:300}
+[lang="ar"] .reach .hl .i{color:var(--gold)}
+[lang="ar"] .label{text-transform:none;font-weight:700;font-size:14px}
+[lang="ar"] .u{font-style:normal;font-weight:700;font-family:var(--f-ar);font-size:.36em;vertical-align:.9em;margin-left:0;margin-right:.12em}
+[lang="ar"] .num,[lang="ar"] .card .handle,[lang="ar"] .wordmark{font-family:var(--f-en)}
+[lang="ar"] .card .handle{direction:ltr;text-align:end}
+[lang="ar"] .hex-in .label{font-family:var(--f-en);letter-spacing:.14em;text-transform:uppercase;font-size:12px;font-weight:600}
+[lang="ar"] .btn .arr,[lang="ar"] .card .arr,[lang="ar"] .open .arr{display:inline-block;transform:scaleX(-1)}
+[lang="ar"] .btn:hover .arr{transform:scaleX(-1) translateX(4px)}
+[dir="rtl"] .flip img{transform:scaleX(-1)}
+
+/* Phone */
+@media (max-width:767px){
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px}
+  .nav{height:calc(56px + env(safe-area-inset-top,0px));background:var(--ivory);box-shadow:0 1px 0 var(--taupe)}
+  .hero{padding-top:calc(56px + env(safe-area-inset-top,0px))}
+  .hero{min-height:0}
+  .hero-photo{position:relative;width:100%;aspect-ratio:4 / 5;inset:auto}
+  .hero-photo img{object-position:56% 18%}
+  .hero-text{min-height:0;padding-top:36px;padding-bottom:72px}
+  .hero-text > div{grid-column:1 / -1;gap:22px}
+  .t-scissors{width:80px;top:calc(96px + env(safe-area-inset-top,0px));inset-inline-start:auto;inset-inline-end:18px}
+  .t-tape{width:96px;bottom:auto;top:calc(125vw + 2px);inset-inline-start:auto;inset-inline-end:20px}
+  .t-brush{display:none}
+  .maker-photo{grid-column:1 / -1;margin-inline-end:24px}
+  .maker-photo .board{inset:12px -12px -12px 12px}
+  .t-kraft{width:130px;top:-40px;inset-inline-end:-20px}
+  .maker-text{grid-column:1 / -1;margin-top:24px}
+  .facts{grid-template-columns:repeat(3,auto);gap:12px 20px}
+  .facts dd{font-size:26px}
+  .makes-pin{height:auto}
+  .makes-stage{position:relative;height:auto;overflow:visible;padding-top:var(--pad);padding-bottom:calc(var(--pad) * .6)}
+  .makes-head{grid-column:1 / -1}
+  .track{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding-block:48px 8px;gap:20px;transform:none!important;scrollbar-width:none;overscroll-behavior-x:contain}
+  .track::-webkit-scrollbar{display:none}
+  .frame{scroll-snap-align:center;width:78vw}
+  .mat img{width:100%;height:auto;aspect-ratio:3 / 4.6;object-fit:cover}
+  .frame .tool{transform:scale(.7)}
+  .f-shelf .tool{top:-44px;inset-inline-start:-40px}
+  .f-basket .tool{inset-inline-end:-30px}
+  .f-art .tool{inset-inline-end:-14px}
+  .f-niche .tool{inset-inline-start:-50px}
+  .f-table .tool{inset-inline-end:-40px}
+  .reach-intro .hl,.reach-intro p{grid-column:1 / -1}
+  .awards{grid-column:1 / -1;grid-row:auto;min-height:300px;margin-top:32px}
+  .plq{width:140px}
+  .plq-s{inset-inline-start:12%}
+  .plq-g{inset-inline-end:12%;top:60px}
+  .reach-intro{padding-bottom:40px}
+  .reach-pin{height:auto}
+  .reach-stage{position:relative;height:auto;display:block;padding-bottom:64px}
+  .t-kit,.t-ruler,.t-saw{display:none}
+  .cluster{--W:min(260px,72vw);width:auto;height:auto;margin:0;display:grid;justify-items:center}
+  .hex{position:relative;left:auto;top:auto;margin:0;transform:none!important}
+  .hex + .hex{margin-top:-4px}
+  .hex.total{--W:min(335px,100%);margin-top:20px}
+  .hex.total .num{font-size:72px}
+  .market{position:relative;bottom:auto;margin-top:36px;padding-inline:var(--side) var(--side-r);flex-direction:column;align-items:center}
+  .home .hl{grid-column:1 / -1;margin-bottom:40px}
+  .ph-a{grid-column:1 / -1}
+  .ph-b{grid-column:1 / 3;margin-top:40px}
+  .ph-b::before{inset:12px -12px -12px 12px}
+  .ph-c{grid-column:3 / 5;margin-top:40px}
+  .t-flowers{width:110px;top:auto;bottom:4%;inset-inline-end:-20px}
+  .brands-head{grid-column:1 / -1;margin-bottom:40px}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
+  .res-grid{grid-template-columns:1fr;gap:16px}
+  .res{grid-template-columns:88px minmax(0,1fr);gap:14px;padding:14px}
+  .res-thumb{width:88px;height:156px}
+  .res-views .num{font-size:34px}
+  .card{min-height:132px;padding:22px 14px 16px;transform:rotate(calc(var(--tilt,0deg) / 2))}
+  .card .handle{font-size:15px}
+  .card .cat{font-size:13px}
+  .t-stapler{display:none}
+  .work-photo{grid-column:1 / -1;width:280px}
+  .work-text{grid-column:1 / -1}
+  .t-brush2{display:none}
+  .watch{grid-column:1 / -1;grid-template-columns:1fr}
+  .watch h3,.watch ul{grid-column:1 / -1}
+  .watch ul{grid-template-columns:1fr}
+  .foot{grid-column:1 / -1}
+}
+@media (min-width:768px) and (max-width:1100px){
+  .res-grid{grid-template-columns:1fr}
+  .hero-text > div{grid-column:1 / 8}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .maker-photo{grid-column:1 / 7}
+  .maker-text{grid-column:7 / 13}
+}
+/* Reduced motion: final states, no pins (the phone layout already has none) */
+@media (prefers-reduced-motion:reduce){
+  .makes-pin{height:auto}
+  .makes-stage{position:relative;height:auto;overflow:visible;padding-bottom:var(--pad)}
+  .track{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding-block:56px 16px}
+  .frame{scroll-snap-align:center}
+  .reach-pin{height:auto}
+  .reach-stage{position:relative;height:auto;padding-block:40px 140px}
+  .t-kit,.t-ruler,.t-saw{display:none}
+  .card,.btn,.hex-in,.hex-in .open,.btn .arr{transition:background-color .3s,color .3s,opacity .3s!important}
+  .card:hover,.card:focus-visible{transform:rotate(var(--tilt,0deg))}
+  .hex.p:hover .hex-in,.hex.p:focus-visible .hex-in{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav wrap" id="nav">
+  <a class="wordmark" href="#top" data-t="name">Salma Naddaf</a>
+  <button class="lang" id="lang" type="button" lang="ar">العربية</button>
+</header>
+
+<main id="top">
+<!-- 1 Hero -->
+<section class="hero" aria-labelledby="h-hero">
+  <figure class="hero-photo" data-par="hero-photo"><img src="assets/photos/portrait-olive.webp" width="1080" height="1080" alt="Salma Naddaf smiling in an olive dress in a bright living room" data-ta="alt.hero" fetchpriority="high"></figure>
+  <div class="wrap grid hero-text">
+    <div data-par="hero-text">
+      <p class="label hero-in" style="--d:300ms;margin:0"><svg class="hexmark" viewBox="0 0 100 86.6" aria-hidden="true"><polygon points="25,3 75,3 97,43.3 75,83.6 25,83.6 3,43.3" fill="none" stroke="#EABF94" stroke-width="9" stroke-linejoin="round"/></svg><span data-t="hero.label">DIY home decor</span><span aria-hidden="true">·</span><span><bdi dir="ltr" class="js-total">12.6</bdi><span data-t="M.short">M</span> <span data-t="followers">followers</span></span></p>
+      <h1 class="hl h1" id="h-hero"><span class="hero-in" style="--d:450ms;display:block" data-t="h1.a">Made by hand.</span><span class="i hero-in" style="--d:600ms" data-t="h1.b">Watched by millions.</span></h1>
+      <p class="lede hero-in" style="--d:750ms" data-t="hero.sub">Salma Naddaf turns simple materials into home decor and films every piece, first cut to final reveal, for 12.6M followers.</p>
+      <button type="button" class="btn hero-in" style="--d:900ms" data-open-form aria-haspopup="dialog"><span data-t="cta">Start a collaboration</span><span class="arr" aria-hidden="true">→</span></button>
+    </div>
+  </div>
+  <div class="tool t-scissors" data-tool="scissors"><span class="tool-in"><span class="snip" style="display:block"><img src="assets/tools/scissors.webp" width="168" height="277" alt=""></span></span></div>
+  <div class="tool t-tape" data-tool="tape"><span class="tool-in"><img src="assets/tools/masking-tape.webp" width="243" height="252" alt=""></span></div>
+  <div class="tool t-brush flip" data-tool="brush"><span class="tool-in"><img src="assets/tools/paintbrush.webp" width="328" height="121" alt=""></span></div>
+</section>
+
+<!-- 2 The maker -->
+<section class="maker" id="maker" aria-labelledby="h-maker">
+  <div class="wrap grid">
+    <figure class="maker-photo">
+      <div class="board" aria-hidden="true"></div>
+      <div class="tool t-kraft" data-tool="kraft"><span><img src="assets/tools/corrugated-cardboard.webp" width="301" height="275" alt=""></span></div>
+      <img data-par="maker-photo" src="assets/photos/portrait-red.webp" width="791" height="1080" loading="lazy" alt="Salma Naddaf in a red dress against a grey wooden wall" data-ta="alt.maker">
+    </figure>
+    <div class="maker-text">
+      <h2 class="hl h2" id="h-maker" data-rv><span data-t="h2.a">Plain rooms in.</span><span class="i" data-t="h2.b">Warm homes out.</span></h2>
+      <p class="lede" data-rv style="--d:150ms" data-t="maker.p">Salma builds every piece herself, from hexagon shelves and wall art to Ramadan lanterns and full furniture makeovers. She films each one start to finish in Arabic, on a small budget, so her audience can make it too.</p>
+      <dl class="facts" data-rv style="--d:300ms">
+        <div><dt data-t="fact.yt">YouTube videos</dt><dd class="num"><bdi dir="ltr">468</bdi></dd></div>
+        <div><dt data-t="fact.ig">Instagram posts</dt><dd class="num"><bdi dir="ltr">520</bdi></dd></div>
+        <div><dt data-t="fact.tt">TikTok likes</dt><dd class="num"><bdi dir="ltr">26.4</bdi><span class="u" data-t="M">M</span></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 3 The makes -->
+<section class="makes" aria-labelledby="h-makes">
+  <div class="makes-pin" id="makes-pin">
+    <div class="makes-stage">
+      <div class="wrap grid"><h2 class="hl h2 makes-head" id="h-makes" data-rv><span data-t="h3.a">Shelves, baskets, wall art.</span><span class="i" data-t="h3.b">All from her table.</span></h2></div>
+      <div class="track" id="track">
+        <figure class="frame f-shelf"><div class="mat"><img src="assets/photos/make-hexagon-shelf.webp" width="703" height="1080" loading="lazy" alt="Salma holding the hexagon shelf she built, with three small plants" data-ta="alt.shelf"></div><figcaption data-t="cap.shelf">Hexagon shelf</figcaption><div class="tool flip" data-move="saw"><span><img src="assets/tools/hand-saw.webp" width="349" height="148" alt=""></span></div></figure>
+        <figure class="frame f-basket"><div class="mat"><img src="assets/photos/make-tassel-basket.webp" width="667" height="1080" loading="lazy" alt="Salma holding a woven basket with a tasselled trim" data-ta="alt.basket"></div><figcaption data-t="cap.basket">Tasselled basket</figcaption><div class="tool" data-move="rope"><span><img src="assets/tools/jute-rope.webp" width="289" height="266" alt=""></span></div></figure>
+        <figure class="frame f-art"><div class="mat"><img src="assets/photos/make-gold-wall-art.webp" width="626" height="956" loading="lazy" alt="Salma beside a framed gold wall art piece she made" data-ta="alt.art"></div><figcaption data-t="cap.art">Gold wall art</figcaption><div class="tool" data-move="glue"><span><img src="assets/tools/craft-glue.webp" width="138" height="292" alt=""></span></div></figure>
+        <figure class="frame f-niche"><div class="mat"><img src="assets/photos/make-arch-niche.webp" width="523" height="1037" loading="lazy" alt="Salma holding an arched wall shelf she made" data-ta="alt.niche"></div><figcaption data-t="cap.niche">Arched wall shelf</figcaption><div class="tool flip" data-move="knife"><span><img src="assets/tools/craft-knife.webp" width="314" height="90" alt=""></span></div></figure>
+        <figure class="frame f-table"><div class="mat"><img src="assets/photos/make-tiled-table.webp" width="501" height="1026" loading="lazy" alt="A white side table with a geometric block pattern and a vase of flowers" data-ta="alt.table"></div><figcaption data-t="cap.table">Patterned side table</figcaption><div class="tool" data-move="ruler"><span><img src="assets/tools/wooden-ruler.webp" width="330" height="86" alt=""></span></div></figure>
+        <div class="track-end" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 The reach -->
+<section class="reach" aria-labelledby="h-reach">
+  <div class="wrap grid reach-intro">
+    <h2 class="hl h2" id="h-reach" data-rv><span><bdi dir="ltr" class="js-total">12.6</bdi><span data-t="M.short">M</span> <span data-t="h4.a">followers.</span></span><span class="i" data-t="h4.b">Four platforms. One maker.</span></h2>
+    <p class="lede" data-rv style="--d:150ms" data-t="reach.sub">Tap a number to open the channel.</p>
+    <figure class="awards" aria-labelledby="awards-cap">
+      <div class="plq plq-s"><span><img src="assets/awards/plaque-silver.webp" width="532" height="692" loading="lazy" alt="YouTube Silver Creator Award plaque for Salma Naddaf" data-ta="alt.silver"></span></div>
+      <div class="plq plq-g"><span><img src="assets/awards/plaque-gold.webp" width="532" height="692" loading="lazy" alt="YouTube Gold Creator Award plaque for Salma Naddaf" data-ta="alt.gold"></span></div>
+      <figcaption id="awards-cap" class="awards-cap" data-t="awards.cap">YouTube Silver and Gold Creator Awards</figcaption>
+    </figure>
+  </div>
+  <div class="reach-pin" id="reach-pin">
+    <div class="reach-stage">
+      <div class="tool t-kit" aria-hidden="true"><span><img src="assets/tools/tool-kit.webp" width="314" height="259" alt=""><i class="lid"></i></span></div>
+      <div class="tool t-ruler" aria-hidden="true"><span><img src="assets/tools/wooden-ruler.webp" width="330" height="86" alt=""></span></div>
+      <div class="tool t-saw flip" aria-hidden="true"><span><img src="assets/tools/hand-saw.webp" width="349" height="148" alt=""></span></div>
+      <div class="cluster" id="cluster"><!-- filled from CHANNELS below; this markup is the no-script fallback -->
+        <a class="hex p fb" href="https://www.facebook.com/Salmamnaddaf" target="_blank" rel="noopener" data-k="fb"></a>
+        <a class="hex p tt" href="https://www.tiktok.com/@salma_naddaf" target="_blank" rel="noopener" data-k="tt"></a>
+        <a class="hex p ig" href="https://www.instagram.com/salma_naddaf_" target="_blank" rel="noopener" data-k="ig"></a>
+        <a class="hex p yt" href="https://youtube.com/@salma_naddaf" target="_blank" rel="noopener" data-k="yt"></a>
+        <div class="hex total" data-k="total"></div>
+      </div>
+      <div class="market" id="market">
+        <p data-t="market.brand">Brand work: mostly Syria. 5 of her 8 brand partners are Syrian.</p>
+        <p data-t="market.aud">Biggest audiences: Egypt, Iraq and Syria.</p>
+        <p class="note" data-t="market.note">Follower counts from each public profile, 25 November 2026. One person can follow on more than one platform.</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap who">
+    <div class="grid">
+      <h3 class="hl h2 who-h" data-rv><span data-t="who.a">Who watches.</span><span class="i" data-t="who.b">Women aged 25 to 34, from Iraq to Morocco.</span></h3>
+      <div class="stats" data-rv>
+        <div class="stat"><p class="num"><bdi dir="ltr">27.2</bdi><span class="u" data-t="M">M</span></p><p data-t="st.igviews">Instagram views in 30 days</p></div>
+        <div class="stat"><p class="num"><bdi dir="ltr">17.7</bdi><span class="u" data-t="M">M</span></p><p data-t="st.ytviews">YouTube views in 28 days</p></div>
+        <div class="stat"><p class="num"><bdi dir="ltr">5.3</bdi><span class="u" data-t="M">M</span></p><p data-t="st.ttviewers">TikTok viewers in 28 days</p></div>
+        <div class="stat"><p class="num"><bdi dir="ltr">+100</bdi><span class="u" data-t="K">K</span></p><p data-t="st.fbnew">new Facebook followers in 28 days</p></div>
+        <div class="stat"><p class="num"><bdi dir="ltr">25-34</bdi></p><p data-t="st.age">the top age group on all four platforms</p></div>
+        <div class="stat"><p class="num"><bdi dir="ltr">66%</bdi></p><p data-t="st.women">of TikTok viewers are women (53% on YouTube)</p></div>
+      </div>
+      <div class="charts">
+        <figure class="bars" data-rv style="--d:0ms">
+          <figcaption class="label" data-t="ch.fb">Facebook audience</figcaption>
+          <ol>
+          <li style="--v:36.3;--i:0"><span data-t="c.eg">Egypt</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">36.3%</bdi></li>
+          <li style="--v:15.9;--i:1"><span data-t="c.sy">Syria</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">15.9%</bdi></li>
+          <li style="--v:14.2;--i:2"><span data-t="c.dz">Algeria</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">14.2%</bdi></li>
+          <li style="--v:6.4;--i:3"><span data-t="c.jo">Jordan</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">6.4%</bdi></li>
+          <li style="--v:6.4;--i:4"><span data-t="c.ly">Libya</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">6.4%</bdi></li>
+          </ol>
+        </figure>
+        <figure class="bars" data-rv style="--d:150ms">
+          <figcaption class="label" data-t="ch.tt">TikTok viewers</figcaption>
+          <ol>
+          <li style="--v:13.9;--i:0"><span data-t="c.iq">Iraq</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">13.9%</bdi></li>
+          <li style="--v:11.1;--i:1"><span data-t="c.eg">Egypt</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">11.1%</bdi></li>
+          <li style="--v:11.0;--i:2"><span data-t="c.tr">Türkiye</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">11.0%</bdi></li>
+          <li style="--v:9.3;--i:3"><span data-t="c.sa">Saudi Arabia</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">9.3%</bdi></li>
+          <li style="--v:8.7;--i:4"><span data-t="c.ps">Palestine</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">8.7%</bdi></li>
+          </ol>
+        </figure>
+        <figure class="bars" data-rv style="--d:0ms">
+          <figcaption class="label" data-t="ch.ig">Instagram audience</figcaption>
+          <ol>
+          <li style="--v:14.4;--i:0"><span data-t="c.eg">Egypt</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">14.4%</bdi></li>
+          <li style="--v:10.5;--i:1"><span data-t="c.iq">Iraq</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">10.5%</bdi></li>
+          <li style="--v:8.6;--i:2"><span data-t="c.sy">Syria</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">8.6%</bdi></li>
+          <li style="--v:7.6;--i:3"><span data-t="c.dz">Algeria</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">7.6%</bdi></li>
+          <li style="--v:6.6;--i:4"><span data-t="c.ma">Morocco</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">6.6%</bdi></li>
+          </ol>
+        </figure>
+        <figure class="bars" data-rv style="--d:150ms">
+          <figcaption class="label" data-t="ch.yt">YouTube views</figcaption>
+          <ol>
+          <li style="--v:16.1;--i:0"><span data-t="c.iq">Iraq</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">16.1%</bdi></li>
+          <li style="--v:13.9;--i:1"><span data-t="c.sy">Syria</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">13.9%</bdi></li>
+          <li style="--v:13.0;--i:2"><span data-t="c.dz">Algeria</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">13.0%</bdi></li>
+          <li style="--v:8.8;--i:3"><span data-t="c.jo">Jordan</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">8.8%</bdi></li>
+          <li style="--v:8.2;--i:4"><span data-t="c.eg">Egypt</span><span class="btrack"><span class="bar"></span></span><bdi dir="ltr" class="pct">8.2%</bdi></li>
+          </ol>
+        </figure>
+      </div>
+      <p class="src" data-t="who.src">From Salma's own insights: Facebook and YouTube (28 days to 24 November 2026), Instagram (30 days to 8 November 2026), TikTok (10 October to 6 November 2026). All bars share one scale, 0 to 40%.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 At home -->
+<section class="home" aria-labelledby="h-home">
+  <div class="wrap grid">
+    <h2 class="hl h2" id="h-home" data-rv><span data-t="h5.a">Modest style. Bright homes.</span><span class="i" data-t="h5.b">A smile people trust.</span></h2>
+  </div>
+  <div class="wrap grid home-photos">
+    <figure class="ph ph-a" data-rv><img data-par="a" src="assets/photos/home-yellow-table.webp" width="786" height="918" loading="lazy" alt="Salma in a yellow jacket leaning on a round wooden table" data-ta="alt.yellow"></figure>
+    <figure class="ph ph-b" data-rv style="--d:150ms"><img data-par="b" src="assets/photos/home-mirror.webp" width="531" height="918" loading="lazy" alt="Salma taking a mirror photo in a burgundy outfit, framed by a wavy white mirror" data-ta="alt.mirror"></figure>
+    <figure class="ph ph-c" data-rv style="--d:300ms"><img data-par="c" src="assets/photos/home-olive-tree.webp" width="441" height="1080" loading="lazy" alt="Salma standing beside an olive tree in a white vase" data-ta="alt.tree"></figure>
+  </div>
+  <div class="tool t-flowers" id="flowers"><span><img src="assets/tools/dried-flowers.webp" width="229" height="288" alt=""></span></div>
+</section>
+
+<!-- 6 Brands -->
+<section class="brands" aria-labelledby="h-brands">
+  <div class="wrap">
+    <div class="grid"><div class="brands-head">
+      <h2 class="hl h2" id="h-brands" data-rv><span data-t="h6.a">Brands that made it</span><span class="i" data-t="h6.b">to her table.</span></h2>
+      <p class="lede" data-rv style="--d:150ms" data-t="brands.sub">Eight brands so far, from furniture and paint to schools and clinics. Real results from her campaigns, then every brand she has worked with.</p>
+    </div></div>
+    <div class="results">
+      <p class="results-total"><span class="num"><bdi dir="ltr" id="camp-total">8.7</bdi><span class="u" data-t="M">M</span></span> <span data-t="res.total">views from three of her brand campaigns on Instagram.</span></p>
+      <div class="res-grid">
+      <article class="res" data-views="5487772">
+        <img src="assets/campaigns/jpaints.webp" loading="lazy" alt="" class="res-thumb">
+        <div class="res-body">
+          <a class="res-brand" href="https://www.instagram.com/jpaints.syria/" target="_blank" rel="noopener">@jpaints.<wbr>syria <span class="arr" aria-hidden="true">↗</span></a>
+          <p class="res-views"><span class="num"><bdi dir="ltr">5.5</bdi><span class="u" data-t="M">M</span></span> <span data-t="views">views</span></p>
+          <dl class="res-dl"><div><dt data-t="r.viewers">Viewers</dt><dd><bdi dir="ltr">3.9M</bdi></dd></div><div><dt data-t="r.likes">Likes</dt><dd><bdi dir="ltr">116K</bdi></dd></div><div><dt data-t="r.comments">Comments</dt><dd><bdi dir="ltr">1.1K</bdi></dd></div><div><dt data-t="r.shares">Shares</dt><dd><bdi dir="ltr">17.4K</bdi></dd></div><div><dt data-t="r.saves">Saves</dt><dd><bdi dir="ltr">17.4K</bdi></dd></div><div><dt data-t="r.watch">Avg. watch</dt><dd><bdi dir="ltr">26s</bdi></dd></div></dl>
+        </div>
+      </article>
+      <article class="res" data-views="2433107">
+        <img src="assets/campaigns/kapitano.webp" loading="lazy" alt="" class="res-thumb">
+        <div class="res-body">
+          <a class="res-brand" href="https://www.instagram.com/kapitano.shop/" target="_blank" rel="noopener">@kapitano.<wbr>shop <span class="arr" aria-hidden="true">↗</span></a>
+          <p class="res-views"><span class="num"><bdi dir="ltr">2.4</bdi><span class="u" data-t="M">M</span></span> <span data-t="views">views</span></p>
+          <dl class="res-dl"><div><dt data-t="r.viewers">Viewers</dt><dd><bdi dir="ltr">1.8M</bdi></dd></div><div><dt data-t="r.likes">Likes</dt><dd><bdi dir="ltr">63K</bdi></dd></div><div><dt data-t="r.comments">Comments</dt><dd><bdi dir="ltr">798</bdi></dd></div><div><dt data-t="r.shares">Shares</dt><dd><bdi dir="ltr">11.1K</bdi></dd></div><div><dt data-t="r.saves">Saves</dt><dd><bdi dir="ltr">13K</bdi></dd></div><div><dt data-t="r.watch">Avg. watch</dt><dd><bdi dir="ltr">31s</bdi></dd></div></dl>
+        </div>
+      </article>
+      <article class="res" data-views="791251">
+        <img src="assets/campaigns/golden-steps.webp" loading="lazy" alt="" class="res-thumb">
+        <div class="res-body">
+          <a class="res-brand" href="https://www.instagram.com/golden_steps_school/" target="_blank" rel="noopener">@golden_<wbr>steps_<wbr>school <span class="arr" aria-hidden="true">↗</span></a>
+          <p class="res-views"><span class="num"><bdi dir="ltr">791</bdi><span class="u" data-t="K">K</span></span> <span data-t="views">views</span></p>
+          <dl class="res-dl"><div><dt data-t="r.viewers">Viewers</dt><dd><bdi dir="ltr">467K</bdi></dd></div><div><dt data-t="r.likes">Likes</dt><dd><bdi dir="ltr">6.9K</bdi></dd></div><div><dt data-t="r.comments">Comments</dt><dd><bdi dir="ltr">415</bdi></dd></div><div><dt data-t="r.shares">Shares</dt><dd><bdi dir="ltr">1.1K</bdi></dd></div><div><dt data-t="r.saves">Saves</dt><dd><bdi dir="ltr">1.2K</bdi></dd></div><div><dt data-t="r.watch">Avg. watch</dt><dd><bdi dir="ltr">21s</bdi></dd></div></dl>
+        </div>
+      </article>
+      </div>
+    </div>
+    <div class="cards" id="cards">
+      <a class="card" href="https://www.instagram.com/transformertable/" target="_blank" rel="noopener"><i class="staple" aria-hidden="true"></i><span class="handle">@transformer<wbr>table</span><span class="cfoot"><span class="cat" data-t="b.tt">Furniture</span><span class="arr" aria-hidden="true">↗</span></span></a>
+      <a class="card" href="https://www.instagram.com/islamicwallartstore/" target="_blank" rel="noopener"><i class="staple" aria-hidden="true"></i><span class="handle">@islamic<wbr>wallart<wbr>store</span><span class="cfoot"><span class="cat" data-t="b.iwa">Wall decor</span><span class="arr" aria-hidden="true">↗</span></span></a>
+      <a class="card" href="https://www.instagram.com/dtic.co/" target="_blank" rel="noopener"><i class="staple" aria-hidden="true"></i><span class="handle">@dtic.<wbr>co</span><span class="cfoot"><span class="cat" data-t="b.dtic">Detergents and personal care</span><span class="arr" aria-hidden="true">↗</span></span></a>
+      <a class="card" href="https://www.instagram.com/jpaints.syria/" target="_blank" rel="noopener"><i class="staple" aria-hidden="true"></i><span class="handle">@jpaints.<wbr>syria</span><span class="cfoot"><span class="cat" data-t="b.jp">Paints, Syria</span><span class="arr" aria-hidden="true">↗</span></span></a>
+      <a class="card" href="https://www.instagram.com/kapitano.shop/" target="_blank" rel="noopener"><i class="staple" aria-hidden="true"></i><span class="handle">@kapitano.<wbr>shop</span><span class="cfoot"><span class="cat" data-t="b.kap">Online shopping, Syria</span><span class="arr" aria-hidden="true">↗</span></span></a>
+      <a class="card" href="https://www.instagram.com/esmoddamas/" target="_blank" rel="noopener"><i class="staple" aria-hidden="true"></i><span class="handle">@esmod<wbr>damas</span><span class="cfoot"><span class="cat" data-t="b.esm">Fashion school, Damascus</span><span class="arr" aria-hidden="true">↗</span></span></a>
+      <a class="card" href="https://www.instagram.com/be.aesthetic.dentistry/" target="_blank" rel="noopener"><i class="staple" aria-hidden="true"></i><span class="handle">@be.<wbr>aesthetic.<wbr>dentistry</span><span class="cfoot"><span class="cat" data-t="b.be">Aesthetics and dental clinic, Idlib</span><span class="arr" aria-hidden="true">↗</span></span></a>
+      <a class="card" href="https://www.instagram.com/golden_steps_school/" target="_blank" rel="noopener"><i class="staple" aria-hidden="true"></i><span class="handle">@golden_<wbr>steps_<wbr>school</span><span class="cfoot"><span class="cat" data-t="b.gs">School, Damascus</span><span class="arr" aria-hidden="true">↗</span></span></a>
+      <div class="tool t-stapler" id="stapler" aria-hidden="true"><span><img src="assets/tools/stapler.webp" width="317" height="174" alt=""></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 Work with Salma -->
+<section class="work" id="work" aria-labelledby="h-work">
+  <div class="wrap grid">
+    <figure class="work-photo" data-rv><img src="assets/photos/portrait-sunhat.webp" width="1080" height="1080" loading="lazy" alt="Salma in a sun hat and white dress, inside a drawn circle frame" data-ta="alt.sunhat"></figure>
+    <div class="work-text">
+      <h2 class="hl h2" id="h-work"><span data-t="h7.a">Bring her your product.</span><span class="i"><span data-t="h7.b">She will build the story around it.</span><svg class="stroke" id="stroke" viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C 80 6, 160 18, 240 11 S 360 6, 396 12"/></svg></span></h2>
+      <button type="button" class="btn" data-open-form aria-haspopup="dialog"><span data-t="cta">Start a collaboration</span><span class="arr" aria-hidden="true">→</span></button>
+      <div class="mail"><span data-t="mail.lead">Or write to</span> <code id="email">sallomnono@gmail.com</code><button class="copy" id="copy" type="button" data-t="copy">Copy</button></div>
+      <div class="tool t-brush2 flip" id="brush2" aria-hidden="true"><span><img src="assets/tools/paintbrush.webp" width="328" height="121" alt=""></span></div>
+    </div>
+    <div class="watch">
+      <h3 data-t="watch.h">Watch her most viewed videos</h3>
+      <ul>
+        <li><a href="https://www.tiktok.com/@salma_naddaf/video/7467214049483263254" target="_blank" rel="noopener"><span data-t="w.tt">TikTok video</span><span class="v"><bdi dir="ltr">44.4</bdi><span data-t="M.short">M</span> <span data-t="views">views</span></span></a></li>
+        <li><a href="https://www.tiktok.com/@salma_naddaf/video/7423808503166373152" target="_blank" rel="noopener"><span data-t="w.tt">TikTok video</span><span class="v"><bdi dir="ltr">22.1</bdi><span data-t="M.short">M</span> <span data-t="views">views</span></span></a></li>
+        <li><a href="https://www.tiktok.com/@salma_naddaf/video/7465344044911168790" target="_blank" rel="noopener"><span data-t="w.tt">TikTok video</span><span class="v"><bdi dir="ltr">21.4</bdi><span data-t="M.short">M</span> <span data-t="views">views</span></span></a></li>
+        <li><a href="https://www.youtube.com/shorts/VdxAIAtu1bg" target="_blank" rel="noopener"><span data-t="w.yts">YouTube Short</span><span class="v"><bdi dir="ltr">8.9</bdi><span data-t="M.short">M</span> <span data-t="views">views</span></span></a></li>
+        <li><a href="https://www.youtube.com/shorts/WUjDMarzorI" target="_blank" rel="noopener"><span data-t="w.yts2">YouTube Short, her first piece for her new home</span><span class="v"><bdi dir="ltr">6.4</bdi><span data-t="M.short">M</span> <span data-t="views">views</span></span></a></li>
+        <li><a href="https://www.youtube.com/watch?v=m0oK327VZZI" target="_blank" rel="noopener"><span data-t="w.ytl">20 budget Ramadan decor ideas, YouTube</span><span class="v"><bdi dir="ltr">1.3</bdi><span data-t="M.short">M</span> <span data-t="views">views</span></span></a></li>
+      </ul>
+    </div>
+    <footer class="foot">
+      <span data-t="copyright">© 2026 Salma Naddaf</span>
+      <nav aria-label="Channels" data-ta-label="channels">
+        <a href="https://www.facebook.com/Salmamnaddaf" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.tiktok.com/@salma_naddaf" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.instagram.com/salma_naddaf_" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://youtube.com/@salma_naddaf" target="_blank" rel="noopener">YouTube</a>
+      </nav>
+    </footer>
+  </div>
+</section>
+</main>
+
+<dialog class="form-dlg" id="contact" aria-labelledby="f-title">
+  <div class="f-top">
+    <h2 class="hl f-title" id="f-title" data-t="f.title">Start a collaboration</h2>
+    <button type="button" class="f-close" id="f-close" aria-label="Close" data-ta-label="f.close">×</button>
+  </div>
+  <form id="cform" novalidate>
+    <p class="f-lead" data-t="f.lead">Leave your details and Salma will get back to you.</p>
+    <div class="f-grid">
+        <div class="field f-name">
+          <label for="f-name" data-t="f.name">Full name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required aria-required="true" aria-describedby="f-name-err">
+          <p class="err" id="f-name-err" hidden></p>
+        </div>
+        <div class="field f-company">
+          <label for="f-company" data-t="f.company">Company</label>
+          <input id="f-company" name="company" type="text" autocomplete="organization" required aria-required="true" aria-describedby="f-company-err">
+          <p class="err" id="f-company-err" hidden></p>
+        </div>
+        <div class="field f-email">
+          <label for="f-email" data-t="f.email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required aria-required="true" dir="ltr" inputmode="email" spellcheck="false" aria-describedby="f-email-err">
+          <p class="err" id="f-email-err" hidden></p>
+        </div>
+        <div class="field f-phone">
+          <label for="f-phone" data-t="f.phone">Phone number</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" required aria-required="true" dir="ltr" inputmode="tel" aria-describedby="f-phone-err">
+          <p class="err" id="f-phone-err" hidden></p>
+        </div>
+        <div class="field f-message">
+          <label for="f-message"><span data-t="f.message">Message</span> <span class="opt" data-t="f.optional">(optional)</span></label>
+          <textarea id="f-message" name="message" rows="4" dir="auto"></textarea>
+        </div>
+    </div>
+    <button type="submit" class="btn f-send"><span data-t="f.send">Send details</span><span class="arr" aria-hidden="true">→</span></button>
+    <p class="f-note" id="f-note" data-t="f.note">Your details go straight to Salma's collaboration inbox.</p>
+  </form>
+  <div class="f-done" id="f-done" hidden tabindex="-1">
+    <p class="f-done-h" data-t="f.doneh">One step left.</p>
+    <p data-t="f.done">Your email app should now be open with your details filled in. Press send there to reach Salma. If nothing opened, write to her directly:</p>
+    <p><code class="f-mail">sallomnono@gmail.com</code></p>
+    <button type="button" class="btn" id="f-ok"><span data-t="f.ok">Close</span></button>
+  </div>
+</dialog>
+
+<script>
+(() => {
+"use strict";
+/* ---------- Data: public counts, checked 2026-11-25 (job/research.md). The total is always the sum. ---------- */
+const CHANNELS = [
+  {k:"fb", name:"Facebook",  count:"4.9", unit:"followers",   url:"https://www.facebook.com/Salmamnaddaf"},
+  {k:"tt", name:"TikTok",    count:"3.3", unit:"followers",   url:"https://www.tiktok.com/@salma_naddaf"},
+  {k:"ig", name:"Instagram", count:"2.8", unit:"followers",   url:"https://www.instagram.com/salma_naddaf_"},
+  {k:"yt", name:"YouTube",   count:"1.6", unit:"subscribers", url:"https://youtube.com/@salma_naddaf"}
+].sort((a,b) => parseFloat(b.count) - parseFloat(a.count));
+const TOTAL = (CHANNELS.reduce((s,c) => s + Math.round(parseFloat(c.count)*10), 0) / 10).toFixed(1);
+
+/* ---------- Arabic (every line needs Amer's native read) ---------- */
+const AR = {
+  "name":"سلمى نداف","hero.label":"ديكور منزلي بيدها","M.short":" مليون","M":" مليون","followers":"متابع","subscribers":"مشترك",
+  "h1.a":"بيديها تصنع.","h1.b":"والملايين يشاهدون.",
+  "hero.sub":"تحوّل سلمى نداف المواد البسيطة إلى ديكور منزلي، وتصوّر كل قطعة من أول قصّة حتى لحظة الكشف، أمام {T} مليون متابع.",
+  "cta":"ابدأ التعاون",
+  "h2.a":"غرف عادية تدخل،","h2.b":"وبيوت دافئة تخرج.",
+  "maker.p":"تصنع سلمى كل قطعة بنفسها، من الرفوف السداسية واللوحات الجدارية إلى فوانيس رمضان وتجديد الأثاث بالكامل. وتصوّر كل قطعة من البداية حتى النهاية بالعربية وبتكاليف بسيطة، ليصنعها متابعوها أيضاً.",
+  "fact.yt":"فيديو على يوتيوب","fact.ig":"منشور على إنستغرام","fact.tt":"إعجاب على تيك توك",
+  "h3.a":"رفوف، سلال، لوحات جدارية.","h3.b":"كلها من طاولتها.",
+  "cap.shelf":"رف سداسي","cap.basket":"سلة بشراشيب","cap.art":"لوحة جدارية ذهبية","cap.niche":"رف جداري مقوّس","cap.table":"طاولة جانبية بنقشة هندسية",
+  "h4.a":"متابع.","h4.b":"أربع منصات. صانعة واحدة.",
+  "reach.sub":"اضغط على أي رقم لفتح القناة.",
+  "market.brand":"العمل مع العلامات: سوريا أولاً. 5 من شركائها الثمانية علامات سورية.",
+  "market.aud":"أكبر جمهور: مصر والعراق وسوريا.",
+  "market.note":"أعداد المتابعين كما تظهر على كل حساب في 25 نوفمبر 2026. قد يتابعها الشخص نفسه على أكثر من منصة.",
+  "who.a":"من يشاهد؟","who.b":"نساء بين 25 و34 عاماً، من العراق إلى المغرب.",
+  "st.igviews":"مشاهدة على إنستغرام خلال 30 يوماً","st.ytviews":"مشاهدة على يوتيوب خلال 28 يوماً","st.ttviewers":"مشاهد على تيك توك خلال 28 يوماً","st.fbnew":"متابع جديد على فيسبوك خلال 28 يوماً","st.age":"الفئة العمرية الأكبر على المنصات الأربع","st.women":"من مشاهدي تيك توك نساء (53% على يوتيوب)","K":" ألف",
+  "ch.fb":"جمهور فيسبوك","ch.tt":"مشاهدو تيك توك","ch.ig":"جمهور إنستغرام","ch.yt":"مشاهدات يوتيوب",
+  "c.eg":"مصر","c.iq":"العراق","c.sy":"سوريا","c.dz":"الجزائر","c.ma":"المغرب","c.tr":"تركيا","c.sa":"السعودية","c.ps":"فلسطين","c.jo":"الأردن","c.ly":"ليبيا",
+  "who.src":"من إحصاءات سلمى نفسها: فيسبوك ويوتيوب (28 يوماً حتى 24 نوفمبر 2026)، إنستغرام (30 يوماً حتى 8 نوفمبر 2026)، تيك توك (10 أكتوبر حتى 6 نوفمبر 2026). كل الأعمدة على مقياس واحد من 0 إلى 40%.",
+  "h5.a":"أناقة محتشمة. بيوت مشرقة.","h5.b":"وابتسامة يثق بها الناس.",
+  "h6.a":"علامات تجارية","h6.b":"وصلت إلى طاولتها.",
+  "brands.sub":"ثماني علامات حتى الآن، من الأثاث والدهانات إلى المدارس والعيادات. نتائج حقيقية من حملاتها، ثم كل العلامات التي عملت معها.",
+  "b.tt":"أثاث","b.iwa":"ديكور جداري","b.dtic":"منظفات وعناية شخصية","b.jp":"دهانات، سوريا","b.kap":"تسوّق إلكتروني، سوريا","b.esm":"مدرسة أزياء، دمشق","b.be":"عيادة تجميل وأسنان، إدلب","b.gs":"مدرسة، دمشق",
+  "h7.a":"أحضر منتجك،","h7.b":"وهي تبني القصة حوله.",
+  "mail.lead":"أو راسلها على","copy":"نسخ","copied":"تم النسخ",
+  "watch.h":"شاهد أكثر فيديوهاتها مشاهدة","w.tt":"فيديو على تيك توك","w.yts":"فيديو قصير على يوتيوب","w.yts2":"فيديو قصير: أول قطعة لبيتها الجديد","w.ytl":"20 فكرة اقتصادية لديكور رمضان، يوتيوب","views":"مشاهدة",
+  "copyright":"© 2026 سلمى نداف","open":"افتح","total.label":"إجمالي المتابعين","total.sub":"على أربع منصات","share":"من إجمالي المتابعين",
+  "alt.hero":"سلمى نداف تبتسم بفستان زيتي في غرفة معيشة مشرقة","alt.maker":"سلمى نداف بفستان أحمر أمام جدار خشبي رمادي",
+  "alt.shelf":"سلمى تحمل الرف السداسي الذي صنعته مع ثلاث نباتات صغيرة","alt.basket":"سلمى تحمل سلة منسوجة بحافة من الشراشيب",
+  "alt.art":"سلمى بجانب لوحة جدارية ذهبية بإطار من صنعها","alt.niche":"سلمى تحمل رفاً جدارياً مقوّساً من صنعها",
+  "alt.table":"طاولة جانبية بيضاء بنقشة هندسية وعليها مزهرية","alt.yellow":"سلمى بسترة صفراء تتكئ على طاولة خشبية مستديرة",
+  "alt.mirror":"سلمى تلتقط صورة في مرآة بإطار أبيض متموّج","alt.tree":"سلمى تقف بجانب شجرة زيتون في أصيص أبيض",
+  "alt.sunhat":"سلمى بقبعة شمس وفستان أبيض داخل إطار دائري مرسوم","channels":"القنوات",
+  "awards.cap":"درعا يوتيوب الفضي والذهبي لصنّاع المحتوى","alt.silver":"درع يوتيوب الفضي لسلمى نداف","alt.gold":"درع يوتيوب الذهبي لسلمى نداف",
+  "res.total":"مشاهدة من ثلاث من حملاتها مع العلامات على إنستغرام.","r.viewers":"مشاهد","r.likes":"إعجاب","r.comments":"تعليق","r.shares":"مشاركة","r.saves":"حفظ","r.watch":"متوسط المشاهدة",
+  "f.title":"ابدأ التعاون","f.close":"إغلاق","f.lead":"اترك بياناتك وستتواصل معك سلمى.","f.name":"الاسم الكامل","f.company":"الشركة","f.email":"البريد الإلكتروني","f.phone":"رقم الهاتف","f.message":"رسالة","f.optional":"(اختياري)",
+  "f.send":"أرسل البيانات","f.note":"تصل بياناتك مباشرة إلى بريد التعاون الخاص بسلمى.","f.doneh":"بقيت خطوة واحدة.","f.done":"يُفترض أن تطبيق البريد مفتوح الآن وفيه بياناتك. اضغط إرسال هناك لتصل رسالتك إلى سلمى. إن لم يُفتح شيء، راسلها مباشرة على:","f.ok":"إغلاق","f.senth":"شكراً لك.","f.sent":"وصلت بياناتك، وستتواصل معك سلمى.","f.fail":"تعذّر الإرسال. تحقّق من الاتصال وحاول مجدداً، أو راسلها على sallomnono@gmail.com.",
+  "e.name":"اكتب اسمك.","e.company":"اكتب اسم الشركة.","e.email":"اكتب بريداً إلكترونياً صحيحاً، مثل name@company.com.","e.phone":"اكتب رقم هاتف صحيحاً مع رمز الدولة، مثل ‎+966 5x xxx xxxx.",
+  "unit.followers":"متابع","unit.subscribers":"مشترك"
+};
+const EN = {"f.senth":"Thank you.","f.sent":"Your details were sent. Salma will get back to you.","f.note":"Your details go straight to Salma's collaboration inbox.","f.fail":"Sending failed. Check your connection and try again, or email sallomnono@gmail.com.","e.name":"Enter your name.","e.company":"Enter your company name.","e.email":"Enter a valid email, like name@company.com.","e.phone":"Enter a valid phone number with the country code, like +966 5x xxx xxxx.","f.close":"Close","hero.sub":"Salma Naddaf turns simple materials into home decor and films every piece, first cut to final reveal, for {T}M followers.","copied":"Copied","open":"Open","total.label":"Total followers","total.sub":"on four platforms","share":"of her total","unit.followers":"followers","unit.subscribers":"subscribers","channels":"Channels"};
+
+const root = document.documentElement;
+const $ = (s, r=document) => r.querySelector(s), $$ = (s, r=document) => [...r.querySelectorAll(s)];
+let lang = "en";
+const t = k => (lang === "ar" ? AR[k] : EN[k]) ?? EN[k] ?? k;
+
+/* ---------- Build the hexagons from CHANNELS ---------- */
+const HEX = '<svg viewBox="0 0 100 86.6" preserveAspectRatio="none" aria-hidden="true"><polygon class="focus" points="23,-4.5 77,-4.5 104,43.3 77,91.1 23,91.1 -4,43.3"/><polygon class="hit" points="25,0 75,0 100,43.3 75,86.6 25,86.6 0,43.3"/><polygon class="ring" points="25.6,1 74.4,1 98.8,43.3 74.4,85.6 25.6,85.6 1.2,43.3"/></svg>';
+const cluster = $("#cluster");
+const slots = ["fb","tt","ig","yt"]; // reading order = rank order: top-start, top-end, bottom-start, bottom-end
+const hexEls = $$(".hex.p", cluster);
+CHANNELS.forEach((c, i) => {
+  const a = hexEls[i];
+  a.className = "hex p " + slots[i];
+  a.href = c.url; a.dataset.k = c.k; a.dataset.v = c.count; a.dataset.unit = c.unit; a.dataset.name = c.name;
+  a.innerHTML = HEX + `<span class="hex-in"><span class="label">${c.name}</span><span class="num"><bdi dir="ltr" class="cnt" aria-hidden="true">${c.count}</bdi><span class="u" data-t="M">M</span></span><span class="sub" data-t="unit.${c.unit}">${c.unit}</span><span class="open"><span data-t="open">Open</span> <span class="arr" aria-hidden="true">↗</span></span></span>`;
+});
+const totalEl = $(".hex.total", cluster);
+totalEl.dataset.v = TOTAL;
+totalEl.innerHTML = HEX + `<span class="hex-in"><span class="label" data-t="total.label">Total followers</span><span class="num"><bdi dir="ltr" class="cnt">${TOTAL}</bdi><span class="u" data-t="M">M</span></span><span class="sub" id="total-sub" data-t="total.sub">on four platforms</span></span>`;
+$$(".js-total").forEach(e => e.textContent = TOTAL);
+
+function labelHexes(){
+  hexEls.forEach(a => {
+    const n = a.dataset.v, u = a.dataset.unit;
+    a.setAttribute("aria-label", lang === "ar"
+      ? `${a.dataset.name}، ${n} مليون ${AR["unit."+u]}، يفتح في نافذة جديدة`
+      : `${a.dataset.name}, ${n} million ${u}, opens in a new tab`);
+  });
+}
+/* Hover or focus a channel: the total says its share */
+hexEls.forEach(a => {
+  const on = () => { const s = Math.round(parseFloat(a.dataset.v) / parseFloat(TOTAL) * 100);
+    $("#total-sub").textContent = lang === "ar" ? `${a.dataset.name}: ${s}% ${t("share")}` : `${a.dataset.name}: ${s}% ${t("share")}`; };
+  const off = () => { $("#total-sub").textContent = t("total.sub"); };
+  a.addEventListener("pointerenter", on); a.addEventListener("focus", on);
+  a.addEventListener("pointerleave", off); a.addEventListener("blur", off);
+});
+
+/* ---------- Language ---------- */
+const enText = new Map(), enAlt = new Map();
+function applyLang(next){
+  lang = next;
+  root.lang = lang; root.dir = lang === "ar" ? "rtl" : "ltr";
+  $$("[data-t]").forEach(el => {
+    if (!enText.has(el)) enText.set(el, el.textContent);
+    const k = el.dataset.t;
+    el.textContent = (lang === "ar" ? (AR[k] ?? enText.get(el)) : (EN[k] ?? enText.get(el))).replace("{T}", TOTAL);
+  });
+  $$("[data-ta]").forEach(el => {
+    if (!enAlt.has(el)) enAlt.set(el, el.alt);
+    el.alt = lang === "ar" ? (AR[el.dataset.ta] ?? enAlt.get(el)) : enAlt.get(el);
+  });
+  $$("[data-ta-label]").forEach(el => el.setAttribute("aria-label", t(el.dataset.taLabel)));
+  const b = $("#lang");
+  b.textContent = lang === "ar" ? "English" : "العربية";
+  b.lang = lang === "ar" ? "en" : "ar";
+  document.title = lang === "ar" ? "سلمى نداف" : "Salma Naddaf";
+  labelHexes();
+  try { history.replaceState(null, "", lang === "ar" ? "#ar" : location.pathname + location.search); } catch(e) {}
+  measure(); tick(true);
+}
+$("#lang").addEventListener("click", () => applyLang(lang === "ar" ? "en" : "ar"));
+
+/* ---------- Copy the email ---------- */
+$("#copy").addEventListener("click", async () => {
+  const b = $("#copy"), txt = $("#email").textContent;
+  try { await navigator.clipboard.writeText(txt); b.textContent = t("copied"); }
+  catch(e) { const r = document.createRange(); r.selectNodeContents($("#email")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+  setTimeout(() => { b.textContent = lang === "ar" ? AR.copy : "Copy"; }, 1800);
+});
+
+/* ---------- Campaign total = sum of the campaigns shown ---------- */
+const campViews = $$(".res").reduce((a, el) => a + Number(el.dataset.views || 0), 0);
+if (campViews) $("#camp-total").textContent = (campViews / 1e6).toFixed(1);
+
+/* ---------- Contact form ----------
+   Submissions go to Salma's collaboration inbox through FormSubmit (formsubmit.co), the same service dot.'s
+   other forms use. The first submission makes FormSubmit email sallomnono@gmail.com an "Activate Form" link;
+   after she clicks it, every submission arrives as an email. Empty FORM_ENDPOINT = open the visitor's email app instead. */
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/sallomnono@gmail.com";
+const MAIL_TO = "sallomnono@gmail.com";
+const dlg = $("#contact"), form = $("#cform"), done = $("#f-done");
+let opener = null;
+$$("[data-open-form]").forEach(b => b.addEventListener("click", () => {
+  opener = b; form.hidden = false; done.hidden = true;
+  const n = $("#f-note"); n.classList.remove("err"); n.textContent = t("f.note");
+  dlg.showModal(); $("#f-name").focus();
+}));
+const closeDlg = () => dlg.close();
+$("#f-close").addEventListener("click", closeDlg);
+$("#f-ok").addEventListener("click", closeDlg);
+dlg.addEventListener("click", e => { if (e.target === dlg) closeDlg(); });
+dlg.addEventListener("close", () => { if (opener) opener.focus(); });
+const RULES = {
+  name: v => v.trim().length >= 2,
+  company: v => v.trim().length >= 1,
+  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+  phone: v => { const dg = v.replace(/\D/g, ""); return /^\+?[\d\s().-]+$/.test(v.trim()) && dg.length >= 7 && dg.length <= 15; }
+};
+function checkField(name){
+  const el = form.elements[name], ok = RULES[name](el.value), err = $("#" + el.id + "-err");
+  el.setAttribute("aria-invalid", ok ? "false" : "true");
+  err.hidden = ok; err.textContent = ok ? "" : t("e." + name);
+  return ok;
+}
+Object.keys(RULES).forEach(n => form.elements[n].addEventListener("blur", () => { if (form.elements[n].value) checkField(n); }));
+form.addEventListener("input", e => { const n = e.target.name; if (RULES[n] && e.target.getAttribute("aria-invalid") === "true") checkField(n); });
+function showDone(sent){
+  if (sent) { $(".f-done-h").textContent = t("f.senth"); done.querySelector('[data-t="f.done"]').textContent = t("f.sent"); done.querySelector(".f-mail").parentElement.hidden = true; }
+  form.hidden = true; done.hidden = false; done.focus();
+}
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const bad = Object.keys(RULES).filter(n => !checkField(n));
+  if (bad.length) { form.elements[bad[0]].focus(); return; }
+  const f = Object.fromEntries(new FormData(form));
+  if (FORM_ENDPOINT) {
+    try {
+      const btn = form.querySelector('button[type="submit"]'); btn.disabled = true;
+      const payload = {
+        _subject: `Collaboration request: ${f.company} (dot-cc.com/Salma_Naddaf)`, _template: "table", _captcha: "false",
+        "Full name": f.name, "Company": f.company, email: f.email, "Phone": f.phone, "Message": f.message || "", "Page language": lang
+      };
+      try {
+        const res = await fetch(FORM_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json", "Accept":"application/json"}, body: JSON.stringify(payload)});
+        const j = await res.json().catch(() => ({}));
+        if (!res.ok || String(j.success) !== "true") throw new Error(j.message || String(res.status));
+        form.reset(); showDone(true);
+      } finally { btn.disabled = false; }
+    } catch(_) { const n = $("#f-note"); n.textContent = t("f.fail"); n.classList.add("err"); }
+    return;
+  }
+  const subject = `Collaboration request: ${f.company}`;
+  const body = [`Name: ${f.name}`, `Company: ${f.company}`, `Email: ${f.email}`, `Phone: ${f.phone}`, "", f.message || ""].join("\n");
+  location.href = `mailto:${MAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  showDone(false);
+});
+
+/* ---------- Nav turns solid after the hero top ---------- */
+const nav = $("#nav");
+const navCheck = () => nav.classList.toggle("solid", scrollY > 40);
+addEventListener("scroll", navCheck, {passive:true}); navCheck();
+
+/* ---------- Motion ---------- */
+const RM = matchMedia("(prefers-reduced-motion: reduce)");
+const MOB = matchMedia("(max-width: 767px)");
+let motion = !RM.matches;
+const clamp = (v,a=0,b=1) => Math.min(b, Math.max(a, v));
+const seg = (p,a,b) => clamp((p-a)/(b-a));
+const glide = x => x >= 1 ? 1 : 1 - Math.pow(2, -10*x);
+const click = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3*Math.pow(x-1,3) + c1*Math.pow(x-1,2); };
+const lerp = (a,b,x) => a + (b-a)*x;
+const dirX = () => lang === "ar" ? -1 : 1;
+const tf = (el, s) => { if (el) el.style.transform = s; };
+const op = (el, o) => { if (el) el.style.opacity = o; };
+
+/* Reveals */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.2, rootMargin:"0px 0px -5% 0px"});
+
+/* Section progress: pinned = across the pinned run; flowing = from entering to leaving the screen */
+const sec = {};
+function measure(){
+  const vh = innerHeight;
+  const box = el => { const r = el.getBoundingClientRect(); return {top: r.top + scrollY, h: r.height}; };
+  sec.hero = box($(".hero")); sec.maker = box($(".maker")); sec.makesPin = box($("#makes-pin"));
+  sec.reachPin = box($("#reach-pin")); sec.intro = box($(".reach-intro")); sec.home = box($(".home")); sec.work = box($(".work"));
+  const track = $("#track");
+  sec.trackShift = Math.max(0, track.scrollWidth - innerWidth);
+  sec.vh = vh;
+  const W = $(".hex.total").offsetWidth, H = $(".hex.total").offsetHeight;
+  const stage = $(".reach-stage");
+  sec.hexW = W; sec.hexH = H;
+  sec.grow = Math.max(1, Math.min(760 / W, stage.clientWidth * .5 / W, stage.clientHeight * .6 / H));
+}
+const pinP = s => clamp((scrollY - s.top) / Math.max(1, s.h - sec.vh));
+const flowP = s => clamp((scrollY + sec.vh - s.top) / (s.h + sec.vh));
+
+const cur = {};
+const smooth = (k, target, snap) => { if (snap || cur[k] === undefined) cur[k] = target; else cur[k] += (target - cur[k]) * .18; return cur[k]; };
+
+const T = {
+  scissors: $(".t-scissors"), tape: $(".t-tape"), brush: $(".t-brush"), heroPhoto: $(".hero-photo img"), heroText: $('[data-par="hero-text"]'),
+  kraft: $(".t-kraft > span"), makerPhoto: $('[data-par="maker-photo"]'),
+  track: $("#track"), frames: $$(".frame"),
+  kit: $(".t-kit > span"), lid: $(".t-kit .lid"), kitWrap: $(".t-kit"), ruler: $(".t-ruler"), saw: $(".t-saw"),
+  hexes: hexEls, total: totalEl, market: $("#market"),
+  parA: $('[data-par="a"]'), parB: $('[data-par="b"]'), parC: $('[data-par="c"]'), flowers: $("#flowers > span"),
+  stroke: $("#stroke path"), brush2: $("#brush2"), workText: $(".work-text"),
+  plS: $(".plq-s > span"), plG: $(".plq-g > span")
+};
+
+function setCount(el, v, x){ const c = el.querySelector(".cnt"); if (c) c.textContent = x >= 1 ? v : (parseFloat(v) * x).toFixed(1); }
+
+function resetStatic(){
+  // Final, resting state for reduced motion and phones
+  [T.plS, T.plG, T.scissors, T.tape, T.brush, T.heroPhoto, T.heroText, T.kraft, T.makerPhoto, T.track, T.kit, T.lid, T.parA, T.parB, T.parC, T.flowers, T.brush2, ...T.hexes, T.total].forEach(el => { if (el) { el.style.transform = ""; el.style.opacity = ""; }});
+  T.frames.forEach(f => { const m = f.querySelector(".mat"), tl = f.querySelector(".tool > span"); tf(m, ""); tf(tl, ""); op(tl, ""); });
+  [T.ruler, T.saw].forEach(el => { el.style.transform = ""; el.style.opacity = ""; });
+  op(T.market, "");
+  [...T.hexes, T.total].forEach(h => setCount(h, h.dataset.v, 1));
+  if (T.stroke) { T.stroke.style.strokeDasharray = ""; T.stroke.style.strokeDashoffset = ""; }
+  placeBrush(1);
+}
+
+function placeBrush(x){
+  const path = T.stroke; if (!path || !T.brush2) return;
+  const len = path.getTotalLength();
+  const svg = path.ownerSVGElement, sr = svg.getBoundingClientRect(), wr = T.workText.getBoundingClientRect();
+  const pt = path.getPointAtLength(lang === "ar" ? len * (1 - x) : len * x);
+  const sx = sr.width / 400, sy = sr.height / 22;
+  const bx = sr.left - wr.left + pt.x * sx, by = sr.top - wr.top + pt.y * sy;
+  const bw = T.brush2.offsetWidth;
+  // the brush tip (bristles) sits on the stroke end
+  const tipX = lang === "ar" ? bx - 6 : bx - bw + 6;
+  T.brush2.style.transform = `translate(${tipX}px, ${by - T.brush2.offsetHeight * .62}px) rotate(${lerp(14, 6, x) * dirX()}deg)`;
+  T.brush2.style.opacity = x >= 1 ? "1" : String(clamp(x * 6));
+}
+
+function tick(snap){
+  if (!motion) return;
+  const mob = MOB.matches, d = dirX(), vh = sec.vh;
+
+  /* 1 Hero: tools scatter out over the first screen */
+  const hp = smooth("hero", clamp(scrollY / Math.max(1, sec.hero.h)), snap), he = glide(hp);
+  const k = mob ? .5 : 1, out = seg(hp, .55, 1);
+  tf(T.scissors, `translate(${-18*he*d*k}vw, ${-30*he*k}vh) rotate(${-48*he*d}deg)`); op(T.scissors, 1 - out);
+  tf(T.tape, `translate(${14*he*d*k}vw, ${-24*he*k}vh) rotate(${180*he*d}deg)`); op(T.tape, 1 - out);
+  tf(T.brush, `translate(${10*he*d*k}vw, ${26*he*k}vh) rotate(${32*he*d}deg)`); op(T.brush, 1 - out);
+  if (!mob) { tf(T.heroPhoto, `translateY(${hp*12}vh) scale(${lerp(1.05, 1, hp)})`); tf(T.heroText, `translateY(${-8*hp}vh)`); op(T.heroText, 1 - seg(hp, .5, .9)); }
+
+  /* 2 Maker: the kraft board slides out from behind the photo; the photo drifts */
+  const mp = smooth("maker", flowP(sec.maker), snap), kp = glide(seg(mp, .1, .5));
+  tf(T.kraft, `translate(${lerp(-120, 0, kp)*d}px, ${lerp(60, 0, kp)}px) rotate(${lerp(-10, 0, kp)*d}deg)`);
+  tf(T.makerPhoto, `translateY(${lerp(mob?3:6, mob?-3:-6, mp)}vh)`);
+
+  /* 3 Makes: pinned sideways track, one tool at work per frame */
+  if (!mob) {
+    const p = smooth("makes", pinP(sec.makesPin), snap), q = seg(p, .05, .95);
+    tf(T.track, `translateX(${-q * sec.trackShift * d}px)`);
+    const n = T.frames.length;
+    T.frames.forEach((f, i) => {
+      const c = n > 1 ? i / (n - 1) : 0;           // frame i is centred at q = c
+      const near = clamp(1 - Math.abs(q - c) * 2.2);
+      tf(f.querySelector(".mat"), `scale(${lerp(.93, 1, glide(near))})`);
+      const tl = f.querySelector(".tool > span"), x = glide(seg(q, c - .32, c - .02));
+      const mv = f.querySelector(".tool").dataset.move;
+      let s = "";
+      if (mv === "saw")   s = `translateX(${lerp(-30, 0, x)*d}vw) rotate(${3*Math.sin(x*6*Math.PI)*d}deg)`;
+      if (mv === "rope")  s = `translateX(${lerp(30, 0, x)*d}vw) rotate(${lerp(240, 0, x)*d}deg)`;
+      if (mv === "glue")  s = `translateY(${lerp(-30, 0, x)}vh) rotate(${lerp(15, 0, x)*d}deg) scaleY(${x > .9 ? lerp(.94, 1, (x-.9)*10) : 1})`;
+      if (mv === "knife") s = `translate(${lerp(-20, 0, x)*d}vw, ${lerp(-10, 0, x)}vh) rotate(${lerp(-12, 0, x)*d}deg)`;
+      if (mv === "ruler") s = `translateX(${lerp(-24, 0, x)*d}vw)`;
+      tf(tl, s); op(tl, clamp(x * 3));
+    });
+  }
+
+  /* 4 The reach: the kit opens, hexagons click in highest first, the total lands */
+  if (!mob) {
+    const p = smooth("reach", pinP(sec.reachPin), snap);
+    const W = sec.hexW, H = sec.hexH;
+    const kIn = glide(seg(p, 0, .1));
+    tf(T.kit, `translateY(${lerp(40, 0, kIn)}vh) scale(${lerp(.6, 1, kIn) * lerp(1, 1.15, seg(p, .1, .2))}) rotate(${lerp(-8, 0, kIn)*d}deg)`);
+    op(T.kitWrap, 1 - seg(p, .2, .3));
+    const lid = seg(p, .05, .14);
+    tf(T.lid, `perspective(800px) rotateY(${-115 * lid * d}deg)`); op(T.lid, lid > 0 && lid < 1 ? 1 : 0);
+    const fly = glide(seg(p, .12, .24)), leave = seg(p, .74, .82);
+    tf(T.ruler, `translate(${(-W*1.25)*fly*d - 30*leave*vh/100*d}px, ${H*1.05*fly}px) rotate(${-30*fly*d}deg)`); op(T.ruler, fly * .4 * (1 - leave) + (fly > 0 && fly < 1 ? .6*fly : 0));
+    tf(T.saw, `translate(${(W*1.25)*fly*d + 30*leave*vh/100*d}px, ${-H*1.1*fly}px) rotate(${(30 + (fly<1?0:4*Math.sin(p*60)))*fly*d}deg)`); op(T.saw, fly * .4 * (1 - leave) + (fly > 0 && fly < 1 ? .6*fly : 0));
+    const steps = [[.22,.30,.28,.40],[.34,.42,.40,.50],[.46,.54,.52,.62],[.58,.66,.64,.74]];
+    const g = glide(seg(p, .82, .94)), S = lerp(1, sec.grow, g);
+    T.hexes.forEach((h, i) => {
+      const [a, b, ca, cb] = steps[i];
+      const land = seg(p, a, b), e = click(land);
+      const sx = (i % 2 === 0 ? -1 : 1) * d, sy = i < 2 ? -1 : 1;
+      // flat-top neighbours share an edge at 30 degrees: centre distance = (Hc + Hs) / 2
+      const Hs = H * lerp(1, .7, g), dist = (H * S + Hs) / 2 + 10;
+      const x = sx * dist * .866 * e, y = sy * dist * .5 * e;
+      h.style.transform = `translate(${x}px, ${y}px) scale(${lerp(.4, 1, e) * lerp(1, .7, g)}) rotate(${lerp(30, 0, e)*d}deg)`;
+      h.style.opacity = clamp(land * 2);
+      h.style.pointerEvents = land > .5 ? "" : "none";
+      h.querySelector(".hit").style.pointerEvents = land > .5 ? "" : "none";
+      setCount(h, h.dataset.v, glide(seg(p, ca, cb)));
+    });
+    const tIn = click(seg(p, .70, .78));
+    T.total.style.transform = `scale(${lerp(0, 1, tIn) * S})`;
+    T.total.style.opacity = clamp(tIn * 3);
+    T.total.querySelector(".hit").style.fillOpacity = seg(p, .76, .82);
+    setCount(T.total, T.total.dataset.v, glide(seg(p, .74, .86)));
+    op(T.market, seg(p, .92, .98));
+  }
+
+  /* 4a The plaques drift up and turn as the intro passes */
+  const ip = smooth("intro", flowP(sec.intro), snap), k2 = mob ? .5 : 1;
+  tf(T.plS, `translateY(${lerp(90, -40, ip)*k2}px) rotate(${lerp(-14, 5, ip)*d}deg)`);
+  tf(T.plG, `translateY(${lerp(160, -70, ip)*k2}px) rotate(${lerp(12, -5, ip)*d}deg)`);
+
+  /* 5 At home: three speeds; the flowers sway */
+  const hp5 = smooth("home", flowP(sec.home), snap), r = mob ? .5 : 1;
+  tf(T.parA, `translateY(${lerp(4, -4, hp5)*r}vh)`); tf(T.parB, `translateY(${lerp(6, -6, hp5)*r}vh)`); tf(T.parC, `translateY(${lerp(2, -2, hp5)*r}vh)`);
+  tf(T.flowers, `translateX(${lerp(8, 0, glide(seg(hp5, 0, .3)))*d}vw) rotate(${4*Math.sin(hp5*4*Math.PI)}deg)`);
+
+  /* 7 Work: the brush signs the stroke */
+  const wp = smooth("work", flowP(sec.work), snap), sx = glide(seg(wp, .12, .42));
+  if (T.stroke) {
+    const len = T.stroke.getTotalLength();
+    T.stroke.style.strokeDasharray = len;
+    T.stroke.style.strokeDashoffset = len * (1 - sx) * (lang === "ar" ? -1 : 1);
+  }
+  placeBrush(sx);
+}
+
+/* Stapler: pins each brand card as the grid arrives (desktop, motion on) */
+function staple(){
+  const cards = $$(".card"), st = $("#stapler"), grid = $("#cards");
+  if (!motion || MOB.matches) { cards.forEach(c => c.classList.add("landed")); return; }
+  root.classList.add("cards-wait");
+  cards.forEach((c, i) => c.style.setProperty("--pre", [-6,5,-4,6,-5,4,-6,5][i] + "deg"));
+  const go = () => {
+    const gr = grid.getBoundingClientRect();
+    cards.forEach((c, i) => setTimeout(() => {
+      const r = c.getBoundingClientRect();
+      const x = r.left - gr.left + r.width / 2 - st.offsetWidth * .5, y = r.top - gr.top - st.offsetHeight * .7;
+      st.style.transition = "transform .2s cubic-bezier(.16,1,.3,1), opacity .2s";
+      st.style.opacity = "1";
+      st.style.transform = `translate(${x}px, ${y - 20}px)`;
+      setTimeout(() => {
+        st.style.transform = `translate(${x}px, ${y}px)`;
+        c.classList.add("landed");
+        if (i === cards.length - 1) setTimeout(() => { st.style.opacity = "0"; }, 350);
+      }, 200);
+    }, i * 280));
+  };
+  const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { o.disconnect(); go(); } }, {threshold:.35});
+  o.observe(grid);
+}
+
+/* Phone: each shelf hexagon reveals and counts on its own entry */
+function phoneHexes(){
+  [...T.hexes, T.total].forEach(h => h.removeAttribute("data-rv"));
+  if (!motion || !MOB.matches) return;
+  [...T.hexes, T.total].forEach(h => {
+    h.setAttribute("data-rv", ""); setCount(h, h.dataset.v, 0);
+    const o = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; o.disconnect(); h.classList.add("in");
+      const t0 = performance.now(); const step = n => { const x = clamp((n - t0) / 900); setCount(h, h.dataset.v, glide(x)); if (x < 1) requestAnimationFrame(step); }; requestAnimationFrame(step);
+    }, {threshold:.4});
+    o.observe(h);
+  });
+}
+
+/* Loop */
+let raf = 0;
+function loop(){ tick(false); raf = requestAnimationFrame(loop); }
+function start(){
+  motion = !RM.matches;
+  root.classList.toggle("motion", motion);
+  cancelAnimationFrame(raf);
+  measure();
+  if (motion) {
+    $$("[data-rv]").forEach(el => io.observe(el));
+    tick(true); loop(); phoneHexes();
+  } else {
+    $$("[data-rv]").forEach(el => el.classList.add("in"));
+    root.classList.remove("cards-wait");
+    $$(".card").forEach(c => c.classList.add("landed"));
+    resetStatic();
+  }
+}
+RM.addEventListener("change", start);
+MOB.addEventListener("change", () => { resetStatic(); start(); });
+let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { measure(); tick(true); }, 120); });
+addEventListener("load", () => { measure(); tick(true); });
+
+applyLang(location.hash === "#ar" ? "ar" : "en");
+start();
+staple();
+if (!motion) resetStatic();
+})();
+</script>
+</body>
+</html>
