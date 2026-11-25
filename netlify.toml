@@ -127,3 +127,21 @@
   for = "/hackathon-prompts/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# Salma Naddaf (influencer, DIY home decor): one-page bio site, English and Arabic (#ar), public.
+# Built in the client-salma-naddaf repo (projects/salma-naddaf/site in amer-os); never edited here.
+# The collaboration form posts to FormSubmit (formsubmit.co), which emails sallomnono@gmail.com.
+[[redirects]]
+  from = "/Salma_Naddaf"
+  to = "/salma-naddaf/"
+  status = 301
+
+[[redirects]]
+  from = "/Salma_Naddaf/"
+  to = "/salma-naddaf/"
+  status = 301
+
+[[redirects]]
+  from = "/salma_naddaf"
+  to = "/salma-naddaf/"
+  status = 301
